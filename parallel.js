@@ -8,7 +8,7 @@ var m = [60, 0, 10, 0],
     yscale = {},
     dragging = {},
     line = d3.svg.line(),
-    axis = d3.svg.axis().orient("left").ticks(1+height/50),
+    axis = d3.svg.axis().orient("left").ticks(1+height/30),
     data,
     foreground,
     background,
@@ -16,14 +16,14 @@ var m = [60, 0, 10, 0],
     dimensions,                           
     legend,
     // legend_batch,    //added
-    render_speed = 50,
+    render_speed = 40,
     brush_count = 0,
     excluded_groups = [];
 
 var colors = {
   "SGD": [28,100,52],
-  "Adam": [185,56,73],
-  "RMSprop": [339,60,49]
+  "Adam": [185,400,53],
+  "RMSprop": [359,60,49]
 };
 
 // Scale chart and canvas height
@@ -272,7 +272,7 @@ function data_table(sample) {
 
   table
     .append("span")
-      .text(function(d) { return d.BatchSize; }) //changed
+      .text(function(d) { return d.Samples; }) //changed
 }
 
 // Adjusts rendering speed 
@@ -692,8 +692,8 @@ d3.select("#search").on("keyup", brush);
 // Appearance toggles
 d3.select("#hide-ticks").on("click", hide_ticks);
 d3.select("#show-ticks").on("click", show_ticks);
-d3.select("#dark-theme").on("click", dark_theme);
 d3.select("#light-theme").on("click", light_theme);
+d3.select("#dark-theme").on("click", dark_theme);
 
 function hide_ticks() {
   d3.selectAll(".axis g").style("display", "none");
@@ -711,17 +711,18 @@ function show_ticks() {
   d3.selectAll("#hide-ticks").attr("disabled", null);
 };
 
+function light_theme() {
+  d3.select("body").attr("class", null);
+  d3.selectAll("#light-theme").attr("disabled", "disabled");
+  d3.selectAll("#dark-theme").attr("disabled", null);
+}
+
 function dark_theme() {
   d3.select("body").attr("class", "dark");
   d3.selectAll("#dark-theme").attr("disabled", "disabled");
   d3.selectAll("#light-theme").attr("disabled", null);
 }
 
-function light_theme() {
-  d3.select("body").attr("class", null);
-  d3.selectAll("#light-theme").attr("disabled", "disabled");
-  d3.selectAll("#dark-theme").attr("disabled", null);
-}
 
 function search(selection,str) {
   pattern = new RegExp(str,"i")

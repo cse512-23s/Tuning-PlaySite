@@ -2,24 +2,24 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <title>Tuning Play-Site</title>
+    <title>Tuning PlaySite</title>
     <link rel="stylesheet" type="text/css" href="parallel.css" />
   </head>
   <body>
   <div id="header">
-    <h1>Tuning Play-Site</h1>
-    <button title="Zoom in on selected data" id="keep-data" disabled="disabled">Keep</button>
-    <button title="Remove selected data" id="exclude-data" disabled="disabled">Exclude</button>
-    <button title="Export data as CSV" id="export-data">Export</button>
+    <h1>Tuning PlaySite</h1>
+    <button title="Zoom in on brushed data" id="keep-data" disabled="disabled">Zoom</button>
+    <button title="Remove brushed data" id="exclude-data" disabled="disabled">Remove</button>
+    <button title="Export data as CSV" id="export-data">Export Data</button>
     <div class="controls">
       <strong id="rendered-count"></strong>/<strong id="selected-count"></strong><!--<strong id="data-count"></strong>-->
       <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
-      Lines at <strong id="opacity"></strong> opacity.
+      <!--Lines at <strong id="opacity"></strong> opacity.-->
       <span class="settings">
-        <button id="hide-ticks">Hide Ticks</button>
-        <button id="show-ticks" disabled="disabled">Show Ticks</button>
-        <button id="dark-theme">Dark</button>
-        <button id="light-theme" disabled="disabled">Light</button>
+        <button title="Remove Axis Ticks" id="hide-ticks">Hide Ticks</button>
+        <button title="Show Axis Ticks" id="show-ticks" disabled="disabled">Show Ticks</button>
+        <button id="dark-theme">Dark Mode</button>
+        <button id="light-theme" disabled="disabled">Light Mode</button>
       </span>
     </div>
     <div style="clear:both;"></div>
@@ -33,31 +33,30 @@
   <div id="wrap">
     <div class="third" id="controls">
       <div class="bright">
-        <h3>About</h3>
+        <br/>
         <p>
-          This is a multidimensional explorer of <a href="A3_TuningPlay-Site_Data.csv">Hyper-parameter Tuning </a> for an ML model. The Parallel Coordinates display the Accuracy, Loss and F1 Scores colored by Optimizer across 4 dimensions : Learning Rate, Batch Size, Epochs and Step Size. 
-        </p>
-        <p>
-          <a href="http://eagereyes.org/techniques/parallel-coordinates#brushing">Brush</a> the visualization to update other charts on this page.
+          This is a <a href="https://eagereyes.org/techniques/parallel-coordinates"> parallel coordinates</a> explorer of Hyper-parameters tuned for a ResNet50 model on CIFAR-10 dataset. The Parallel Coordinates display the Accuracy, Loss and F1 Scores colored by Optimizer across 3 dimensions : Epochs, Batch Size and Learning Rate. 
         </p>
       </div>
       <div class="little-box">
-        <h3>Controls</h3>
+        <h3>Exploration Guide</h3>
         <p>
-          <strong>Brush</strong>: Drag vertically along an axis.<br/>
-          <strong>Remove Brush</strong>: Tap the axis background.<br/>
-          <strong>Reorder Axes</strong>: Drag an axis label horizontally.<br/>
-          <strong>Remove Axis</strong>: Drag axis label to the left edge.<br/>
-          <strong>Reset Axis</strong>: Tap an axis label.<br/>
-          <strong>Reset Visualization</strong>: Refresh webpage.<br/>
-        </p>
-      </div>
-      <div class="little-box">
-        <h3>Credits</h3>
+          Hover over the viz, buttons and labels to view controls.<br/>
           <p>
-          Adapted from examples by
-          Mike Bostock, Jason Davies
-          and Kai Chang
+            <a href="http://eagereyes.org/techniques/parallel-coordinates#brushing">Brush</a> the visualization to update other charts on this page.
+          </p>
+          <strong>To Brush</strong>: Drag vertically along an axis.<br/>
+          <strong>To Remove Brush</strong>: Tap the axis background.<br/>
+          <strong>To Reorder Axes</strong>: Drag an axis label horizontally.<br/>
+          <strong>To Remove Axis</strong>: Drag axis label to the left edge.<br/>
+          <strong>To Invert Axis</strong>: Tap on axis label.<br/>
+          <strong>To Reset Visualization</strong>: Refresh webpage.<br/><br/>
+        </p>
+      </div>
+      <div class="little-box">
+        <h4>Credits</h4>
+          <p>
+          Adapted from examples by <a href="https://gist.github.com/mbostock/1341021">Mike Bostock </a>, <a href="https://gist.github.com/jasondavies/1341281">Jason Davies</a> and Kai Chang.
           </p>
         </p>
       </div>
@@ -71,7 +70,7 @@
       </p>
     </div>
     <div class="third">
-      <h3> Batch Size <input type="text" id="search" placeholder="Search Batch Size..."></input></h3>
+      <h3> Samples <input type="text" id="search" placeholder="Search (Opt--Epo--BS--LR)"></input></h3>
       <p id="food-list">
       </p>
     </div>

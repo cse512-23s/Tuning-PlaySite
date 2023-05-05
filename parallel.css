@@ -5,7 +5,7 @@ html, body {
   padding: 0;
 }
 body { 
-  font-family: Ubuntu, Tahoma, Helvetica, sans-serif;
+  font-family: Georgia, sans-serif, Helvetica, Ubuntu, Tahoma;
   font-size: 12px;
   line-height: 1.4em;
   background: #f7f7f7;
@@ -25,7 +25,7 @@ a {
   padding: 0 3.5%;
 }
 svg {
-  font-family: Ubuntu, Tahoma, Helvetica, sans-serif;
+  font-family: sans-serif, Ubuntu, Tahoma, Helvetica, sans-serif;
 }
 canvas, svg {
   position: absolute;
@@ -111,7 +111,7 @@ h3 small {
   font-weight: normal;
 }
 p {
-  margin: 0.6em 0;
+  margin: 0.8em 0;
 }
 small {
   line-height: 1.2em;
@@ -205,6 +205,7 @@ button#exclude-data:hover {
   color: #f3f3f3;
 }
 #header h1 {
+  font-family: Georgia, Arial, Courier;
   display: inline-block;
   margin: 0px 14px 0 0;
 }
@@ -212,6 +213,7 @@ button#exclude-data:hover {
   vertical-align: top;
 }
 .controls {
+  font-family: 'Courier New', Courier, monospace;
   float: right;
   height: 24px;
   line-height: 24px;
