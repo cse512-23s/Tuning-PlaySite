@@ -23,3 +23,7 @@ For the choice of hyperparameters,
 
 So the total rows of data came upto 765($3*17*3*5$). For the performance metrics, we choose Accuracy, Loss and F1-score(to compensate Precision and Recall).
 ## Interactive Visualization
+### Running Instructions
+Access our visualization https://cse512-23s.github.io/Tuning-PlaySite/
+
+
