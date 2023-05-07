@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <title>Tuning PlaySite</title>
-    <link rel="stylesheet" type="text/css" href="parallel.css" />
+    <link id="css-link" rel="stylesheet" type="text/css" href="parallel.css" />
   </head>
   <body class="dark">
   <div id="header">
@@ -87,4 +87,14 @@
   <script src="d3.v2.js"></script>
   <script src="underscore.js"></script>
   <script src="parallel.js"></script>
+  
+  <!-- Force CSS reload -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var cssLink = document.getElementById("css-link");
+      var timestamp = new Date().getTime();
+      cssLink.href = cssLink.href + "?v=" + timestamp;
+    });
+  </script>
+  
 </html>
