@@ -21,7 +21,7 @@ For the choice of hyperparameters,
 3. Next for the batch size, we chose 16, 32 and 64. We could have gone for 128 but limited machine capabilities. 
 4. Later one of the most important yet mostly guessed is learning rate. For this we choose 0.00001, 0.0001, 0.001, 0.01 and 0.1. 
 
-So the total rows of data came upto 765($3*17*3*5$). For the performance metrics, we choose Accuracy, Loss and F1-score(to compensate Precision and Recall).
+So the total rows of data came upto 765(3\*17\*3\*5). For the performance metrics, we choose Accuracy, Loss and F1-score(to compensate Precision and Recall).
 ## Interactive Visualization
 ### Running Instructions
 Access our visualization https://cse512-23s.github.io/Tuning-PlaySite/
