@@ -191,30 +191,31 @@ button#exclude-data:hover {
   display: inline-block;
 }
 .little-box {
-  width: 268px;
-  float: left;
+  /* width: 268px; */
+  /* float: left; */
 }
 #header {
-  border-bottom: 1px solid rgba(100,100,100,0.35);
-  background: #e2e2e2;
+  /* border-bottom: 1px solid rgba(100,100,100,0.35); */
+  /* background: #e2e2e2; */
   padding: 6px 24px 4px;
   line-height: 24px;
 }
 .dark #header {
-  background: #040404;
+  /* background: #040404; */
   color: #f3f3f3;
 }
 #header h1 {
-  font-family: Georgia, Arial, Courier;
+  /* font-family: Georgia, Arial, Courier;
   display: inline-block;
-  margin: 0px 14px 0 0;
+  margin: 0px 14px 0 0; */
+  text-align: center;
 }
 #header button {
   vertical-align: top;
 }
 .controls {
   font-family: 'Courier New', Courier, monospace;
-  float: right;
+  text-align: center;
   height: 24px;
   line-height: 24px;
 }

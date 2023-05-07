@@ -7,39 +7,60 @@
   </head>
   <body class="dark">
   <div id="header">
+    <!-- <button title="Zoom in on brushed data" id="keep-data" disabled="disabled">Zoom</button>
+    <button title="Remove brushed data" id="exclude-data" disabled="disabled">Remove</button> -->
+    
     <h1>Tuning PlaySite</h1>
-    <button title="Zoom in on brushed data" id="keep-data" disabled="disabled">Zoom</button>
-    <button title="Remove brushed data" id="exclude-data" disabled="disabled">Remove</button>
-    <button title="Export data as CSV" id="export-data">Export Data</button>
-    <div class="controls">
-      <strong id="rendered-count"></strong>/<strong id="selected-count"></strong><!--<strong id="data-count"></strong>-->
-      <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
-      <!--Lines at <strong id="opacity"></strong> opacity.-->
-      <span class="settings">
-        <button title="Remove Axis Ticks" id="hide-ticks">Hide Ticks</button>
-        <button title="Show Axis Ticks" id="show-ticks" disabled="disabled">Show Ticks</button>
-        <button id="dark-theme">Dark Mode</button>
-        <button id="light-theme" disabled="disabled">Light Mode</button>
-      </span>
-    </div>
-    <div style="clear:both;"></div>
   </div>
+  
   <div id="chart">
     <canvas id="background"></canvas>
     <canvas id="foreground"></canvas>
     <canvas id="highlight"></canvas>
     <svg></svg>
   </div>
+  <br/>
+  <div class="controls">
+    <button title="Export data as CSV" id="export-data">Export Data</button>
+    <span class="settings">
+      <button title="Remove Axis Ticks" id="hide-ticks">Hide Ticks</button>
+      <button title="Show Axis Ticks" id="show-ticks" disabled="disabled">Show Ticks</button>
+      <!-- <button id="dark-theme">Dark Mode</button>
+        <button id="light-theme" disabled="disabled">Light Mode</button> -->
+      </span>
+      Selection Count:
+      <strong id="rendered-count"></strong>/<strong id="selected-count"></strong><!--<strong id="data-count"></strong>-->
+      <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
+      <!--Lines at <strong id="opacity"></strong> opacity.-->
+      <div style="clear:both;"></div>
+  </div>
+  <br/>
+
   <div id="wrap">
+    <div class="third">
+      <h3>Sample (Hover to Highlight) <input type="text" id="search" placeholder="Search (Opt--Epo--BS--LR)" style="display:none"/></h3>
+      <p id="food-list">
+      </p>
+    </div>
+    <div  class="third">
+      <small>
+        <!--Last rendered <strong id="render-speed"></strong> lines-->
+      </small>
+      <h3>Optimizer (Select to Exclude)</h3>
+      <p id="legend">
+      </p>
+    </div>
     <div class="third" id="controls">
       <div class="bright">
         <br/>
+        <h2>Description</h3>
         <p>
           This is a <a href="https://eagereyes.org/techniques/parallel-coordinates"> parallel coordinates</a> explorer of Hyper-parameters tuned for a ResNet50 model on CIFAR-10 dataset. The Parallel Coordinates display the Accuracy, Loss and F1 Scores colored by Optimizer across 3 dimensions : Epochs, Batch Size and Learning Rate. 
         </p>
       </div>
+      <br/>
       <div class="little-box">
-        <h3>Exploration Guide</h3>
+        <h2>Exploration Guide</h3>
         <p>
           Hover over the viz, buttons and labels to view controls.<br/>
           <p>
@@ -54,25 +75,12 @@
         </p>
       </div>
       <div class="little-box">
-        <h4>Credits</h4>
+        <h2>Credits</h4>
           <p>
           Adapted from examples by <a href="https://gist.github.com/mbostock/1341021">Mike Bostock </a>, <a href="https://gist.github.com/jasondavies/1341281">Jason Davies</a> and Kai Chang.
           </p>
         </p>
       </div>
-    </div>
-    <div  class="third">
-      <small>
-        <!--Last rendered <strong id="render-speed"></strong> lines-->
-      </small>
-      <h3>Optimizer</h3>
-      <p id="legend">
-      </p>
-    </div>
-    <div class="third">
-      <h3> Samples <input type="text" id="search" placeholder="Search (Opt--Epo--BS--LR)"></input></h3>
-      <p id="food-list">
-      </p>
     </div>
   </div>
   </body>
