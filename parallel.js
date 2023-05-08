@@ -163,32 +163,9 @@ d3.csv("A3_TuningPlay-Site_Data.csv", function(raw_data) {
 
 
   legend = create_legend(colors,brush);
-  // legend_batch = create_legend(colors,brush); 
-
-  // Render full foreground
   brush();
 
 });
-
-// copy one canvas to another, grayscale
-function gray_copy(source, target) {
-  var pixels = source.getImageData(0,0,w,h);
-  target.putImageData(grayscale(pixels),0,0);
-}
-
-
-function grayscale(pixels, args) {
-  var d = pixels.data;
-  for (var i=0; i<d.length; i+=4) {
-    var r = d[i];
-    var g = d[i+1];
-    var b = d[i+2];
-    // CIE luminance for the RGB
-    var v = 0.2126*r + 0.7152*g + 0.0722*b;
-    d[i] = d[i+1] = d[i+2] = v
-  }
-  return pixels;
-};
 
 function create_legend(colors,brush) {
   // create legend
@@ -537,17 +514,6 @@ function actives() {
   return selected;
 }
 
-// Export data
-function export_csv() {
-  var keys = d3.keys(data[0]);
-  var rows = actives().map(function(row) {
-    return keys.map(function(k) { return row[k]; })
-  });
-  var csv = d3.csv.format([keys].concat(rows)).replace(/\n/g,"<br/>\n");
-  var styles = "<style>body { font-family: sans-serif; font-size: 12px; }</style>";
-  window.open("text/csv").document.write(styles + csv);
-}
-
 // scale to window size
 window.onresize = function() {
   width = document.body.clientWidth,
@@ -591,74 +557,7 @@ window.onresize = function() {
   brush();
 };
 
-// Remove all but selected from the dataset
-function keep_data() {
-  new_data = actives();
-  if (new_data.length == 0) {
-    return false;
-  } 
-  data = new_data;
-  rescale();
-}
-
-// Exclude selected from the dataset
-function exclude_data() {
-  new_data = _.difference(data, actives());
-  if (new_data.length == 0) {
-    return false;
-  }  
-  data = new_data;
-  rescale();
-}
-
-function remove_axis(d,g) {
-  dimensions = _.difference(dimensions, [d]);
-  xscale.domain(dimensions);
-  g.attr("transform", function(p) { return "translate(" + position(p) + ")"; });
-  g.filter(function(p) { return p == d; }).remove(); 
-  update_ticks();
-}
-
-d3.select("#keep-data").on("click", keep_data);
-d3.select("#exclude-data").on("click", exclude_data);
-d3.select("#export-data").on("click", export_csv);
 d3.select("#search").on("keyup", brush);
-
-
-// Appearance toggles
-d3.select("#hide-ticks").on("click", hide_ticks);
-d3.select("#show-ticks").on("click", show_ticks);
-d3.select("#light-theme").on("click", light_theme);
-d3.select("#dark-theme").on("click", dark_theme);
-
-function hide_ticks() {
-  d3.selectAll(".axis g").style("display", "none");
-  //d3.selectAll(".axis path").style("display", "none");
-  d3.selectAll(".background").style("visibility", "hidden");
-  d3.selectAll("#hide-ticks").attr("disabled", "disabled");
-  d3.selectAll("#show-ticks").attr("disabled", null);
-};
-
-function show_ticks() {
-  d3.selectAll(".axis g").style("display", null);
-  //d3.selectAll(".axis path").style("display", null);
-  d3.selectAll(".background").style("visibility", null);
-  d3.selectAll("#show-ticks").attr("disabled", "disabled");
-  d3.selectAll("#hide-ticks").attr("disabled", null);
-};
-
-function light_theme() {
-  d3.select("body").attr("class", null);
-  d3.selectAll("#light-theme").attr("disabled", "disabled");
-  d3.selectAll("#dark-theme").attr("disabled", null);
-}
-
-function dark_theme() {
-  d3.select("body").attr("class", "dark");
-  d3.selectAll("#dark-theme").attr("disabled", "disabled");
-  d3.selectAll("#light-theme").attr("disabled", null);
-}
-
 
 function search(selection,str) {
   pattern = new RegExp(str,"i")

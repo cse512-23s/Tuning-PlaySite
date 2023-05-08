@@ -120,22 +120,7 @@ button[disabled=disabled] {
   color: #555 !important;
   opacity: 0.4;
 }
-.settings button[disabled=disabled] {
-  display: none;
-}
-.dark button[disabled=disabled] {
-  opacity: 0.2;
-}
-button#keep-data,
-button#exclude-data {
-  font-weight:bold
-}
-button#keep-data:hover {
-  color: #080;
-}
-button#exclude-data:hover {
-  color: #900;
-}
+
 #food-list {
   width: 100%;
   height: 460px;
@@ -190,13 +175,7 @@ button#exclude-data:hover {
   width: 120px;
   display: inline-block;
 }
-.little-box {
-  /* width: 268px; */
-  /* float: left; */
-}
 #header {
-  /* border-bottom: 1px solid rgba(100,100,100,0.35); */
-  /* background: #e2e2e2; */
   padding: 6px 24px 4px;
   line-height: 24px;
 }
@@ -205,9 +184,6 @@ button#exclude-data:hover {
   color: #f3f3f3;
 }
 #header h1 {
-  /* font-family: Georgia, Arial, Courier;
-  display: inline-block;
-  margin: 0px 14px 0 0; */
   text-align: center;
 }
 #header button {
