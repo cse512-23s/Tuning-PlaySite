@@ -45,4 +45,7 @@ Most of the time from every member was spent on learning D3.js. Below are detail
 </details>
 <details>
 <summary>Wenzheng</summary>
+ 
+On homework 3, I was primarily responsible for project ideation, data preparation, data cleaning, and learning D3.js. 
+ 
 </details>
