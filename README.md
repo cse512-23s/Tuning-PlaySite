@@ -23,7 +23,7 @@ For the choice of hyperparameters,
 
 So the total rows of data came upto 765(3\*17\*3\*5). For the performance metrics, we choose Accuracy, Loss and F1-score(to compensate Precision and Recall).
 ## Interactive Visualization
-### Running Instructions
-Access our visualization https://cse512-23s.github.io/Tuning-PlaySite/
+### Accessing Visualization
+Access our visualization [here](https://cse512-23s.github.io/Tuning-PlaySite/) or download the repository and run the HTML page through a server like [LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
 
 
