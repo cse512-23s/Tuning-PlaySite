@@ -21,11 +21,11 @@
   </div>
   <br/>
   <div class="controls">
-    <button title="Export data as CSV" id="export-data">Export Data</button>
+    <!-- <button title="Export data as CSV" id="export-data">Export Data</button> -->
     <span class="settings">
-      <button title="Remove Axis Ticks" id="hide-ticks">Hide Ticks</button>
+      <!-- <button title="Remove Axis Ticks" id="hide-ticks">Hide Ticks</button>
       <button title="Show Axis Ticks" id="show-ticks" disabled="disabled">Show Ticks</button>
-      <!-- <button id="dark-theme">Dark Mode</button>
+      <button id="dark-theme">Dark Mode</button>
         <button id="light-theme" disabled="disabled">Light Mode</button> -->
       </span>
       Selection Count:
@@ -38,15 +38,15 @@
 
   <div id="wrap">
     <div class="third">
-      <h3>Sample (Hover to Highlight) <input type="text" id="search" placeholder="Search (Opt--Epo--BS--LR)" style="display:none"/></h3>
-      <p id="food-list">
+      <h3>Hyper-Parameters (Hover to Highlight) <input type="text" id="search" placeholder="Search (Opt--Epo--BS--LR)"></input></h3>
+      <p id="sample-list">
       </p>
     </div>
     <div  class="third">
       <small>
         <!--Last rendered <strong id="render-speed"></strong> lines-->
       </small>
-      <h3>Optimizer (Select to Exclude)</h3>
+      <h3>Optimizer (Select to View)</h3>
       <p id="legend">
       </p>
     </div>
@@ -55,7 +55,7 @@
         <br/>
         <h2>Description</h3>
         <p>
-          This is a <a href="https://eagereyes.org/techniques/parallel-coordinates"> parallel coordinates</a> explorer of Hyper-parameters tuned for a ResNet50 model on CIFAR-10 dataset. The Parallel Coordinates display the Accuracy, Loss and F1 Scores colored by Optimizer across 3 dimensions : Epochs, Batch Size and Learning Rate. 
+          This is a <a href="https://www.analyticsvidhya.com/blog/2021/11/visualize-data-using-parallel-coordinates-plot/#:~:text=A%20Parallel%20coordinates%20plot%20is,and%20parallel%20to%20each%20other."> parallel coordinates</a> explorer of Hyper-parameters tuned for a ResNet50 model on CIFAR-10 dataset. Data is available <a href="https://github.com/cse512-23s/Tuning-PlaySite/blob/main/A3_TuningPlay-Site_Data.csv"> here</a> The Parallel Coordinates display the Accuracy, Loss and F1 Scores colored by Optimizer across 3 dimensions : Epochs, Batch Size and Learning Rate. 
         </p>
       </div>
       <br/>
@@ -66,18 +66,18 @@
           <p>
             <a href="http://eagereyes.org/techniques/parallel-coordinates#brushing">Brush</a> the visualization to update other charts on this page.
           </p>
-          <strong>To Brush</strong>: Drag vertically along an axis.<br/>
-          <strong>To Remove Brush</strong>: Tap the axis background.<br/>
-          <strong>To Reorder Axes</strong>: Drag an axis label horizontally.<br/>
-          <strong>To Remove Axis</strong>: Drag axis label to the left edge.<br/>
-          <strong>To Invert Axis</strong>: Tap on axis label.<br/>
-          <strong>To Reset Visualization</strong>: Refresh webpage.<br/><br/>
+          <strong>Brush</strong>: Drag vertically along an axis.<br/>
+          <strong>Remove Brush</strong>: Tap the axis background.<br/>
+          <strong>Reorder Axes</strong>: Drag an axis label horizontally.<br/>
+          <strong>Remove Axis</strong>: Drag axis label to the left edge.<br/>
+          <!-- <strong>Invert Axis</strong>: Tap on axis label.<br/> -->
+          <strong>Reset Visualization</strong>: Refresh webpage.<br/><br/>
         </p>
       </div>
       <div class="little-box">
-        <h2>Credits</h4>
+        <h2>References</h4>
           <p>
-          Adapted from examples by <a href="https://gist.github.com/mbostock/1341021">Mike Bostock </a>, <a href="https://gist.github.com/jasondavies/1341281">Jason Davies</a> and Kai Chang.
+          Adapted from examples by <a href="https://gist.github.com/mbostock/1341021">Mike Bostock </a>, <a href="https://d3-graph-gallery.com/parallel.html">D3 Gallery</a> and <a href="https://gist.github.com/syntagmatic/482706e0638c67836d94b20f0cb37122">Kai Chang</a>.
           </p>
         </p>
       </div>

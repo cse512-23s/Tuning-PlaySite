@@ -1,3 +1,6 @@
+
+//Credits: https://d3-graph-gallery.com/parallel.html
+
 var width = document.body.clientWidth,
     height = d3.max([document.body.clientHeight-540, 240]);
 
@@ -15,18 +18,19 @@ var m = [60, 0, 10, 0],
     highlighted,
     dimensions,                           
     legend,
-    // legend_batch,    //added
     render_speed = 40,
     brush_count = 0,
-    excluded_groups = [];
+    excluded_groups = []; 
 
-var colors = {
-  "SGD": [28,100,52],
+var colors = {        
+  "SGD": [28,100,52],    //Color as per optimizer
   "Adam": [185,400,53],
   "RMSprop": [359,60,49]
 };
 
-// Scale chart and canvas height
+
+// Scale chart 
+//Select canvas dimensions
 d3.select("#chart")
     .style("height", (h + m[0] + m[2]) + "px")
 
@@ -36,14 +40,14 @@ d3.selectAll("canvas")
     .style("padding", m.join("px ") + "px");
 
 
-// Foreground canvas for primary view
+// Primary view : Foreground canvas
 foreground = document.getElementById('foreground').getContext('2d');
 foreground.globalCompositeOperation = "destination-over";
 foreground.strokeStyle = "rgba(0,100,160,0.1)";
 foreground.lineWidth = 1.7;
 foreground.fillText("Loading...",w/2,h/2);
 
-// Highlight canvas for temporary interactions
+// Interactions: highlight canvas
 highlighted = document.getElementById('highlight').getContext('2d');
 highlighted.strokeStyle = "rgba(0,100,160,1)";
 highlighted.lineWidth = 4;
@@ -120,15 +124,6 @@ d3.csv("A3_TuningPlay-Site_Data.csv", function(raw_data) {
             var extent = yscale[d].brush.extent();
           }
 
-          // remove axis if dragged all the way left
-          if (dragging[d] < 12 || dragging[d] > w-12) {
-            remove_axis(d,g);
-          }
-
-          // TODO required to avoid a bug
-          xscale.domain(dimensions);
-          update_ticks(d, extent);
-
           // rerender
           d3.select("#foreground").style("opacity", null);
           brush();
@@ -149,7 +144,7 @@ d3.csv("A3_TuningPlay-Site_Data.csv", function(raw_data) {
       .attr("class", "label")
       .text(String)
       .append("title")
-        .text("Click to invert. Drag to reorder");
+        .text("Drag to reorder");
 
   // Add and store a brush for each axis.
   g.append("svg:g")
@@ -168,7 +163,7 @@ d3.csv("A3_TuningPlay-Site_Data.csv", function(raw_data) {
 
 
   legend = create_legend(colors,brush);
-  // legend_batch = create_legend(colors,brush); //added
+  // legend_batch = create_legend(colors,brush); 
 
   // Render full foreground
   brush();
@@ -181,7 +176,7 @@ function gray_copy(source, target) {
   target.putImageData(grayscale(pixels),0,0);
 }
 
-// http://www.html5rocks.com/en/tutorials/canvas/imagefilters/
+
 function grayscale(pixels, args) {
   var d = pixels.data;
   for (var i=0; i<d.length; i+=4) {
@@ -189,7 +184,6 @@ function grayscale(pixels, args) {
     var g = d[i+1];
     var b = d[i+2];
     // CIE luminance for the RGB
-    // The human eye is bad at seeing red and blue, so we de-emphasize them.
     var v = 0.2126*r + 0.7152*g + 0.0722*b;
     d[i] = d[i+1] = d[i+2] = v
   }
@@ -203,19 +197,34 @@ function create_legend(colors,brush) {
     .selectAll(".row")
     .data( _.keys(colors).sort() )
 
-  // filter by group
+  // filter by group   
   var legend = legend_data
     .enter().append("div")
-      .attr("title", "Hide group")
+      .attr("title", "Show this group")
       .on("click", function(d) { 
-        // toggle group
+        // show group
+      //  alert([d]);      
         if (_.contains(excluded_groups, d)) {
-          d3.select(this).attr("title", "Hide group")
+       //   alert("test");
+          d3.select(this).attr("title", "Show group")
           excluded_groups = _.difference(excluded_groups,[d]);
           brush();
         } else {
+      //    alert("test1");
           d3.select(this).attr("title", "Show group")
-          excluded_groups.push(d);
+          if(d=="Adam"){
+          excluded_groups.push("RMSprop");
+          excluded_groups.push("SGD");
+          } 
+         if (d=="RMSprop"){
+          excluded_groups.push("Adam");
+          excluded_groups.push("SGD");
+          } 
+         if (d=="SGD"){
+       //   alert("ssss");
+          excluded_groups.push("Adam");
+          excluded_groups.push("RMSprop");
+          }
           brush();
         }
       });
@@ -237,14 +246,10 @@ function create_legend(colors,brush) {
   return legend;
 }
  
-
-
-
-
 // render polylines i to i+render_speed 
 function render_range(selection, i, max, opacity) {
   selection.slice(i,max).forEach(function(d) {
-    path(d, foreground, color(d.optimizer,opacity));
+    path(d, foreground, color(d.optimizer,opacity)); 
   });
 };
 
@@ -257,7 +262,7 @@ function data_table(sample) {
 //return a[col];
   });
 
-  var table = d3.select("#food-list")
+  var table = d3.select("#sample-list") 
     .html("")
     .selectAll(".row")
       .data(sample)
@@ -268,11 +273,11 @@ function data_table(sample) {
   table
     .append("span")
       .attr("class", "color-block")
-      .style("background", function(d) { return color(d.optimizer,0.85) })
+      .style("background", function(d) { return color(d.optimizer,0.85) }) 
 
   table
     .append("span")
-      .text(function(d) { return d.Samples; }) //changed
+      .text(function(d) { return d.Samples; }) 
 }
 
 // Adjusts rendering speed 
@@ -302,8 +307,8 @@ function selection_stats(opacity, n, total) {
 // Highlight single polyline
 function highlight(d) {
   d3.select("#foreground").style("opacity", "0.25");
-  d3.selectAll(".row").style("opacity", function(p) { return (d.optimizer == p) ? null : "0.3" });
-  path(d, highlighted, color(d.optimizer,1));
+  d3.selectAll(".row").style("opacity", function(p) { return (d.optimizer == p) ? null : "0.3" }); 
+  path(d, highlighted, color(d.optimizer,1));  
 }
 
 // Remove highlight
@@ -312,45 +317,6 @@ function unhighlight() {
   d3.selectAll(".row").style("opacity", null);
   highlighted.clearRect(0,0,w,h);
 }
-
-function invert_axis(d) {
-  // save extent before inverting
-  if (!yscale[d].brush.empty()) {
-    var extent = yscale[d].brush.extent();
-  }
-  if (yscale[d].inverted == true) {
-    yscale[d].range([h, 0]);
-    d3.selectAll('.label')
-      .filter(function(p) { return p == d; })
-      .style("text-decoration", null);
-    yscale[d].inverted = false;
-  } else {
-    yscale[d].range([0, h]);
-    d3.selectAll('.label')
-      .filter(function(p) { return p == d; })
-      .style("text-decoration", "underline");
-    yscale[d].inverted = true;
-  }
-  return extent;
-}
-
-// Draw a single polyline
-/*
-function path(d, ctx, color) {
-  if (color) ctx.strokeStyle = color;
-  var x = xscale(0)-15;
-      y = yscale[dimensions[0]](d[dimensions[0]]);   // left edge
-  ctx.beginPath();
-  ctx.moveTo(x,y);
-  dimensions.map(function(p,i) {
-    x = xscale(p),
-    y = yscale[p](d[p]);
-    ctx.lineTo(x, y);
-  });
-  ctx.lineTo(x+15, y);                               // right edge
-  ctx.stroke();
-}
-*/
 
 function path(d, ctx, color) {
   if (color) ctx.strokeStyle = color;
@@ -384,38 +350,10 @@ function position(d) {
 }
 
 // Handles a brush event, toggling the display of foreground lines.
-// TODO refactor
 function brush() {
   brush_count++;
   var actives = dimensions.filter(function(p) { return !yscale[p].brush.empty(); }),
       extents = actives.map(function(p) { return yscale[p].brush.extent(); });
-
-  // hack to hide ticks beyond extent
-  var b = d3.selectAll('.dimension')[0]
-    .forEach(function(element, i) {
-      var dimension = d3.select(element).data()[0];
-      if (_.include(actives, dimension)) {
-        var extent = extents[actives.indexOf(dimension)];
-        d3.select(element)
-          .selectAll('text')
-          .style('font-weight', 'bold')
-          .style('font-size', '13px')
-          .style('display', function() { 
-            var value = d3.select(this).data();
-            return extent[0] <= value && value <= extent[1] ? null : "none"
-          });
-      } else {
-        d3.select(element)
-          .selectAll('text')
-          .style('font-size', null)
-          .style('font-weight', null)
-          .style('display', null);
-      }
-      d3.select(element)
-        .selectAll('.label')
-        .style('display', null);
-    });
-    ;
  
   // bold dimensions with label
   d3.selectAll('.label')
@@ -428,7 +366,7 @@ function brush() {
   var selected = [];
   data
     .filter(function(d) {
-      return !_.contains(excluded_groups, d.optimizer);
+      return !_.contains(excluded_groups, d.optimizer); 
     })
     .map(function(d) {
       return actives.every(function(p, dimension) {
@@ -450,9 +388,9 @@ function brush() {
     d3.select("#exclude-data").attr("disabled", "disabled");
   };
 
-  // total by food group
+  // total by optimzer group
   var tallies = _(selected)
-    .groupBy(function(d) { return d.optimizer; })
+    .groupBy(function(d) { return d.optimizer; }) 
 
   // include empty groups
   _(colors).each(function(v,k) { tallies[k] = tallies[k] || []; });
@@ -582,7 +520,7 @@ function actives() {
   var selected = [];
   data
     .filter(function(d) {
-      return !_.contains(excluded_groups, d.optimizer);
+      return !_.contains(excluded_groups, d.optimizer); 
     })
     .map(function(d) {
     return actives.every(function(p, i) {
@@ -657,9 +595,8 @@ window.onresize = function() {
 function keep_data() {
   new_data = actives();
   if (new_data.length == 0) {
-    alert("I don't mean to be rude, but I can't let you remove all the data.\n\nTry removing some brushes to get your data back. Then click 'Keep' when you've selected data you want to look closer at.");
     return false;
-  }
+  } 
   data = new_data;
   rescale();
 }
@@ -668,9 +605,8 @@ function keep_data() {
 function exclude_data() {
   new_data = _.difference(data, actives());
   if (new_data.length == 0) {
-    alert("I don't mean to be rude, but I can't let you remove all the data.\n\nTry selecting just a few data points then clicking 'Exclude'.");
     return false;
-  }
+  }  
   data = new_data;
   rescale();
 }
@@ -726,5 +662,5 @@ function dark_theme() {
 
 function search(selection,str) {
   pattern = new RegExp(str,"i")
-  return _(selection).filter(function(d) { return pattern.exec(d.BatchSize); }); //changed
+  return _(selection).filter(function(d) { return pattern.exec(d.Samples); }); 
 }
