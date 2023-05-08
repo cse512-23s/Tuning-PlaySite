@@ -9,7 +9,7 @@ We are a team of four from the Electrical and Computer Engineering department wi
 
 ![Story Flow](Images/Storyflow.jpg)
 
-Nut after discussing with our TA Sebastin Santy, we decided to focus on one deliverable instead of trying to cover everything about model building, preferring to provide deep insights rather than a broad overview. So we started to dig deep and we found one aspect of model building which is the most frustrating and often overlooked, **hyper parameter tuning**. 
+But after discussing with TA Sebastin Santy, we decided to focus on one deliverable instead of trying to cover everything about model building, preferring to provide deep insights rather than a broad overview. So we started to dig deep and we found one aspect of model building which is the most frustrating and often overlooked, **hyper parameter tuning**. 
 
 Hyperparameter tuning can be a frustrating and tedious process, as there is a lot of guesswork involved and multiple runs of the model with different experiments. Furthermore, the process of hyperparameter tuning is rarely documented or explained. All most all papers gloss over the process that led to their final results. Replicating deep learning papers results with the same model is tough due to this black box of tuning steps. To address this challenge, we aimed to draw insights from this process using visualization and provide users with the ability to explore and decide which hyperparameters their model needs.
 ### Note
