@@ -87,7 +87,7 @@ In the above example, the curser is hovered on Adam--110--64--0.0001	sample. Thu
 
 -	Search bar :
 
-This interaction helps the user when either multiple samples need to be search for a particular combination or a custom combination of samples is to be searched which is not available in the given list to hover.
+This interaction helps the user when either multiple samples need to be searched for a particular combination or a custom combination of samples is to be searched which is not available in the given list to hover.
 
 <p align="center">
   <img src="Images/interaction2.png"  />
