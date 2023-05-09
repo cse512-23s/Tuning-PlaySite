@@ -56,7 +56,7 @@ On homework 3, Wenzheng was primarily responsible for project ideation, data pre
 
  Wenzheng actively participated in engaging brainstorming sessions and discussions, where we collectively generated a range of ideas for our project. This involved researching potential visualization topics, assessing their suitability for the course, and identifying suitable datasets.
  
- - Data preparation and clean (10 Hrs):
+ - Data preparation and cleaning (10 Hrs):
 
  Data preparation and cleaning were relatively time-consuming tasks. Since there was no readily available dataset, we had to conduct our own experiments and generate a substantial amount of data, which then required processing and cleaning for visualization purposes. Specifically, we trained a ResNet50 model on the CIFAR-10 dataset using two computers, each equipped with two 2080ti GPUs. We experimented with various hyperparameters, including learning rates, optimizers, and epochs, and evaluated the model's performance using metrics such as Accuracy, Loss, and F1-score.
  
