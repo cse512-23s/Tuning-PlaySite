@@ -60,7 +60,7 @@ Accuracy, Loss and F1 Score are the three dependent variables in the visualizati
 Variable type: Quantitative; Encoding: vertical axes in the plot; Scale : Linear
 #### Design Layout
 <p align="center">
-  <img src="Images/design.jpg" width="300" />
+  <img src="Images/design.jpg" width="500" />
 </p>
 
 The layout and design decisions for this visualization are made with the user experience in mind. The vertical parallel plot is chosen instead of the horizontal plot with the dimensions placed on the left and performance metrics measures are on the right for the eyes to follow them from left(input) to right(output). The progressive selection bar shows the number of active samples in real time. The title is on the top middle. The description of the visualization is provided for the user’s reference. Parallel Coordinates are sometimes difficult to understand by someone new to this plot. Thus, hyperlinks for understanding parallel coordinates and brushing are provided for user’s reference. The exploration guide provides a quick guide to all interactions including how to remove brushing effect or reset the visualization. Parallel Coordinates examples used for adaptation are cited in references on the visualization. Dark background is set for aesthetics. Color scheme chosen : Blue-Red-Orange with text in White-Blue and dark background. The color selection was made with consideration for color blindness.
