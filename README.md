@@ -7,7 +7,9 @@
 ## Motivation
 We are a team of four from the Electrical and Computer Engineering department with a shared interest in machine learning. Our goal for this visualization project was to create a useful visualization in the field of machine learning. After bouncing around with a couple of ideas, we initially decided to do *What happens in a ML Model*. Our story board was as follows:
 
-<img src="Images/Storyflow.jpg" width="200" />
+<p style="text-align: center;">
+  <img src="Images/Storyflow.jpg" width="200" style="margin: auto;" />
+</p>
 
 But after discussing with TA Sebastin Santy, we decided to focus on one deliverable instead of trying to cover everything about model building, preferring to provide deep insights rather than a broad overview. So we started to dig deep and we found one aspect of model building which is the most frustrating and often overlooked, **hyper parameter tuning**. 
 
