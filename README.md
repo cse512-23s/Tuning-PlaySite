@@ -4,7 +4,7 @@
 2. Amisha Himanshu Somaiya
 3. ShaoJung Kan
 4. Wenzheng Zhao
-## Visualization
+## Teaser
 
 <p align="center">
   <img src="Images/Viz.gif" />
