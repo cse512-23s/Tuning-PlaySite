@@ -19,7 +19,12 @@ We are a team of four from the Electrical and Computer Engineering department wi
 
 But after discussing with TA Sebastin Santy, we decided to focus on one deliverable instead of trying to cover everything about model building, preferring to provide deep insights rather than a broad overview. So we started to dig deep and we found one aspect of model building which is the most frustrating and often overlooked, **hyper parameter tuning**. 
 
-Hyperparameter tuning can be a frustrating and tedious process, as there is a lot of guesswork involved and multiple runs of the model with different experiments. Furthermore, the process of hyperparameter tuning is rarely documented or explained. All most all papers gloss over the process that led to their final results. Replicating deep learning papers results with the same model is tough due to this black box of tuning steps. To address this challenge, we aimed to draw insights from this process using visualization and provide users with the ability to explore and decide which hyperparameters their model needs.
+Hyperparameter tuning can be a frustrating and tedious process, as there is a lot of guesswork involved and multiple runs of the model with different experiments. Furthermore, the process of hyperparameter tuning is rarely documented or explained. All most all papers gloss over the process that led to their final results. Replicating deep learning papers results with the same model is tough due to this black box of tuning steps. To address this challenge, we aimed to draw insights from this process using visualization and provide users with the ability to explore and decide which hyperparameters their model needs. Present story board is as follows:
+
+<p align="center">
+  <img src="Images/Present_Story_Flow.jpg" width="300" />
+</p>
+
 ### Note
 We started this with having final project as the final deliverable in mind. For this assignment, we decided to scope in to stick with setting up the basic interaction for further future explorations.
 ## Data
