@@ -47,6 +47,11 @@ So the total rows of data came upto 765(3\*17\*3\*5). For the performance metric
 Most of the time from every member was spent on learning D3.js. Below are detailed task delegations.
 <details>
 <summary>Megha</summary>
+  Megha was involved in brainstorming ideas, coding and markdown write-up. (~25 Hrs)
+  - Megha was actively involved in brainstorming which took significant amount of time (~7 Hrs)
+  - Learning D3 (8 Hrs)
+  - Debugging code, Implementing Search for samples, color encoding and HTML (6 Hrs)
+  - Write-up (4 Hrs)
 </details>
 <details>
 <summary>Amisha</summary>
@@ -54,7 +59,7 @@ Most of the time from every member was spent on learning D3.js. Below are detail
 <details>
 <summary>ShaoJung</summary>
 
- ShaoJung was responsible for integrating the different components of the visualization and ensuring that the final product was cohesive and functional:
+ ShaoJung was responsible for integrating the different components of the visualization and ensuring that the final product was cohesive and functional: (~18 Hrs)
   - Involved in brainstorming sessions and discussions. (2 Hrs)
  - By exploring the different options to integrate the Brushable Parallel Coordinates from d3.js into a hosted webpage, the team was able to decide on implementing the visualization with vanilla Javascript code instead of React.js for assignment 3. (8 Hrs)
  - In addition, ShaoJung assisted with the layout design, debugging, and troubleshooting issues that arose during the coding process by finalizing the HTML, Javascript, and CSS contents. (6 Hrs)
@@ -65,7 +70,7 @@ Most of the time from every member was spent on learning D3.js. Below are detail
 <details>
 <summary>Wenzheng</summary>
  
-On homework 3, Wenzheng was primarily responsible for project ideation, data preparation, data cleaning, and learning D3.js. 
+On homework 3, Wenzheng was primarily responsible for project ideation, data preparation, data cleaning, and learning D3.js. (~20 Hrs)
  - Project Ideation (2 Hrs):
 
  Wenzheng actively participated in engaging brainstorming sessions and discussions, where we collectively generated a range of ideas for our project. This involved researching potential visualization topics, assessing their suitability for the course, and identifying suitable datasets.
@@ -74,7 +79,7 @@ On homework 3, Wenzheng was primarily responsible for project ideation, data pre
 
  Data preparation and cleaning were relatively time-consuming tasks. Since there was no readily available dataset, we had to conduct our own experiments and generate a substantial amount of data, which then required processing and cleaning for visualization purposes. Specifically, we trained a ResNet50 model on the CIFAR-10 dataset using two computers, each equipped with two 2080ti GPUs. We experimented with various hyperparameters, including learning rates, optimizers, and epochs, and evaluated the model's performance using metrics such as Accuracy, Loss, and F1-score.
  
- - Learning D3.js (10 Hrs):
+ - Learning D3.js (8 Hrs):
  
 Wenzheng invested about 10 hours in studying D3.js. This involved in-depth exploration of the library's documentation, tutorials, and code examples. This dedicated learning process served as a solid foundation for effectively writing the code for our final project.
  
