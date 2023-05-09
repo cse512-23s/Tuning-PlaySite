@@ -48,6 +48,7 @@ Most of the time from every member was spent on learning D3.js. Below are detail
 <details>
 <summary>Megha</summary>
   Megha was involved in brainstorming ideas, coding and markdown write-up. (~25 Hrs)
+  
   - Megha was actively involved in brainstorming which took significant amount of time (~7 Hrs)
   - Learning D3 (8 Hrs)
   - Debugging code, Implementing Search for samples, color encoding and HTML (6 Hrs)
