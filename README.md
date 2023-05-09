@@ -34,7 +34,7 @@ For the choice of hyperparameters,
 1. The most important one is optimizer. We went with three popular optimizers people generally choose: Adam (perhaps 90% use this), SGD and RMSProp. 
 2. For epochs, we chose 1 to 10 with an increment of 1 and later with an increment of 30 upto 150. 
 3. Next for the batch size, we chose 16, 32 and 64. We could have gone for 128 but limited machine capabilities. 
-4. Later one of the most important yet mostly guessed is learning rate. For this we choose 0.00001, 0.0001, 0.001, 0.01 and 0.1. 
+4. Later one of the most important yet mostly guessed is learning rate. In general most people choose between 1e-4 to 1e-2. For this we choose 0.0001, 0.0025, 0.005, 0.075 and 0.01. 
 
 So the total rows of data came upto 765(3\*17\*3\*5). For the performance metrics, we choose Accuracy, Loss and F1-score(to compensate Precision and Recall).
 ## Interactive Visualization
@@ -55,6 +55,7 @@ Most of the time from every member was spent on learning D3.js. Below are detail
 <summary>ShaoJung</summary>
 
  ShaoJung was responsible for integrating the different components of the visualization and ensuring that the final product was cohesive and functional:
+  - Involved in brainstorming sessions and discussions. (2 Hrs)
  - By exploring the different options to integrate the Brushable Parallel Coordinates from d3.js into a hosted webpage, the team was able to decide on implementing the visualization with vanilla Javascript code instead of React.js for assignment 3. (8 Hrs)
  - In addition, ShaoJung assisted with the layout design, debugging, and troubleshooting issues that arose during the coding process by finalizing the HTML, Javascript, and CSS contents. (6 Hrs)
  - ShaoJung also managed the deployment process by adding the script for Github integration. (2 Hrs)
