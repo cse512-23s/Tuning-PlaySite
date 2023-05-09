@@ -4,6 +4,12 @@
 2. Amisha Himanshu Somaiya
 3. ShaoJung Kan
 4. Wenzheng Zhao
+## Visualization
+
+<p align="center">
+  <img src="Images/Viz.gif" />
+</p>
+
 ## Motivation
 We are a team of four from the Electrical and Computer Engineering department with a shared interest in machine learning. Our goal for this visualization project was to create a useful visualization in the field of machine learning. After bouncing around with a couple of ideas, we initially decided to do *What happens in a ML Model*. Our story board was as follows:
 
