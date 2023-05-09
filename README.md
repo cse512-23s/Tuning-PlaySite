@@ -80,7 +80,7 @@ The user is given the option to filter and view the samples with the Optimizer-E
 This interaction helps the user view single sample of interest with simple hover operation reducing cognitive load. 
 
 <p align="center">
-  <img src="Images/interaction1.png" width="500" />
+  <img src="Images/interaction1.png"/>
 </p>
 
 In the above example, the curser is hovered on Adam--110--64--0.0001	sample. Thus, the corresponding sample is highlighted and every other sample turns gray to defocus other samples. 
