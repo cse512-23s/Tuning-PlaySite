@@ -66,7 +66,7 @@ Variable type: Quantitative; Encoding: vertical axes in the plot; Scale : Linear
 The layout and design decisions for this visualization are made with the user experience in mind. The vertical parallel plot is chosen instead of the horizontal plot with the dimensions placed on the left and performance metrics measures are on the right for the eyes to follow them from left(input) to right(output). The progressive selection bar shows the number of active samples in real time. The title is on the top middle. The description of the visualization is provided for the user’s reference. Parallel Coordinates are sometimes difficult to understand by someone new to this plot. Thus, hyperlinks for understanding parallel coordinates and brushing are provided for user’s reference. The exploration guide provides a quick guide to all interactions including how to remove brushing effect or reset the visualization. Parallel Coordinates examples used for adaptation are cited in references on the visualization. Dark background is set for aesthetics. Color scheme chosen : Blue-Red-Orange with text in White-Blue and dark background. The color selection was made with consideration for color blindness.
 
 <p align="center">
-  <img src="Images/color.jpg" width="300" />
+  <img src="Images/color.png" width="300" />
 </p>
 
 But the visualization encounters difficulty when dealing with a substantial amount of overlapping colors, resulting in color distortion at the left side of the plot. Multiple alternatives were tried but couldn't come up with a perfect color combination if there is one.
@@ -80,7 +80,7 @@ The user is given the option to filter and view the samples with the Optimizer-E
 This interaction helps the user view single sample of interest with simple hover operation reducing cognitive load. 
 
 <p align="center">
-  <img src="Images/interaction1.png" width="300" />
+  <img src="Images/interaction1.png" width="500" />
 </p>
 
 In the above example, the curser is hovered on Adam--110--64--0.0001	sample. Thus, the corresponding sample is highlighted and every other sample turns gray to defocus other samples. 
@@ -90,7 +90,7 @@ In the above example, the curser is hovered on Adam--110--64--0.0001	sample. Thu
 This interaction helps the user when either multiple samples need to be search for a particular combination or a custom combination of samples is to be searched which is not available in the given list to hover.
 
 <p align="center">
-  <img src="Images/interaction2.png" width="300" />
+  <img src="Images/interaction2.png" width="500" />
 </p>
 
 In the above example, Adam--130 is typed in the search bar. The samples that have Adam optimizer and 130 epochs are shown in the visualization. Also, correspondingly, the optimizer changed to Adam and number of active samples changed to 15 in the progression bar. 
