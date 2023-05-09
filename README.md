@@ -174,6 +174,13 @@ Most of the time from every member was spent on learning D3.js. Below are detail
 </details>
 <details>
 <summary>Amisha</summary>
+  Amisha was responsible for the visualization layout, design decisions, parts of code base fro development and design section of write-up. (~25 Hrs)
+  
+  - Brainstorming (~2 hrs)
+  - Learnt D3 on Observable and on native JS in VSCode  (~8 hrs)
+  - Worked on the JavaScript code to load the dataset and correctly parse the data into the plot and the ‘Optimizer Select’ interactive feature in the code base. Designed the encodings based on the expressiveness and   effectiveness principles for an enriching and informative user experience with minimal redundancy and/or user cognitive load. Resolved development issues and ensured smooth functionality of interactions without any hindrance/lag. (~10 hrs)
+  - Design Section of Write-Up (~5 hrs)
+
 </details>
 <details>
 <summary>ShaoJung</summary>
