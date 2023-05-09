@@ -40,7 +40,9 @@ Most of the time from every member was spent on learning D3.js. Below are detail
 <details>
 <summary>ShaoJung</summary>
 
- ShaoJung was responsible for integrating the different components of the visualization and ensuring that the final product was cohesive and functional. He worked on determining the best options for utilizing web technologies and connecting them to the parallel coordinates plot. In addition, ShaoJung assisted with the layout design, debugging, and troubleshooting issues that arose during development. ShaoJung also managed the deployment process by adding a script for Github integration.
+ ShaoJung was responsible for integrating the different components of the visualization and ensuring that the final product was cohesive and functional. 
+ By exploring the different options to integrate the Brushable Parallel Coordinates from d3.js into a hosted webpage, the team was able to decide on implementing the visualization with vanilla Javascript code instead of React.js for assignment 3. In addition, ShaoJung assisted with the layout design, debugging, and troubleshooting issues that arose during the coding process by finalizing the HTML, Javascript, and CSS contents. ShaoJung also managed the deployment process by adding the script for Github integration.
+ The estimated time spent was around 16 hours.
 
 </details>
 <details>
