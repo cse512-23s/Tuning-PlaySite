@@ -226,13 +226,27 @@ svg2.append("text")
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Create new svg for third chart
+
 let svg3 = d3.select("#chart3")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  .append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 let x3 = d3.scaleLinear().range([0, width]);
 let y3 = d3.scaleLinear().range([height, 0]);
@@ -244,47 +258,91 @@ x3.domain([0, 10]); // set domain for x-axis
 y3.domain([0, 10]); // set domain for y-axis
 
 svg3.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis3);
+  .attr("class", "x axis")
+  .attr("transform", "translate(0," + height + ")")
+  .call(xAxis3);
 
 svg3.append("g")
-    .attr("class", "y axis")
-    .call(yAxis3);
+  .attr("class", "y axis")
+  .call(yAxis3);
 
 // Theoretical curve - Exponential decay
-let theoryData = Array.from({length: 11}, (_, i) => ({x: i , y: 10 - i}));
+let theoryData = Array.from({ length: 11 }, (_, i) => ({ x: i, y: 10 - i }));
 let theoryPath = svg3.append("path")
-    .datum(theoryData)
-    .attr("fill", "none")
-    .attr("stroke", "blue")
-    .attr("stroke-width", 2)
-    .style("stroke-dasharray", ("3, 3"))
-    .attr("d", lineGenerator);
+  .datum(theoryData)
+  .attr("fill", "none")
+  .attr("stroke", "blue")
+  .attr("stroke-width", 2)
+  .style("stroke-dasharray", ("3, 3"))
+  .attr("d", lineGenerator)
+  .style("opacity", 0); // Hide initially
 
 // Actual curve - Negative slope
-let actualData = Array.from({length: 101}, (_, i) => ({x: i / 10, y: 5 * (2 - Math.pow((i / 100), 0.5))}));
+let actualData = Array.from({ length: 101 }, (_, i) => ({ x: i / 10, y: 5 * (2 - Math.pow((i / 100), 0.5)) }));
 let actualPath = svg3.append("path")
-    .datum(actualData)
-    .attr("fill", "none")
-    .attr("stroke", "red")
-    .attr("stroke-width", 2)
-    .attr("d", lineGenerator);
+  .datum(actualData)
+  .attr("fill", "none")
+  .attr("stroke", "red")
+  .attr("stroke-width", 2)
+  .attr("d", lineGenerator)
+  .style("opacity", 0); // Hide initially
 
-// Add X axis label
-svg3.append("text")
-    .attr("class", "x label")
-    .attr("text-anchor", "end")
-    .attr("x", width / 2 + margin.right)
-    .attr("y", height + margin.bottom )
-    .text("Batch size");
+// Define the animation duration
+const animationDuration = 1000;
 
-// Add Y axis label
-svg3.append("text")
-    .attr("class", "y label")
-    .attr("text-anchor", "end")
-    .attr("y", -margin.left + 10)
-    .attr("x", -height / 2)
-    .attr("dy", ".75em")
-    .attr("transform", "rotate(-90)")
-    .text("Steps for a 90% acc");
+// Function to animate the line segments
+function animateLineSegments() {
+  theoryPath
+    .style("opacity", 1)
+    .attr("stroke-dasharray", theoryPath.node().getTotalLength())
+    .attr("stroke-dashoffset", theoryPath.node().getTotalLength())
+    .transition()
+    .duration(animationDuration)
+    .ease(d3.easeLinear)
+    .attr("stroke-dashoffset", 0);
+
+  actualPath
+    .style("opacity", 1)
+    .attr("stroke-dasharray", actualPath.node().getTotalLength())
+    .attr("stroke-dashoffset", actualPath.node().getTotalLength())
+    .transition()
+    .duration(animationDuration)
+    .ease(d3.easeLinear)
+    .attr("stroke-dashoffset", 0);
+}
+
+// Function to reset the lines to initial state
+function resetLines() {
+  theoryPath
+    .transition()
+    .duration(0)
+    .style("opacity", 0);
+
+  actualPath
+    .transition()
+    .duration(0)
+    .style("opacity", 0);
+}
+
+// Get the SVG element
+const svgElement3 = document.getElementById("chart3");
+
+// Attach mousemove event handler to the SVG element
+svgElement3.addEventListener("mousemove", function(event) {
+  const { left, top, width, height } = svgElement3.getBoundingClientRect();
+  const mouseX = event.clientX - left;
+  const mouseY = event.clientY - top;
+  const isWithinBounds = mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height;
+
+  if (isWithinBounds) {
+    animateLineSegments();
+  } else {
+    resetLines();
+  }
+});
+
+// Attach mouseout event handler to reset the lines
+svgElement3.addEventListener("mouseout", resetLines);
+
+
+
