@@ -8,3 +8,4 @@ This visualization attempts to depict the training loss curves for all 3 optimiz
 Pending work : Legend for optimizers (--, .., __ ), Label for learning rates, check color palette for color blindness compatibilty. 
 
 Other planned work for this page : Add 1 interactive visualization to show convergence speeds of all different optimizers on a single plot, add text description. 
+![IMG_5319](https://github.com/cse512-23s/Tuning-PlaySite/assets/77137571/b364a56a-0b55-4257-b3b2-5e104eed725f)
