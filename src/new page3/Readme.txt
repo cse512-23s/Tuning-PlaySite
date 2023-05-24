@@ -7,4 +7,4 @@ Current Updates : Tuning the optimzer for learning rate. Each optimizer has a di
 This visualization attempts to depict the training loss curves for all 3 optimizers for each learning rate on a hover. The learning rates can be clicked to compare loss curves for optimizers across different learning rates.
 Pending work : Legend for optimizers (--, .., __ ), Label for learning rates, check color palette for color blindness compatibilty. 
 
-Other planned visualization for optimizer tuning : Add 1 interactive visualization to show convergence speeds of all different optimizers on a single plot. 
+Other planned work for this page : Add 1 interactive visualization to show convergence speeds of all different optimizers on a single plot, add text description. 
