@@ -1,0 +1,186 @@
+{
+    "name": "Hyperparameters",
+    "children": [
+     {
+      "name": "Settings",
+      "children": [
+       {
+        "name": "Batch Size",
+        "children": [
+         {"name": "32", "size": 2200},
+         {"name": "64", "size": 2200},
+         {"name": "128", "size": 2200},
+         {"name": "256", "size": 2200}
+        ]
+       },
+       {
+        "name": "Epochs",
+        "children": [
+         {"name": "10", "size": 2200},
+         {"name": "50", "size": 2200},
+         {"name": "100", "size": 2200},
+         {"name": "200", "size": 2200},
+         {"name": "500", "size": 2200}
+        ]
+       },
+       {
+        "name": "ActivationFunction",
+        "children": [
+         {"name": "ReLU", "size": 3300},
+         {"name": "Tanh", "size": 3300},
+         {"name": "Sigmoid", "size": 4000},
+         {"name": "Softmax", "size": 4000},
+         {
+         "name": "LeakyReLU", 
+         "children": [
+            {"name": "Aplha", 
+           "children": [
+            {"name": "0.01", "size": 2000},
+            {"name": "0.1", "size": 2000},
+            {"name": "0.3", "size": 2000}
+           ]}
+        ]}
+        ]
+       }
+      ]
+     },
+     {
+      "name": "Network Architecture",
+      "children": [
+       {"name": "NumLayers", "size": 5500},
+       {"name": "Neurons/Layer", "size": 7842},
+       {"name": "NumFilters", "size": 6000},
+       {"name": "Kernel", 
+       "children": [
+        {"name": "(3x3)", "size": 2700},
+        {"name": "(5x5)", "size": 2700},
+        {"name": "(7x7)", "size": 2700}
+       ]
+    },
+        {"name": "Stride", 
+            "children": [
+             {"name": "1", "size": 1300},
+             {"name": "2", "size": 1300},
+             {"name": "3", "size": 1300}
+            ]
+     },
+        {"name": "Pooling", 
+             "children": [
+              {"name": "Max", "size": 2200},
+              {"name": "Avg", "size": 2200},
+              {"name": "Sum", "size": 2200}
+             ]
+        },
+           {"name": "Padding", 
+       "children": [
+        {"name": "(3x3)", "size": 1500},
+        {"name": "(5x5)", "size": 1500},
+        {"name": "(7x7)", "size": 1500}
+       ]
+    }
+]
+     },
+     {
+      "name": "Optimizers",
+      "children": [
+       {
+        "name": "SGD",
+        "children": [
+         {"name": "LR", "children": [
+            {"name": "0.01", "size": 1800},
+            {"name": "0.001", "size": 1800}
+           ]},
+         {"name": "Momentum", "children": [
+            {"name": "0.9", "size": 1800},
+            {"name": "0.95", "size": 1800}
+           ]},
+         {"name": "Nesterov", "size": 1800},
+         {"name": "Decay", "size": 1800}
+        ]
+       },
+       {
+        "name": "Adam",
+        "children": [
+         {"name": "LR", "children": [
+            {"name": "0.001", "size": 1800},
+            {"name": "0.0001", "size": 1800}
+           ]},
+         {"name": "Beta1", "children": [
+            {"name": "0.9", "size": 1800}
+           ]},
+         {"name": "Beta2", "children": [
+            {"name": "0.999", "size": 1800}
+           ]},
+         {"name": "Epsilon", "children": [
+            {"name": "1e-8", "size": 1800}
+           ]},
+         {"name": "Decay", "size": 1800}
+        ]
+       },
+       {
+        "name": "RMSProp",
+        "children": [
+         {"name": "LR", "children": [
+            {"name": "0.001", "size": 1800},
+            {"name": "0.0001", "size": 1800}
+           ]},
+         {"name": "Decay", "size": 1800},
+         {"name": "Epsilon", "children": [
+            {"name": "1e-8", "size": 1800}
+           ]},
+         {"name": "Momentum", "children": [
+            {"name": "0.9", "size": 1800}
+           ]}
+        ]
+       },
+       {
+        "name": "Adagrad",
+        "children": [
+         {"name": "LR", "children": [
+            {"name": "1.0", "size": 1800},
+            {"name": "0.1", "size": 1800}
+           ]},
+         {"name": "Rho", "children": [
+            {"name": "0.9", "size": 1800}
+           ]},
+         {"name": "Epsilon", "children": [
+            {"name": "1e-10", "size": 1800}
+           ]}
+        ]
+       }
+      ]
+     },
+     {
+      "name": "Regularization",
+      "children": [
+       {"name": "L1", 
+       "children": [
+        {"name": "Alpha", "size": 2000}
+       ]},
+       {"name": "L2", 
+       "children": [
+        {"name": "Alpha", "size": 2000}
+       ]},
+       {"name": "DropoutRate", "size": 2200},
+       {"name": "BatchNormalization", 
+       "children": [
+        {"name": "Momentum", "size": 2200},
+        {"name": "Epsilon", "size": 2200}
+       ]},
+       {"name": "DataAugmentation", 
+       "children": [
+        {"name": "Flip", "size": 1870},
+        {"name": "Zoom", "size": 1870},
+        {"name": "Shear", "size": 1870},
+        {"name": "Shift", "size": 1870},
+        {"name": "Rotation", "size": 1870}
+       ]},
+       {"name": "EarlyStoping", 
+       "children": [
+        {"name": "Patience", "size": 1800},
+        {"name": "Delta", "size": 1800}
+       ]}
+      ]
+     }
+    ]
+   }
