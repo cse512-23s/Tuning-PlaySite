@@ -1,7 +1,7 @@
 Amisha
 5/23/2023
 
-This is our viz from A3. 
+This page is our viz from A3. 
 Made changes to this viz as per feedback for A3 and the modified layout is as follows :  
 
 ![IMG_5320](https://github.com/cse512-23s/Tuning-PlaySite/assets/77137571/031b86f7-d23c-4d96-87f2-f08053569cd5)
