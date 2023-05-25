@@ -9,8 +9,8 @@
 
 <div class="col-md-12 animated fadeIn">
 <header>
-  <h1>Learning Rate Tuning for Optimizer</h1>
-  <h3>Hover to Explore / Click to Compare</h3>
+  <h3>3. Choosing Optimizers</h3>
+  <h3>Hover labels to Explore / Click to Compare</h3>
 </header>
 </div>
 <style>
@@ -53,9 +53,13 @@ h3 {
 }
 
 body {
-  font: 12px ;  
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-}
+            font-family: Georgia, sans-serif, Helvetica, Ubuntu, Tahoma;
+            font-size: 16px;
+            color: #404040;
+        }
+h1, h2, h3 {
+            color: #333;
+        }
 
 .axis path,
 .axis line {
@@ -358,5 +362,18 @@ d3.tsv("Optimizer_Data.tsv", function(error, data) {
 
 
 </script>
+<p>We should not assume two hyperparameters are the same just because they have the same name! In the above example, learning_rate is a different hyperparameter for optimizer="SGD" versus optimizer="Adam". Its role is similar (although not identical) in the two algorithms, but the range of values that work well in each of the optimizers is typically different by several orders of magnitude.</p>
+<h3> Viz 2</h3>
+Adam is one of the most used optimizers. So learning to tune adam is must. Below viz will help you to tune adam's 4 hyperparameters.
+<br/>
+<p> Note that not all the hyperparameters in Adam are equally important. The following rules of thumb correspond to different "budgets" for the number of trials in a study.</p>
+<ol>
+<li>If less than 10 trials in a study, only tune the (base) learning rate.</li>
+<li>If 10-25 trials, tune learning rate and beta1.</li>
+<li>If 25+ trials, tune the learning rate, beta1 and epsilon.</li>
+<li>If one can run substantially more than 25 trials, additionally tune beta2.</li>
+</ol>
+<h3>Viz3</h3>
+We can see the convergence of different optimizers here
 </body>
 
