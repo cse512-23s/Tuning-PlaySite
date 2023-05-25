@@ -1,14 +1,362 @@
+
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>Zoomable Sunburst</title>
-<link rel="stylesheet" type="text/css" href="./inspector.css">
+<head>
+  <meta charset="utf-8">
+  <title> Tuning-PlaySite </title>
+  <link rel="stylesheet" href="animate.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+<div class="col-md-12 animated fadeIn">
+<header>
+  <h1>Learning Rate Tuning for Optimizer</h1>
+  <h3>Hover to Explore / Click to Compare</h3>
+</header>
+</div>
+<style>
+
+
+#tooltip {
+    
+  position: absolute;
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  background-color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+#tooltip.hidden {
+  display: none;
+}
+
+#tooltip p {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+h1 {
+  margin-left: 30px;
+
+}
+
+h3 {
+  margin-left: 30px
+}
+
+body {
+  font: 12px ;  
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis {
+  font: 16px sans-serif;
+}
+
+.legend {
+    font-size: 16px;
+    font-weight: bold;
+    text-anchor: middle;
+}
+
+.line {
+  fill: none;
+  opacity: 0;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+
+</style>
+
+<div id="area1"></div>
+<div id="area2"></div>
+
+<div id="tooltip" class="hidden">
+        <p><strong>Description</strong></p>
+        <p><span id="value">description</span></p>
+</div>
+
 <body>
-<script type="module">
+<script src="http://d3js.org/d3.v3.js"></script>
+<script>
 
-import define from "./index.js";
-import {Runtime, Library, Inspector} from "./runtime.js";
+var margin = {top: 20, right: 80, bottom: 80, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
 
-const runtime = new Runtime();
-const main = runtime.module(define, Inspector.into(document.body));
+var x = d3.scale.linear()
+    .range([0, width]);
+var y = d3.scale.linear()
+    .range([height, 0]);
+var y2 = d3.scale.linear()
+    .range([height, 0]);
+//y3
+var y3 = d3.scale.linear()  
+.range([height, 0]);
+
+var color = d3.scale.category10();
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(15);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(15);
+
+var yAxis2 = d3.svg.axis()
+    .scale(y2)
+    .orient("left")
+    .ticks(15);
+
+var yAxis3 = d3.svg.axis()
+.scale(y2)
+.orient("left")
+.ticks(5);
+
+var maleLine = d3.svg.line()
+    .interpolate("basis")
+    .x(function(d) { return x(d.Epochs); })
+    .y(function(d) { return y(d.Adam_loss); });
+
+var femaleLine = d3.svg.line()
+    .interpolate("basis")
+    .x(function(d) { return x(d.Epochs); })
+    .y(function(d) { return y(d.SGD_loss); });
+
+var childline = d3.svg.line()
+    .interpolate("basis")
+    .x(function(d) { return x(d.Epochs); })
+    .y(function(d) { return y(d.RMSprop_loss); });
+
+
+
+var svg = d3.select("#area1").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+
+var div = d3.select("text").append("div")   
+    .attr("class", "tooltip")               
+    .style("opacity", 0);
+
+// Get the data
+d3.tsv("Optimizer_Data.tsv", function(error, data) {
+  data.forEach(function(d) {
+    //d.desc = d.desc;
+    //d.period = (d.period-1)*5.5;
+    //d.male = +d.MALE_x;
+    //d.female = +d.FEMALE_x;
+    d.Epochs = +d.Epochs;
+    d.Adam_loss = +d.Adam_loss;
+    d.SGD_loss = +d.SGD_loss;
+    d.RMSprop_loss = +d.RMSprop_loss;
+    //d.male2 = +d.MALE_y;
+    //d.female2 = +d.FEMALE_y;
+    //alert("Epochs"+d.Epochs);
+  });
+ 
+  x.domain([0,150])
+  y.domain([0, 5]);
+  //y2.domain(d3.extent(data, function(d) { return d.MALE_y; }));
+
+    // Nest the entries by event
+    dataNest = d3.nest()
+        .key(function(d) {return d.event;})
+        .entries(data);
+
+    legendSpace = width/dataNest.length; // space for legend
+
+    // Loop through each symbol / key
+    dataNest.forEach(function(d,i) {
+
+        //var desc = d.values[0].desc;
+        //alert("d.values"+d.values[0].Adam_loss);
+        svg.append("path")
+            .attr("class", "line")
+            .style("stroke", function() {
+                return d.color = color(d.key); })
+            .attr("id", 'tag'+d.key.replace(/\s+/g, '')) // assign ID
+            .attr("d", maleLine(d.values))
+
+        svg.append("path")
+            .attr("class", "line")
+            .style("stroke", function() {
+                return d.color = color(d.key); })
+            .style("stroke-dasharray", "10,3")
+            .style("stroke-width", 3)
+            .attr("id", 'tag'+d.key.replace(/\s+/g, '')) // assign ID
+            .attr("d", femaleLine(d.values))
+
+        svg.append("path")
+            .attr("class", "line")
+            .style("stroke", function() {
+                return d.color = color(d.key); })
+            .style("stroke-dasharray", "1,3")
+            .style("stroke-width", 3)
+            .attr("id", 'tag'+d.key.replace(/\s+/g, '')) // assign ID
+            .attr("d", childline(d.values))    
+
+        // svg2.append("path")
+        //     .attr("class", "line")
+        //     .style("stroke", function() {
+        //         return d.color = color(d.key); })
+        //     .attr("id", 'tag'+d.key.replace(/\s+/g, '')) // assign ID
+        //     .attr("d", maleLine2(d.values))
+
+        // svg2.append("path")
+        //     .attr("class", "line")
+        //     .style("stroke", function() {
+        //         return d.color = color(d.key); })
+        //     .style("stroke-dasharray", "10,3")
+        //     .style("stroke-width", 3)
+        //     .attr("id", 'tag'+d.key.replace(/\s+/g, '')) // assign ID
+        //     .attr("d", femaleLine2(d.values))
+
+        // Add the legend
+        svg.append("text")
+           .attr("x", (legendSpace/2) + i*legendSpace) // spacing
+           .attr("y", height + (margin.bottom/2) + 15)
+           .attr("class", "legend")  // style the legend
+           .style("fill", function() {
+              return d.color = color(d.key); })
+           .on("click", function(){            
+              // Determine if current line is visable
+              var active = d.active ? false : true,
+              newOpacity = active ? 1 : 0;
+              // Hide or show the elements based on the ID
+              d3.selectAll("#tag"+d.key.replace(/\s+/g, ''))
+                .transition().duration(100)
+                .style("opacity", newOpacity);
+              d3.select(this)
+                .style("font-size", function() {
+                  if (active) {return "25px"}
+                })
+              // Update whether or not the elements are active
+              console.log(active)
+              d.active = active
+              console.log(active)
+           })
+          .on("mouseover", function(){
+            //alert("on hover");
+              if (d.active != true) {
+                d3.selectAll("#tag"+d.key.replace(/\s+/g, ''))
+                  .transition()
+                  .duration(50)
+                  .style("opacity", 1)
+                d3.select(this)
+                  .transition()
+                  .duration(50)
+                  .style("font-size", function() {
+                    if (d.active != true) {return "25px"} 
+                  })
+                  ;
+              }
+          //Get this bar's x/y values, then augment for the tooltip
+          var xPosition =  legendSpace/2 + i*legendSpace // spacing
+          var yPosition = height + (margin.bottom/2) + 5;
+          //Update the tooltip position and value
+          // d3.select("#tooltip")
+          //   .style("left", xPosition + "px")
+          //   .style("top", yPosition - 30 + "px")
+          //   .select("#value")
+
+          //   .text( desc ) ;
+
+          //Show the tooltip
+          //d3.select("#tooltip").classed("hidden", false);
+
+          })
+          .on("mouseout", function() {
+            if(d.active != true) {
+                d3.selectAll("#tag"+d.key.replace(/\s+/g, ''))
+                  .transition()
+                  .duration(1000)
+                  .style("opacity", 0)
+                d3.select(this)
+                  .transition()
+                  .duration(1000)
+                  .style("font-size", function() {
+                    return "16px"
+                  }
+                  )}
+          //Hide the tooltip
+          //d3.select("#tooltip").classed("hidden", true);
+
+          })
+          .text(d.key);
+
+    });
+
+
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .append("text")
+      .attr("transform",
+            "translate(" + (width/2) + ")")
+      .attr("y", 35) 
+      .style("text-anchor", "middle")
+      .text("Epochs");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", -46)
+      .attr("x", margin.top - height + 110)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Training Loss");
+
+  // svg2.append("g")
+  //     .attr("class", "x axis")
+  //     .attr("transform", "translate(0," + height + ")")
+  //     .call(xAxis)
+  //   .append("text")
+  //     .attr("transform",
+  //           "translate(" + (width/2) + ")")
+  //     .attr("y", -5)
+  //     .style("text-anchor", "middle")
+  //     .text("Evaluation Year");
+
+  // svg2.append("g")
+  //     .attr("class", "y axis")
+  //     .call(yAxis2)
+  //   .append("text")
+  //     .attr("transform", "rotate(-90)")
+  //     .attr("y", 6)
+  //     .attr("dy", ".71em")
+  //     .style("text-anchor", "end")
+  //     .text("Logit Hazard Prob");
+});
+
+
 
 </script>
+</body>
+

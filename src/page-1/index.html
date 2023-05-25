@@ -1,85 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <title>Tuning PlaySite</title>
-    <link id="css-link" rel="stylesheet" type="text/css" href="parallel.css" />
-  </head>
-  <body class="dark">
-  <div id="header">
-    <h1>Tuning PlaySite</h1>
-  </div>
-  
-  <div id="chart">
-    <canvas id="background"></canvas>
-    <canvas id="foreground"></canvas>
-    <canvas id="highlight"></canvas>
-    <svg></svg>
-  </div>
-  <br/>
-  <div class="controls">
-      Selection Count:
-      <strong id="rendered-count"></strong>/<strong id="selected-count"></strong>
-      <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
-      <div style="clear:both;"></div>
-  </div>
-  <br/>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ol {
+            padding-left: 1.5em;
+        }
+        ol li {
+            padding: 0.5em 0;
+        }
+        .highlight {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Understanding and Tuning Hyperparameters in Machine Learning</h1>
 
-  <div id="wrap">
-    <div class="third">
-      <h3>Hyper-Parameters (Hover to Highlight) <input type="text" id="search" placeholder="Search (Opt--Epo--BS--LR)"></input></h3>
-      <p id="sample-list">
-      </p>
-    </div>
-    <div  class="third">
-      <h3>Optimizer (Select to View)</h3>
-      <p id="legend">
-      </p>
-    </div>
-    <div class="third" id="controls">
-      <div class="bright">
-        <br/>
-        <h2>Description</h3>
-        <p>
-          This is a <a href="https://www.analyticsvidhya.com/blog/2021/11/visualize-data-using-parallel-coordinates-plot/#:~:text=A%20Parallel%20coordinates%20plot%20is,and%20parallel%20to%20each%20other."> parallel coordinates</a> explorer of Hyper-parameters tuned for a ResNet50 model on CIFAR-10 dataset. Data is available <a href="https://github.com/cse512-23s/Tuning-PlaySite/blob/main/A3_TuningPlay-Site_Data.csv"> here.</a> The Parallel Coordinates display the Accuracy, Loss and F1 Scores colored by Optimizer across 3 dimensions : Epochs, Batch Size and Learning Rate. 
-        </p>
-      </div>
-      <br/>
-      <div class="little-box">
-        <h2>Exploration Guide</h3>
-        <p>
-          Hover over the viz, buttons and labels to view controls.<br/>
-          <p>
-            <a href="http://eagereyes.org/techniques/parallel-coordinates#brushing">Brush</a> the visualization to update other charts on this page.
-          </p>
-          <strong>Brush</strong>: Drag vertically along an axis.<br/>
-          <strong>Remove Brush</strong>: Tap the axis background.<br/>
-          <strong>Reorder Axes</strong>: Drag an axis label horizontally.<br/>
-          <strong>Reset Visualization</strong>: Refresh webpage.<br/><br/>
-        </p>
-      </div>
-      <div class="little-box">
-        <h2>References</h4>
-          <p>
-          Adapted from examples by <a href="https://gist.github.com/mbostock/1341021">Mike Bostock </a>, <a href="https://d3-graph-gallery.com/parallel.html">D3 Gallery</a> and <a href="https://gist.github.com/syntagmatic/482706e0638c67836d94b20f0cb37122">Kai Chang</a>.
-          </p>
-        </p>
-      </div>
-    </div>
-  </div>
-  
-  </body>
-  <script src="d3.v2.js"></script>
-  <script src="underscore.js"></script>
-  <script src="parallel.js"></script>
-  
-  <!-- Force CSS reload -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var cssLink = document.getElementById("css-link");
-      var timestamp = new Date().getTime();
-      cssLink.href = cssLink.href + "?v=" + timestamp;
-    });
-  </script>
-  
+    <p>Hyperparameters are configuration settings that are external to the machine learning model itself and need to be manually set before the training process begins. Setting/tuning these hyperparameters is extremely difficult for several reasons. There are large number of hyperparameters, and each hyperparameter can take on multiple values. One hyperparameter can affect another, thus understanding the complex dependencies requires a lot of experimentation which many can’t afford as tuning them is time-consuming and expensive. Worst of all there is no universal solution, as one set of hyperparameters won’t work for a different problem/model. So we provide a comprehensive approach to this problem. To know more about hyperparameters refer to this <a href="https://www.javatpoint.com/hyperparameters-in-machine-learning">link</a>.</p>
+
+
+    <h2>Tuning Strategy:</h2>
+    <p>Start with a problem statement and query the necessary data and make it ready (cleaning) for the model training.</p>
+
+    <h2>Strategy to tune hyperparameters:</h2>
+    <ol>
+      <li>Identify an appropriately-scoped goal for the next round of experiments.</li>
+      <li>Design and run a set of experiments that makes progress towards this goal.</li>
+      <li>Learn what we can from the results.</li>
+      <li>Consider whether to launch the new best configuration.</li>
+    </ol>
+    <h2>Tuning Steps:</h2>
+    <h3>1. Start with a model configuration</h2>
+
+    <p>Model architectures typically have various hyperparameters that determine the model's size and other details (e.g. number of layers, layer width, type of activation function). Start with small models and grow eventually. Try to choose standard model configuration, so one doesn’t have to spend a lot of time tuning model hyper-parameters. Choose a starting optimizer, epoch, and performance metrics.</p>
+</body>
 </html>

@@ -1,33 +1,16 @@
-# Zoomable Sunburst
+Amisha H. Somaiya
+5/23/24
 
-https://observablehq.com/@d3/zoomable-sunburst@357
+Page 3.: Tuning the Optimizer
 
-View this notebook in your browser by running a web server in this folder. For
-example:
+Current Updates : Tuning the optimzer for learning rate. Each optimizer has a different optimum learning rate.
+This visualization attempts to depict the training loss curves for all 3 optimizers for each learning rate on a hover. The learning rates can be clicked to compare loss curves for optimizers across different learning rates.
+Pending work : Legend for optimizers (--, .., __ ), Label for learning rates, check color palette for color blindness compatibilty. 
 
-~~~sh
-npx http-server
-~~~
 
-Or, use the [Observable Runtime](https://github.com/observablehq/runtime) to
-import this module directly into your application. To npm install:
+![image](https://github.com/cse512-23s/Tuning-PlaySite/assets/77137571/467df998-9866-4a8f-914d-7cf00d5d9ebd)
 
-~~~sh
-npm install @observablehq/runtime@5
-npm install https://api.observablehq.com/@d3/zoomable-sunburst@357.tgz?v=3
-~~~
+Other planned work for this page : Add 1 interactive visualization to show convergence speeds of all different optimizers on a single plot, add text description. 
 
-Then, import your notebook and the runtime as:
-
-~~~js
-import {Runtime, Inspector} from "@observablehq/runtime";
-import define from "@d3/zoomable-sunburst";
-~~~
-
-To log the value of the cell named “foo”:
-
-~~~js
-const runtime = new Runtime();
-const main = runtime.module(define);
-main.value("foo").then(value => console.log(value));
-~~~
+The planned layout for page 3 is as follows:
+![IMG_5319](https://github.com/cse512-23s/Tuning-PlaySite/assets/77137571/b364a56a-0b55-4257-b3b2-5e104eed725f)

@@ -1,74 +1,50 @@
-<!-- Code from d3-graph-gallery.com -->
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization with D3.js</title>
+    <style>
+        /* CSS styling */
+        .chart {
+            display: block;
+            margin: auto;
+            height: 500px;
+            width: 500px;
+        }
 
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
 
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+        #chart3 {
+            height: 500px;
+            width: 500px;
+            margin: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <h3>2. Choose Batch Size</h2>
+    <div id="chart" class="chart"></div>
+    <p>By keeping all hyperparameters the same, increasing batch size increases validation accuracy.</p>
 
+    <!-- Second Chart -->
+    <div id="chart2"></div>
+    <p>But by using the best hyperparameters for individual batch sizes, we can see that there is no effect of increasing batch size on performance.</p>
+    <p>Any batch size works but configurations of other hyperparameters like an epoch, optimizer, and regularizer change with batch size. So chose a single batch size for tuning all other hyperparameters.</p>
 
-<script>
+    <!-- Third Chart -->
+    <div id="chart3"></div>
+    
+    
+    <script src="https://d3js.org/d3.v7.js"></script>
+    <script src="script.js"></script>
+    <p>In theory, the steps needed are halved for each doubling batch size. But in practice, it gets linear after a particular batch size. So, choose the largest available batch size for faster training and experiments.</p>
 
-// set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
-    // append the svg object to the body of the page
-    var svg = d3.select("#my_dataviz")
-      .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-        .attr("transform",
-              "translate(" + margin.left + "," + margin.top + ")")
-
-//Read the data
-d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv", function(data) {
-
-  // Add X axis
-  var x = d3.scaleLinear()
-    .domain([0, 0])
-    .range([ 0, width ]);
-  svg.append("g")
-    .attr("class", "myXaxis")   // Note that here we give a class to the X axis, to be able to call it later and modify it
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
-    .attr("opacity", "0")
-
-  // Add Y axis
-  var y = d3.scaleLinear()
-    .domain([0, 500000])
-    .range([ height, 0]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
-
-  // Add dots
-  svg.append('g')
-    .selectAll("dot")
-    .data(data)
-    .enter()
-    .append("circle")
-      .attr("cx", function (d) { return x(d.GrLivArea); } )
-      .attr("cy", function (d) { return y(d.SalePrice); } )
-      .attr("r", 1.5)
-      .style("fill", "#69b3a2")
-
-  // new X axis
-  x.domain([0, 4000])
-  svg.select(".myXaxis")
-    .transition()
-    .duration(2000)
-    .attr("opacity", "1")
-    .call(d3.axisBottom(x));
-
-  svg.selectAll("circle")
-    .transition()
-    .delay(function(d,i){return(i*3)})
-    .duration(2000)
-    .attr("cx", function (d) { return x(d.GrLivArea); } )
-    .attr("cy", function (d) { return y(d.SalePrice); } )
-})
-
-</script>
+</body>
+</html>
