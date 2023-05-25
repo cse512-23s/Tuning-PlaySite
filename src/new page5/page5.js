@@ -1,29 +1,28 @@
 var width = document.body.clientWidth,
     height = d3.max([document.body.clientHeight-540, 240]);
 
-var m = [60, 0, 10, 0],
+    var m = [60, 0, 10, 0],
     w = width - m[1] - m[3],
     h = height - m[0] - m[2],
     xscale = d3.scale.ordinal().rangePoints([0, w], 1),
     yscale = {},
     dragging = {},
     line = d3.svg.line(),
-    axis = d3.svg.axis().orient("left").ticks(1+height/50),
+    axis = d3.svg.axis().orient("left").ticks(1+height/30),
     data,
     foreground,
     background,
     highlighted,
     dimensions,                           
     legend,
-    // legend_batch,    //added
-    render_speed = 50,
+    render_speed = 40,
     brush_count = 0,
-    excluded_groups = [];
+    excluded_groups = []; 
 
-var colors = {
-  "SGD": [28,100,52],
-  "Adam": [185,56,73],
-  "RMSprop": [339,60,49]
+var colors = {        
+  "SGD": [28,100,52],    //Color as per optimizer
+  "Adam": [185,400,53],
+  "RMSprop": [359,60,49]
 };
 
 // Scale chart and canvas height
@@ -175,27 +174,6 @@ d3.csv("A3_TuningPlay-Site_Data.csv", function(raw_data) {
 
 });
 
-// copy one canvas to another, grayscale
-function gray_copy(source, target) {
-  var pixels = source.getImageData(0,0,w,h);
-  target.putImageData(grayscale(pixels),0,0);
-}
-
-// http://www.html5rocks.com/en/tutorials/canvas/imagefilters/
-function grayscale(pixels, args) {
-  var d = pixels.data;
-  for (var i=0; i<d.length; i+=4) {
-    var r = d[i];
-    var g = d[i+1];
-    var b = d[i+2];
-    // CIE luminance for the RGB
-    // The human eye is bad at seeing red and blue, so we de-emphasize them.
-    var v = 0.2126*r + 0.7152*g + 0.0722*b;
-    d[i] = d[i+1] = d[i+2] = v
-  }
-  return pixels;
-};
-
 function create_legend(colors,brush) {
     // create legend
     var legend_data = d3.select("#legend")
@@ -311,7 +289,6 @@ function selection_stats(opacity, n, total) {
   d3.select("#data-count").text(total);
   d3.select("#selected-count").text(n);
   d3.select("#selected-bar").style("width", (100*n/total) + "%");
-  d3.select("#opacity").text((""+(opacity*100)).slice(0,4) + "%");
 }
 
 // Highlight single polyline
@@ -327,45 +304,6 @@ function unhighlight() {
   d3.selectAll(".row").style("opacity", null);
   highlighted.clearRect(0,0,w,h);
 }
-
-function invert_axis(d) {
-  // save extent before inverting
-  if (!yscale[d].brush.empty()) {
-    var extent = yscale[d].brush.extent();
-  }
-  if (yscale[d].inverted == true) {
-    yscale[d].range([h, 0]);
-    d3.selectAll('.label')
-      .filter(function(p) { return p == d; })
-      .style("text-decoration", null);
-    yscale[d].inverted = false;
-  } else {
-    yscale[d].range([0, h]);
-    d3.selectAll('.label')
-      .filter(function(p) { return p == d; })
-      .style("text-decoration", "underline");
-    yscale[d].inverted = true;
-  }
-  return extent;
-}
-
-// Draw a single polyline
-/*
-function path(d, ctx, color) {
-  if (color) ctx.strokeStyle = color;
-  var x = xscale(0)-15;
-      y = yscale[dimensions[0]](d[dimensions[0]]);   // left edge
-  ctx.beginPath();
-  ctx.moveTo(x,y);
-  dimensions.map(function(p,i) {
-    x = xscale(p),
-    y = yscale[p](d[p]);
-    ctx.lineTo(x, y);
-  });
-  ctx.lineTo(x+15, y);                               // right edge
-  ctx.stroke();
-}
-*/
 
 function path(d, ctx, color) {
   if (color) ctx.strokeStyle = color;
@@ -704,12 +642,6 @@ d3.select("#export-data").on("click", export_csv);
 d3.select("#search").on("keyup", brush);
 
 
-// Appearance toggles
-d3.select("#hide-ticks").on("click", hide_ticks);
-d3.select("#show-ticks").on("click", show_ticks);
-d3.select("#dark-theme").on("click", dark_theme);
-d3.select("#light-theme").on("click", light_theme);
-
 function hide_ticks() {
   d3.selectAll(".axis g").style("display", "none");
   //d3.selectAll(".axis path").style("display", "none");
@@ -725,18 +657,6 @@ function show_ticks() {
   d3.selectAll("#show-ticks").attr("disabled", "disabled");
   d3.selectAll("#hide-ticks").attr("disabled", null);
 };
-
-function dark_theme() {
-  d3.select("body").attr("class", "dark");
-  d3.selectAll("#dark-theme").attr("disabled", "disabled");
-  d3.selectAll("#light-theme").attr("disabled", null);
-}
-
-function light_theme() {
-  d3.select("body").attr("class", null);
-  d3.selectAll("#light-theme").attr("disabled", "disabled");
-  d3.selectAll("#dark-theme").attr("disabled", null);
-}
 
 function search(selection,str) {
   pattern = new RegExp(str,"i")
