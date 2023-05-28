@@ -60,7 +60,7 @@ var svg = d3.select("svg")
     .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
 // Load the data and visualization
-d3.csv("A3_TuningPlay-Site_Data.csv", function(raw_data) {
+d3.csv("/data/Dataset.csv", function(raw_data) {
   // Convert quantitative scales to floats
   data = raw_data.map(function(d) {
     for (var k in d) {
@@ -610,7 +610,7 @@ window.onresize = function() {
 function keep_data() {
   new_data = actives();
   if (new_data.length == 0) {
-    alert("I don't mean to be rude, but I can't let you remove all the data.\n\nTry removing some brushes to get your data back. Then click 'Keep' when you've selected data you want to look closer at.");
+    alert("Can't let you remove all the data.\n\nTry removing some brushes to get your data back. Then click 'Keep' when you've selected data you want to look closer at.");
     return false;
   }
   data = new_data;
@@ -621,7 +621,7 @@ function keep_data() {
 function exclude_data() {
   new_data = _.difference(data, actives());
   if (new_data.length == 0) {
-    alert("I don't mean to be rude, but I can't let you remove all the data.\n\nTry selecting just a few data points then clicking 'Exclude'.");
+    alert("Can't let you remove all the data.\n\nTry selecting just a few data points then clicking 'Exclude'.");
     return false;
   }
   data = new_data;
