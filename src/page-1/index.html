@@ -1,51 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        body {
-            font-family: Georgia, sans-serif, Helvetica, Ubuntu, Tahoma;
-            font-size: 16px;
-            color: #404040;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        h1 {
-            padding: 6px 24px 4px;
-            line-height: 24px;
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        ol {
-            padding-left: 1.5em;
-        }
-        ol li {
-            padding: 0.5em 0;
-        }
-        .highlight {
-            color: #007BFF;
-        }
-
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="page-1.css"></link>
 </head>
 
-<h1>Tuning Play-Site</h1>
-<h3>Team Members</h3>
-<p>Megha Chandra Nandyala, Amisha Somaiya, ShaoJung Khan, Wenzheng Zhao</p>
-
-
 <body>
-
+    <!-- <h1>Tuning Play-Site</h1> -->
+    <h3>Team Members</h3>
+    <p>Megha Chandra Nandyala, Amisha Somaiya, ShaoJung Khan, Wenzheng Zhao</p>
     <h3>WalkThrough</h3>
     <p>Video submitted on June 1 will be placed here.</p>
     <h3>Motivation</h3>
     <p>Hyperparameters are configuration settings that are external to the machine learning model itself and need to be manually set before the training process begins. Setting/tuning these hyperparameters is extremely difficult for several reasons. There are large number of hyperparameters, and each hyperparameter can take on multiple values. One hyperparameter can affect another, thus understanding the complex dependencies requires a lot of experimentation which many can’t afford as tuning them is time-consuming and expensive. Worst of all there is no universal solution, as one set of hyperparameters won’t work for a different problem/model. So we provide a comprehensive approach to this problem. To know more about hyperparameters refer to this <a href="https://www.javatpoint.com/hyperparameters-in-machine-learning">link</a>.</p>
-
 
     <h3>Tuning Steps:</h3>
     <p>Start with a problem statement and query the necessary data and make it ready (cleaning) for the model training.</p>
@@ -56,8 +23,7 @@
       <li>Consider whether to launch the new best configuration.</li>
     </ol>
     <h2>Tuning Strategy:</h2>
-    <h3>1. Starting with a model configuration</h2>
-
+    <h3>1. Starting with a model configuration</h3>
     <p>Model architectures typically have various hyperparameters that determine the model's size and other details (e.g. number of layers, layer width, type of activation function). Start with small models and grow eventually. Try to choose standard model configuration, so one doesn’t have to spend a lot of time tuning model hyper-parameters. Choose a starting optimizer, epoch, and performance metrics.</p>
 </body>
 </html>
