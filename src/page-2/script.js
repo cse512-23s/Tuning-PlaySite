@@ -1,4 +1,4 @@
-let margin = { top: 20, right: 20, bottom: 30, left: 50 },
+let margin = { top: 20, right: 20, bottom: 30, left: 60 },
   width = 500 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
@@ -17,9 +17,20 @@ let svg = d3.select("#chart")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 //x.domain([0, 10]); // comment this line
-x.domain([2, 1024]); // uncomment this line
+x.domain([2, 256]); // uncomment this line
 y.domain([0.6, 1.0]); // uncomment this line
 //y.domain([0, 10]); // comment this line
+
+let realData = [
+  { x: 2, y: 0.7324 },
+  { x: 4, y: 0.8023 },
+  { x: 8, y: 0.8562 },
+  { x: 16, y: 0.8973 },
+  { x: 32, y: 0.9218},
+  { x: 64, y: 0.9474 },
+  { x: 128, y: 0.9812 },
+  { x: 256, y: 0.9991 },
+];
 
 svg.append("g")
   .attr("class", "x axis")
@@ -67,6 +78,8 @@ d3.select("svg").on('mousemove', function (event) {
     .attr('d', lineGenerator);
 });
 
+
+
 d3.select("svg").on('mouseup', function () {
   isDrawing = false;
   // Do not reset points array to keep the user's line
@@ -74,18 +87,8 @@ d3.select("svg").on('mouseup', function () {
   // Replace with real data
   //let realData = [{ x: 1, y: 1 }, { x: 5, y: 5 }, { x: 9, y: 9 }];
 
-  let realData = [
-    { x: 2, y: 0.802 },
-    { x: 4, y: 0.826 },
-    { x: 8, y: 0.852 },
-    { x: 16, y: 0.878 },
-    { x: 32, y: 0.899 },
-    { x: 64, y: 0.917 },
-    { x: 128, y: 0.93 },
-    { x: 256, y: 0.941 },
-    { x: 512, y: 0.95 },
-    { x: 1024, y: 0.957 }
-  ];
+
+
   
 
   // Simulating some delay (0.5s) for real data to appear
@@ -111,6 +114,24 @@ d3.select("svg").on('mouseup', function () {
 
 });
 
+  // Add a circle for the reference point
+svg.append("circle")
+  .attr("class", "reference-point")
+  .attr("cx", x(realData[4].x))
+  .attr("cy", y(realData[4].y))
+  .attr("r", 6)
+  .attr("fill", "orange");
+  
+  
+  // Add a label for the reference point
+svg.append("text")
+  .attr("class", "reference-label")
+  .attr("x", x(realData[4].x) - 200)
+  .attr("y", y(realData[4].y) + 20)
+  .text("The predicted line segment should pass through this point")
+  .style("fill", "orange");
+
+
 // Add X axis label
 svg.append("text")
   .attr("class", "x label")
@@ -127,7 +148,10 @@ svg.append("text")
   .attr("x", -height / 2)
   .attr("dy", ".75em")
   .attr("transform", "rotate(-90)")
-  .text("validation acc");
+  .text("Validation acc");
+
+
+
 
 
 
@@ -154,8 +178,8 @@ let y2 = d3.scaleLinear().range([height, 0]);
 let xAxis2 = d3.axisBottom(x2);
 let yAxis2 = d3.axisLeft(y2);
 
-x2.domain([2, 1024]); // start from 2 and increase exponentially
-y2.domain([0, 1]); // acc ranges from 0 to 1
+x2.domain([2, 256]); // start from 2 and increase exponentially
+y2.domain([0.8, 1]); // acc ranges from 0 to 1
 
 svg2.append("g")
   .attr("class", "x axis")
@@ -174,6 +198,8 @@ svg2.append("rect")
   .style("pointer-events", "all");
 
 let points2 = [];
+
+
 
 let lineGenerator2 = d3.line()
   .x(function (d) { return x2(d.x); })
@@ -232,17 +258,32 @@ d3.select(svg2.node().parentNode).on('mouseup', function () {
 //let realData2 = d3.range(2, 513, 2).map(i => { return { x: i, y: 0.5 }; });
 
 let realData2 = [
-  { x: 2, y: 0.902 },
-  { x: 4, y: 0.926 },
-  { x: 8, y: 0.952 },
-  { x: 16, y: 0.978 },
-  { x: 32, y: 0.899 },
-  { x: 64, y: 0.917 },
-  { x: 128, y: 0.93 },
-  { x: 256, y: 0.941 },
-  { x: 512, y: 0.95 },
-  { x: 1024, y: 0.957 }
+  { x: 2, y: 0.9956 },
+  { x: 4, y: 0.9962 },
+  { x: 8, y: 0.9971 },
+  { x: 16, y: 0.9977 },
+  { x: 32, y: 0.9982 },
+  { x: 64, y: 0.9988 },
+  { x: 128, y: 0.9992 },
+  { x: 256, y: 0.9998 },
 ];
+
+// Add a circle for the reference point
+svg2.append("circle")
+  .attr("class", "reference-point")
+  .attr("cx", x2(realData2[4].x))
+  .attr("cy", y2(realData2[4].y))
+  .attr("r", 6)
+  .attr("fill", "orange");
+
+
+// Add a label for the reference point
+svg2.append("text")
+  .attr("class", "reference-label")
+  .attr("x", x2(realData2[0].x) + 10)
+  .attr("y", y2(realData2[0].y) + 20)
+  .text("The predicted line segment should pass through this point")
+  .style("fill", "orange");
 
 
 //scaleLog().base(2).range([0, width])
@@ -259,11 +300,11 @@ svg2.append("text")
 svg2.append("text")
   .attr("class", "y label")
   .attr("text-anchor", "end")
-  .attr("y", -margin.left + 10)
+  .attr("y", -margin.left + 5)
   .attr("x", -height / 2)
   .attr("dy", ".75em")
   .attr("transform", "rotate(-90)")
-  .text("validation acc");
+  .text("Validation acc");
 
 
 
@@ -295,14 +336,14 @@ let x3 = d3.scaleLog().base(2).range([0, width]); // use a logarithmic scale for
 let y3 = d3.scaleLinear().range([height, 0]);
 
 let xAxis3 = d3.axisBottom(x3);
-let yAxis3 = d3.axisLeft(y3);
+let yAxis3 = d3.axisLeft(y3).tickFormat(d3.format(".1e"));;
 
-x3.domain([2, 1024]); // set domain for x-axis
-y3.domain([0, 1]); // set domain for y-axis
+x3.domain([1.9, 256]); // set domain for x-axis
+y3.domain([Math.pow(2, 9), Math.pow(2, 17)]); // set domain for y-axis
 
 let lineGenerator3 = d3.line()
-  .x(function(d) { return x3(d.x); })
-  .y(function(d) { return y3(d.y); });
+  .x(function (d) { return x3(d.x); })
+  .y(function (d) { return y3(d.y); });
 
 svg3.append("g")
   .attr("class", "x axis")
@@ -317,18 +358,15 @@ svg3.append("g")
 //let theoryData = Array.from({ length: 11 }, (_, i) => ({ x: i, y: 10 - i }));
 //let theoryData = Array.from({ length: 11 }, (_, i) => ({ x: x3(i), y: y3(10 - i) }));
 let theoryData = [
-  { x: 2, y: 0.802 },
-  { x: 4, y: 0.826 },
-  { x: 8, y: 0.852 },
-  { x: 16, y: 0.678 },
-  { x: 32, y: 0.599 },
-  { x: 64, y: 0.317 },
-  { x: 128, y: 0.23 },
-  { x: 256, y: 0.21 },
-  { x: 512, y: 0.15 },
-  { x: 1024, y: 0.07 }
+  { x: 2, y: Math.pow(2, 17) },
+  { x: 4, y: Math.pow(2, 16) },
+  { x: 8, y: Math.pow(2, 15) },
+  { x: 16, y: Math.pow(2, 14) },
+  { x: 32, y: Math.pow(2, 13) },
+  { x: 64, y: Math.pow(2, 12) },
+  { x: 128, y: Math.pow(2, 11) },
+  { x: 256, y: Math.pow(2, 10) },
 ];
-
 let theoryPath = svg3.append("path")
   .datum(theoryData)
   .attr("fill", "none")
@@ -343,16 +381,14 @@ let theoryPath = svg3.append("path")
 //let actualData = Array.from({ length: 101 }, (_, i) => ({ x: x3(i / 10), y: y3(5 * (2 - Math.pow((i / 100), 0.5))) }));
 
 let actualData = [
-  { x: 2, y: 1.802 },
-  { x: 4, y: 1.826 },
-  { x: 8, y: 0.852 },
-  { x: 16, y: 0.878 },
-  { x: 32, y: 0.899 },
-  { x: 64, y: 0.917 },
-  { x: 128, y: 0.93 },
-  { x: 256, y: 0.941 },
-  { x: 512, y: 0.95 },
-  { x: 1024, y: 0.957 }
+  { x: 2, y: Math.pow(2, 17) },
+  { x: 4, y: Math.pow(2, 16) },
+  { x: 8, y: Math.pow(2, 15) },
+  { x: 16, y: Math.pow(2, 14) },
+  { x: 32, y: Math.pow(2, 13) },
+  { x: 64, y: Math.pow(2, 12) },
+  { x: 128, y: Math.pow(2, 12) },
+  { x: 256, y: Math.pow(2, 12) },
 ];
 let actualPath = svg3.append("path")
   .datum(actualData)
@@ -447,10 +483,8 @@ svg3.append("text")
 svg3.append("text")
   .attr("class", "y label")
   .attr("text-anchor", "end")
-  .attr("y", -margin.left + 10)
+  .attr("y", -margin.left - 0)
   .attr("x", -height / 2)
-  .attr("dy", ".75em")
+  .attr("dy", "0.75em")
   .attr("transform", "rotate(-90)")
-  .text("step for a 90% acc");
-
-  
+  .text("Step needed for a 90% acc");
