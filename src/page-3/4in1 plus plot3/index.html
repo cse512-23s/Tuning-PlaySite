@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tuning PlaySite.js</title>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <link rel="stylesheet" href="styles-3.css">
+  <style>
+    .slider {
+      position: relative;
+      width: 200px;
+      margin-left: +400px;
+    }
+    .slider input {
+      width: 100%;
+    }
+    .slider-labels {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 58px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 100px;
+      font-family: sans-serif;
+      font-size: 14px;
+    }
+    .beta2-text {
+  text-align: center;
+  position: relative;
+  top: 20px;
+}
+    .label-left {
+  position: absolute;
+  left: 0;
+}
+
+  .label-middle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .label-right {
+    position: absolute;
+    right: 0;
+  }
+    .line {
+      fill: none;
+      stroke: #ffab00;
+      stroke-width: 3;
+    }
+    .axis-label {
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #ccc;
+      shape-rendering: crispEdges;
+    }
+    .axis text {
+      font-family: sans-serif;
+      font-size: 10px;
+    }
+    .chart1 {
+            display: block;
+            margin: auto;
+            height: 500px;
+            width: 500px;
+        }
+    .chart2 {
+        display: block;
+        margin: auto;
+        height: 500px;
+        width: 500px;
+    }
+    .chart3 {
+            display: block;
+            margin: auto;
+            height: 500px;
+            width: 500px;
+        }
+    .chart4 {
+        display: block;
+        margin: auto;
+        height: 500px;
+        width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div class="slider-labels">
+      <span class="label-left">0.99</span>
+      <span class="label-middle">0.999</span>
+      <span class="label-right">0.9999</span>
+    </div>
+    <p class="beta2-text">Beta2 = <span id="sliderValue">0.999</span></p>
+    <input type="range" min="0" max="2" value="1" step="1" id="mySlider">
+  </div>
+  <div>
+    <svg id="svga" width="400" height="300"></svg>
+    <svg id="svgb" width="400" height="300"></svg>
+   </div>
+   <div>
+    <svg id="svgccc" width="400" height="300"></svg>
+    <svg id="svgd" width="400" height="300"></svg>
+  </div>
+  <div id="plot3"></div>
+  <script src="https://d3js.org/d3-contour.v1.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>  
+  <script src="script-2-4plots.js"></script>
+  <script src="script-3.js"></script>
+
+ 
+</body>
+</html>
