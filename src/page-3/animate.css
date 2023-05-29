@@ -92,6 +92,15 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 
+.caption {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.caption p {
+  font-size: 16px;
+}
+
 .bounce {
   -webkit-animation-name: bounce;
   animation-name: bounce;
