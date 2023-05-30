@@ -63,6 +63,11 @@
     font-size: 12px;
     font-weight: bold;
   }
+.caption {
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+  }
 .axis path,
 .axis line {
     fill: none;
