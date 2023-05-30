@@ -1,3 +1,6 @@
+//Reference : https://gist.github.com/EmilienDupont/aaf429be5705b219aaaf8d691e27ca87
+
+
 var width = 960,
     height = 500,
     nx = parseInt(width / 5), // grid sizes
@@ -101,7 +104,7 @@ menu_g.selectAll("circle")
       .data(buttons)
       .enter()
       .append("circle")
-      .attr("cx", function(d,i) { return width/4 * (i + 0.25);} )
+      .attr("cx", function(d,i) { return width/4 * (i + 0.9);} )
       .attr("cy", height - 20)
       .attr("r", 10)
       .attr("stroke-width", 0.5)
@@ -115,7 +118,7 @@ menu_g.selectAll("text")
       .data(buttons)
       .enter()
       .append("text")
-      .attr("x", function(d,i) { return width/4 * (i + 0.25) + 18;} )
+      .attr("x", function(d,i) { return width/4 * (i + 0.9) + 18;} )
       .attr("y", height - 14)
       .text(function(d) { return d; })
       .attr("text-anchor", "start")
@@ -138,7 +141,7 @@ function button_press() {
 
 /*
  * Set up optimization/gradient descent functions.
- * SGD, Momentum, RMSProp, Adam.
+ * SGD, RMSProp, Adam.
  */
 
 function get_sgd_path(x0, y0, learning_rate, num_steps) {
@@ -262,27 +265,24 @@ function mousedown() {
     minimize(scale_x(point[0]), scale_y(point[1]));
 }
 
-let learning_Rate1 = 2e-2;
+let learning_Rate1 = 2e-2; //default : best 
 let learning_Rate2 = 1e-2;
 let learning_Rate3 = 1e-2;
 
-d3.select("#learningRate1")
+d3.select("#learningRate1")  //sub-optimal
 .on("click", function() {
     learning_Rate1 = 10e-1;
-    
+    learning_Rate2 = 10e-2;
+    learning_Rate3 = 10e-3;
 });
-d3.select("#learningRate2")
-.on("click", function() {
-    learning_Rate1 = 10e-2;
-   
-});
-d3.select("#learningRate3")
+d3.select("#learningRate2") //optimal
 .on("click", function() {
     learning_Rate1 = 2e-2;  //sgd
     learning_Rate2 = 1e-2;  //rms
     learning_Rate3 = 1e-2;  //adam
    
 });
+
 
 function minimize(x0,y0) {
     gradient_path_g.selectAll("path").remove();
@@ -291,10 +291,7 @@ function minimize(x0,y0) {
         var sgd_data = get_sgd_path(x0, y0, learning_Rate1, 500);
         draw_path(sgd_data, "sgd");
     }
-    // if (draw_bool.Momentum) {
-    //     var momentum_data = get_momentum_path(x0, y0, 1e-2, 200, 0.8);
-    //     draw_path(momentum_data, "momentum");
-    // }
+  
     if (draw_bool.RMSProp) {
         var rmsprop_data = get_rmsprop_path(x0, y0, learning_Rate2, 300, 0.99, 1e-6);
         draw_path(rmsprop_data, "rmsprop");
