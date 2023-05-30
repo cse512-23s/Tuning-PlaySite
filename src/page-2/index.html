@@ -31,28 +31,30 @@
     </style>
 </head>
 <body>
-    <h3>2. Choosing Batch Size</h3>
-    <p>What do you think is the relation between batch size and validation error? Draw how you expect the line to look like.</p>
-    <div id="chart" class="chart"></div>
-    <p>We can see that, increasing batch size increases validation accuracy. But one important note in this case is, all hyperparameters are same for each of the above plotted batch size.</p>
-    <br/>
-    <p> What happens if we tune hyperparameters of indivudual batch size to its best performance? How do you expect the graph to look like?</p>
+    <div class="main-container">
+        <h3>2. Choosing Batch Size</h3>
+        <p>What do you think is the relation between batch size and validation error? Draw how you expect the line to look like.</p>
+        <div id="chart" class="chart"></div>
+        <p>We can see that, increasing batch size increases validation accuracy. But one important note in this case is, all hyperparameters are same for each of the above plotted batch size.</p>
+        <br/>
+        <p> What happens if we tune hyperparameters of indivudual batch size to its best performance? How do you expect the graph to look like?</p>
 
-    <!-- Second Chart -->
-    <div id="chart2" class="chart"></div>
-    <p>By using the best hyperparameters for individual batch sizes, we can see that there is no effect of increasing batch size on performance.</p>
-    <p>Any batch size works but configurations of other hyperparameters like an epoch, optimizer, and regularizer change with batch size. So chose a single batch size for tuning all other hyperparameters.</p>
-    <br/>
-    <p>Incase if you are curious to know what will be the use of tuning batch size, hover below.</p>
+        <!-- Second Chart -->
+        <div id="chart2" class="chart"></div>
+        <p>By using the best hyperparameters for individual batch sizes, we can see that there is no effect of increasing batch size on performance.</p>
+        <p>Any batch size works but configurations of other hyperparameters like an epoch, optimizer, and regularizer change with batch size. So chose a single batch size for tuning all other hyperparameters.</p>
+        <br/>
+        <p>Incase if you are curious to know what will be the use of tuning batch size, hover below.</p>
 
-    <!-- Third Chart -->
-    <div id="chart3"></div>
-    
-    
-    <script src="https://d3js.org/d3.v7.js"></script>
-    <script src="script.js"></script>
-    <p>In theory, the steps needed to achieve a particular performance are halved for each doubling batch size. But in practice, steps remain the same after a certain batch size depending on dataset, model and many other parameters. </p>
-    <p>TL;DR: Choose the largest available batch size for faster training and experimentations.</p>
+        <!-- Third Chart -->
+        <div id="chart3"></div>
+        
+        
+        <script src="https://d3js.org/d3.v7.js"></script>
+        <script src="script.js"></script>
+        <p>In theory, the steps needed to achieve a particular performance are halved for each doubling batch size. But in practice, steps remain the same after a certain batch size depending on dataset, model and many other parameters. </p>
+        <p>TL;DR: Choose the largest available batch size for faster training and experimentations.</p>
+    </div>
 
 </body>
 </html>

@@ -4,7 +4,14 @@ body {
     padding: 2em 8em;
     line-height: 1.58;
     letter-spacing: 0.003em;
+    display: flex;
+    justify-content: center;
 }
+
+body > .main-container {
+    max-width: 680px;
+}
+
 h1, h2, h3 {
     font-family: 'Open Sans', sans-serif;
     margin-top: 1.4em;

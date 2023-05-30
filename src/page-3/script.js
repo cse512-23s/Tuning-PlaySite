@@ -1,4 +1,4 @@
-var margin = { top: 20, right: 80, bottom: 120, left: 50 },
+  var margin = { top: 20, right: 80, bottom: 120, left: 50 },
     width = 660 - margin.left - margin.right,
     height = 350 - margin.top - margin.bottom;
 
@@ -50,6 +50,7 @@ var margin = { top: 20, right: 80, bottom: 120, left: 50 },
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 
   var div = d3.select("text").append("div")
     .attr("class", "tooltip")
@@ -202,9 +203,8 @@ svg.append("text")
   });
 
   
-
 // Add Adam button
-d3.select("body")
+d3.select("#buttons-section")
   .append("button")
   .text("Adam")
   .on("click", function() {
@@ -214,7 +214,7 @@ d3.select("body")
      });
 
 // Add RMSprop button
-d3.select("body")
+d3.select("#buttons-section")
   .append("button")
   .text("RMSprop")
   .on("click", function() {
@@ -224,7 +224,7 @@ d3.select("body")
   });
 
 // Add SGD button
-d3.select("body")
+d3.select("#buttons-section")
   .append("button")
   .text("SGD")
   .on("click", function() {
@@ -234,7 +234,7 @@ d3.select("body")
   });
 
   //clear the plot button
-d3.select("body")
+d3.select("#buttons-section")
   .append("button")
   .text("Clear Plot")
   .on("click", function() {
@@ -244,7 +244,7 @@ d3.select("body")
 });
 
 //see all button
-d3.select("body")
+d3.select("#buttons-section")
   .append("button")
   .text("View All")
   .on("click", function() {
