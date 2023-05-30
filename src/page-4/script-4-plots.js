@@ -90,7 +90,7 @@ ga.append("text")
   .attr("class", "axis-label")
   .style("text-anchor", "middle")
   .attr("transform", `translate(${widtha / 2}, ${heighta + margina.bottom - 10})`)
-  .text("log base10 (LearningRate)");
+  .text("LR*");
 
 
 
@@ -247,7 +247,7 @@ gb.append("text")
   .attr("class", "axis-label")
   .attr("text-anchor", "middle")
   .attr("transform", `translate(${widthb / 2}, ${heightb + marginb.bottom - 10})`)
-  .text("log base10 (LR)");
+  .text("LR*");
 
 // Y-axis label 
 gb.append("text")
@@ -428,8 +428,8 @@ const legendItemsb = legendb.selectAll(".legend-item")
     gc.append("text")
       .attr("class", "axis-label")
       .attr("text-anchor", "middle")
-      .attr("transform", `translate(${widthc / 2}, ${heightc + marginc.bottom - 25})`)
-      .text("log base10 (LR)");
+      .attr("transform", `translate(${widthc / 2}, ${heightc + marginc.bottom - 20})`)
+      .text("LR*");
 
    // Epochs label
     gc.append("text")
@@ -624,8 +624,8 @@ const legendItemsc = legendc.selectAll(".legend-item")
   gd.append("text")
     .attr("class", "axis-label")
     .attr("text-anchor", "middle")
-    .attr("transform", `translate(${widthd / 2}, ${heightd + margind.bottom - 25})`)
-    .text("log base10 (LR)");
+    .attr("transform", `translate(${widthd / 2}, ${heightd + margind.bottom - 20})`)
+    .text("LR*");
 
     // Epochs label
   gd.append("text")

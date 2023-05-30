@@ -12,7 +12,7 @@ var margin = { top: 20, right: 80, bottom: 40, left: 120 },
   var y3 = d3.scaleLinear()
     .range([height, 0]);
 
-  var color = d3.scaleOrdinal(["#e41a1c","#377eb8","#4daf4a","#984ea3","#ff7f00","#ffff33","#a65628","#f781bf","#999999"]);
+  var color = d3.scaleOrdinal(["#e41a1c","#377eb8","#984ea3","#ff7f00","#f781bf","#999999"]);
 
   var xAxis = d3.axisBottom()
     .scale(x)
@@ -191,7 +191,7 @@ var margin = { top: 20, right: 80, bottom: 40, left: 120 },
 svg.append("text")
   .attr("class", "x-axis-label")
   .attr("x", width / 2) // Position in the middle of the x-axis
-  .attr("y", height - 3 +margin.bottom) // Adjust the y position as needed
+  .attr("y", height - 2 + margin.bottom) // Adjust the y position as needed
   .style("text-anchor", "middle") // Center the label horizontally
   .text("Epochs");
 
