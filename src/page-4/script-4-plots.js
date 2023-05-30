@@ -17,11 +17,12 @@ const heighta = +svga.attr("height") - margina.top - margina.bottom;
 const ga = svga.append("g").attr("transform", `translate(${margina.left}, ${margina.top})`);
 
  // X-axis
-const xScalea = d3.scaleLinear()
-  .domain([0, alphaa.length - 1])
+const xScalea = d3.scaleLog()
+  .base(10)
+  .domain([-5,-1])
   .range([0, widtha]);
 
-let xtickLabels = [-5,-4,-3,-2,-1];  
+let xtickLabels = [0.00001, 0.0001, 0.001, 0.01, 0.1];  
 
 const xAxisa = d3.axisBottom(xScalea)
   .ticks(5)      
@@ -174,9 +175,10 @@ const heightb = +svgb.attr("height") - marginb.top - marginb.bottom;
 const gb = svgb.append("g").attr("transform", `translate(${marginb.left}, ${marginb.top})`);
 
  // X-axis
-const xScaleb = d3.scaleLinear()
-  .domain([0, alphab.length - 1])
-  .range([0, widthb]);
+const xScaleb = d3.scaleLog()
+.base(10)
+.domain([-5,-1])
+.range([0, widtha]);
 
 //let xtickLabels = [-5,-4,-3,-2,-1];  
 
@@ -355,9 +357,10 @@ const legendItemsb = legendb.selectAll(".legend-item")
     const gc = svgc.append("g").attr("transform", `translate(${marginc.left}, ${marginc.top})`);
 
      // X-axis
-    const xScalec = d3.scaleLinear()
-      .domain([0, alphac.length - 1])
-      .range([0, widthc]);
+    const xScalec = d3.scaleLog()
+    .base(10)
+    .domain([-5,-1])
+    .range([0, widtha]);
    
   //  let xtickLabels = [-5,-4,-3,-2,-1];  
 
@@ -536,9 +539,10 @@ const legendItemsc = legendc.selectAll(".legend-item")
   const gd = svgd.append("g").attr("transform", `translate(${margind.left}, ${margind.top})`);
 
    // X-axis
-  const xScaled = d3.scaleLinear()
-    .domain([0, alphad.length - 1])
-    .range([0, widthd]);
+  const xScaled = d3.scaleLog()
+  .base(10)
+  .domain([-5,-1])
+  .range([0, widtha]);
  
  // let xtickLabels = [-5,-4,-3,-2,-1];  
 
