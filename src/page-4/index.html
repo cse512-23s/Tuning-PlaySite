@@ -10,8 +10,8 @@
 </head>
 <body>
   <div>
-    <h1>Title Text</h1>
-    <p>Paragraph text goes here</p>
+    <h2>3. Choosing Optimizer</h2>
+    <p>So, we need to tune individual nuisance hyperparameters first before comparing optimizers. As an example, we will choose Adam as it is the most popular choice of hyperparameters. Below is a visual representation of tuning Adam.</p>
 
     <div class="slider-container">
       <div class="slider">
@@ -36,13 +36,12 @@
       </div>
     </div>
     
-    <h1>Title Text</h1>
-    <p>Paragraph text goes here</p>
+    <p>After tuning the nuisance hyperparameters for each hyperparameter independently, we can compare the optimizers.</p>
+    <p>Click on the contours to see how different optimizers converge to global minima (left) and local minima (right).</p>
     
     <div id="plot3"></div>
     
-    <h1>Title Text</h1>
-    <p>Paragraph text goes here</p>
+    <p>In this case, Adam works the best as it converges to global minima more often than the other optimizers.</p>
   </div>
   
   <script src="https://d3js.org/d3-contour.v1.min.js"></script>

@@ -10,14 +10,10 @@
 </head>
 <body>
     <div class="main-container">
-        <div>
-            <header>
-                <h1>Learning Rate Tuning for Optimizer</h1>
-                <h3>Hover to Explore / Click to Compare Learning Rates</h3>
-            </header>
-        </div>
-
-
+        <h2>3. Choosing Optimizer</h2>
+        <p>Optimizers determine how the model's weights are updated during the training. Each optimizer has furthermore tunable parameters like learning rate, and momentum. So how do we start?</p>
+        <p>Can't we use the same learning rate and other individual hyperparameters to compare different optimizers?</p>
+        
         <div class="box-container">
             <div class="box" id="box">
                 <span>&#x2501&#x2501 Adam</span>
@@ -31,10 +27,20 @@
                 <div id="area1"></div>
             </div>
         </div>
-        <div id="buttons-section"></div>
+        <div id="buttons-section">
+        <button id="viewAdam" class="button">Adam</button>
+        <button id="viewRMSprop" class="button">RMSprop</button>
+        <button id="viewSGD" class="button">SGD</button>
+        <button id="viewAll" class="button no-shade">View All</button>
+        <button id="clear" class="button no-shade">Clear All</button>
+        </div>
 
-        <h1>Title Text</h1>
-        <p>Paragraph text goes here</p>
+        <p>Adam's best learning rate doesn't work best for SGD. So comparing different optimizers with the same individual hyperparameters is not fair. How do we deal this?</p>
+        <h3>SNF Strategy</h3>
+        <p>One strategy is to find Scientific(S), Nuisance(N), and Fixed(F) hyperparameters in the experiment. All hyperparameters will come under any one of these three categories. Scientific hyperparameters are those whose effect on the model's performance we're trying to measure. These hyperparameters are often the ones that we want to tune to achieve better performance. In the above case, Adam, SGD, and RMSProp are scientific hyperparameters.</p>
+        <p>Nuisance hyperparameters are those that are not of direct interest to us but need to be optimized to fairly compare different values of the scientific hyperparameters. Learning rate and momentum come under this category. </p>
+        <p>Fixed hyperparameters are those whose values are set and do not change during the experiments. They are chosen because they do not significantly affect the model's performance or because we want to fix their values to ensure consistency across different experiments. An example would be random seed or number of layers (50 in above) or epochs.</p>
+
 
         <div id="tooltip" class="hidden">
             <p><strong>Description</strong></p>

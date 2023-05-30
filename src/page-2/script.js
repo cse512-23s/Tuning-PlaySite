@@ -1,4 +1,4 @@
-let margin = { top: 20, right: 20, bottom: 30, left: 60 },
+let margin = { top: 20, right: 20, bottom: 35, left: 60 },
   width = 500 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
@@ -117,8 +117,8 @@ d3.select("svg").on('mouseup', function () {
   // Add a circle for the reference point
 svg.append("circle")
   .attr("class", "reference-point")
-  .attr("cx", x(realData[4].x))
-  .attr("cy", y(realData[4].y))
+  .attr("cx", x(realData[0].x))
+  .attr("cy", y(realData[0].y))
   .attr("r", 6)
   .attr("fill", "orange");
   
@@ -126,9 +126,9 @@ svg.append("circle")
   // Add a label for the reference point
 svg.append("text")
   .attr("class", "reference-label")
-  .attr("x", x(realData[4].x) - 200)
-  .attr("y", y(realData[4].y) + 20)
-  .text("The predicted line segment should pass through this point")
+  .attr("x", x(realData[0].x) + 10)
+  .attr("y", y(realData[0].y) + 20)
+  .text("Start the line here")
   .style("fill", "orange");
 
 
@@ -136,8 +136,8 @@ svg.append("text")
 svg.append("text")
   .attr("class", "x label")
   .attr("text-anchor", "end")
-  .attr("x", width / 2 + margin.right)
-  .attr("y", height + margin.bottom)
+  .attr("x", width / 2 + margin.right + 20)
+  .attr("y", height +0.5+ margin.bottom)
   .text("Batch size");
 
 // Add Y axis label
@@ -145,10 +145,10 @@ svg.append("text")
   .attr("class", "y label")
   .attr("text-anchor", "end")
   .attr("y", -margin.left + 5)
-  .attr("x", -height / 2)
+  .attr("x", -height +300)
   .attr("dy", ".75em")
   .attr("transform", "rotate(-90)")
-  .text("Validation acc");
+  .text("Validation Accuracy");
 
 
 
@@ -271,8 +271,8 @@ let realData2 = [
 // Add a circle for the reference point
 svg2.append("circle")
   .attr("class", "reference-point")
-  .attr("cx", x2(realData2[4].x))
-  .attr("cy", y2(realData2[4].y))
+  .attr("cx", x2(realData2[7].x))
+  .attr("cy", y2(realData2[7].y))
   .attr("r", 6)
   .attr("fill", "orange");
 
@@ -280,9 +280,9 @@ svg2.append("circle")
 // Add a label for the reference point
 svg2.append("text")
   .attr("class", "reference-label")
-  .attr("x", x2(realData2[0].x) + 10)
+  .attr("x", x2(realData2[0].x) + 300)
   .attr("y", y2(realData2[0].y) + 20)
-  .text("The predicted line segment should pass through this point")
+  .text("End the line here")
   .style("fill", "orange");
 
 
@@ -292,7 +292,7 @@ svg2.append("text")
 svg2.append("text")
   .attr("class", "x label")
   .attr("text-anchor", "end")
-  .attr("x", width / 2 + margin.right)
+  .attr("x", width / 2 + margin.right + 20)
   .attr("y", height + margin.bottom)
   .text("Batch size");
 
@@ -301,24 +301,10 @@ svg2.append("text")
   .attr("class", "y label")
   .attr("text-anchor", "end")
   .attr("y", -margin.left + 5)
-  .attr("x", -height / 2)
+  .attr("x", -height +300)
   .attr("dy", ".75em")
   .attr("transform", "rotate(-90)")
-  .text("Validation acc");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .text("Validation Accuracy");
 
 
 
@@ -338,8 +324,8 @@ let y3 = d3.scaleLinear().range([height, 0]);
 let xAxis3 = d3.axisBottom(x3);
 let yAxis3 = d3.axisLeft(y3).tickFormat(d3.format(".1e"));;
 
-x3.domain([1.9, 256]); // set domain for x-axis
-y3.domain([Math.pow(2, 9), Math.pow(2, 17)]); // set domain for y-axis
+x3.domain([2, 256]); // set domain for x-axis
+y3.domain([Math.pow(2, 5), Math.pow(2, 17)]); // set domain for y-axis
 
 let lineGenerator3 = d3.line()
   .x(function (d) { return x3(d.x); })
@@ -475,7 +461,7 @@ svgElement3.addEventListener("mouseenter", function handleMouseEnter() {
 svg3.append("text")
   .attr("class", "x label")
   .attr("text-anchor", "end")
-  .attr("x", width / 2 + margin.right)
+  .attr("x", width / 2 + margin.right+20)
   .attr("y", height + margin.bottom)
   .text("Batch size");
 
@@ -484,7 +470,7 @@ svg3.append("text")
   .attr("class", "y label")
   .attr("text-anchor", "end")
   .attr("y", -margin.left - 0)
-  .attr("x", -height / 2)
+  .attr("x", -height + 375)
   .attr("dy", "0.75em")
   .attr("transform", "rotate(-90)")
-  .text("Step needed for a 90% acc");
+  .text("Steps to reach 90% Validation Accuracy");

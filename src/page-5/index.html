@@ -70,26 +70,11 @@
 <body>
     <div class="main-container">
 
-    <h1>4. Few More Tips</h1>
+    <h2>4. Need More?</h2>
 
-    <p>There are a plethora of hyperparameters that can be tuned to increase performance of our model. Discussing about all of them is a hard task. So we provided a sunburst diagram of common hyperparameters in a supervised problem along with commonly preferred values/options for each.</p>
+    <p>There is a plethora of hyperparameters that can be further tuned to enhance the performance of our model based on time/computational resources available. Discussing all of them is a challenging task. Therefore, we have included a sunburst diagram illustrating the common hyperparameters in a supervised problem, along with their commonly preferred values/options. You can use the SNF strategy for the order of tuning.</p>
     <p>Click a node to zoom in, click the center to zoom out one level and click the empty canvas to come back to default view. </p>
     <div id="plot-1"></div>
-
-    <h3>A Better Strategy</h3>
-
-    <p>When you choose a hyperparameter to tune, try to categorize that hyperparameter into scientific, nuisance or fixed hyperparameter.
-    </p>
-    <p>All hyperparameters will come under any one of the above-mentioned categories. Scientific hyperparameters are those whose effect on the model's performance we're trying to measure. These hyperparameters are often the ones that we want to tune to achieve better performance. For instance, in a deep learning model, the number of layers, the learning rate, and the batch size can all be scientific hyperparameters.</p>
-    <p>Nuisance hyperparameters are those that are not of direct interest to us but need to be optimized to fairly compare different values of the scientific hyperparameters. 
-        Nuisance hyperparameters are often chosen to make sure that the comparison of different scientific hyperparameters is as fair as possible. For example, if our goal is to "determine whether a model with more hidden layers will reduce validation error", then the number of hidden layers is a scientific hyperparameter. The learning rate is a nuisance hyperparameter because we can only fairly compare models with different numbers of hidden layers if the learning rate is tuned separately for each number of layers. So for each hidden layer, we find the best learning rate and then compare different hidden layers.
-        </p>
-    <p>Fixed hyperparameters are those whose values are set and do not change during the experiments. These hyperparameters are often chosen because they do not significantly affect the model's performance or because we want to fix their values to ensure consistency across different experiments. An example of a fixed hyperparameter is the random seed used to initialize the model's weights.</p>
-    <p>This is the biggest challenge. For example, we start with fixing epoch size. Then we experiment to find the best optimizer and find Adam is best. But SGD might have been best with a different epoch. So often we are constrained by time and computing. So fix the hyperparameters to compare others. But we should always ask the question, Is the best hyperparameter in the previous experiment sensitive to current scientific hyperparameters?</p>
-    <p>In the simplest case, we would make a separate study for each configuration of the scientific parameters, where each study tunes over the nuisance hyperparameters.
-        For example, if our goal is to select the best optimizer out of Nesterov momentum and Adam, we could create one study in which optimizer="Nesterov_momentum" and the nuisance hyperparameters are {learning_rate, momentum}, and another study in which optimizer="Adam" and the nuisance hyperparameters are {learning_rate, beta1, beta2, epsilon}. We would compare the two optimizers by selecting the best-performing trial from each study.
-        </p>
-    </div>
 
     <script src='https://d3js.org/d3.v4.min.js'></script>
     <script>

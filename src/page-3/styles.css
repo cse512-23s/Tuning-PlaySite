@@ -90,3 +90,12 @@
     stroke: steelblue;
     stroke-width: 2.5px;
   }
+
+.button {
+    font-family: "Open Sans",Courier, monospace;
+    text-align: center;
+}
+
+.button.clicked {
+  background-color: #999; /* Set the shade color */
+}

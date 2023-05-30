@@ -1,9 +1,9 @@
-  var margin = { top: 20, right: 80, bottom: 120, left: 50 },
-    width = 660 - margin.left - margin.right,
+var margin = { top: 20, right: 80, bottom: 30, left: 150 },
+    width = 750 - margin.left - margin.right,
     height = 350 - margin.top - margin.bottom;
 
   var x = d3.scaleLinear()
-    .range([0, width]);
+    .range([0, width-80]);
   var y = d3.scaleLinear()
     .range([height, 0]);
   var y2 = d3.scaleLinear()
@@ -50,7 +50,6 @@
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 
   var div = d3.select("text").append("div")
     .attr("class", "tooltip")
@@ -106,8 +105,8 @@
 
       // Add the legend
       svg.append("text")
-        .attr("x", (legendSpace / 2) + i * legendSpace)
-        .attr("y", height + (margin.bottom / 2) + 22)
+        .attr("x", width + margin.right - 70)
+        .attr("y", (i * 40) + margin.top+20)
         .attr("class", "legend")
         .style("fill", function () { return d.color = color(d.key); })
         .on("click", function () {
@@ -165,20 +164,24 @@ svg.append("text")
   //learning rate label
   svg.append("text")
   .attr("class", "x-axis-label")
-  .attr("x", width / 2) // Position in the middle of the x-axis
-  .attr("y", height + margin.bottom -15) // Adjust the y position as needed
+  .attr("x", width + margin.right - 70) // Position in the middle of the x-axis
+  .attr("y", margin.top-20) // Adjust the y position as needed
   .style("text-anchor", "middle") // Center the label horizontally
-  .text("Learning Rates");
+  .text("Learning Rates")
+  .append("tspan")
+  .attr("x", width + margin.right - 70)
+  .attr("dy", "1.2em")
+  .text("(Hover or Click)");
 
   //y-axis label
   svg.append("text")
     .attr("class", "y-axis-label")
     .attr("x", -(height / 2)) // Position in the middle of the y-axis, but adjust x position negatively to rotate text
-    .attr("y", -margin.left + 5) // Adjust the y position as needed
+    .attr("y", -margin.left + 100) // Adjust the y position as needed
     .attr("dy", "0.71em")
     .style("text-anchor", "middle")
     .attr("transform", "rotate(-90)") // Rotate the label to be vertical
-    .text("Training Loss");
+    .text("Validation Loss");
 
     svg.append("g")
     .attr("class", "x axis")
@@ -202,53 +205,72 @@ svg.append("text")
       .text("Training Loss");
   });
 
-  
-// Add Adam button
-d3.select("#buttons-section")
-  .append("button")
-  .text("Adam")
-  .on("click", function() {
-    var adamLines = d3.selectAll(".adam-line");
+function viewAdam() {
+  var adamLines = d3.selectAll(".adam-line");
     var adamOpacity = adamLines.style("opacity") === "0" ? 1 : 0;
     adamLines.style("opacity", adamOpacity);
-     });
+}
 
-// Add RMSprop button
-d3.select("#buttons-section")
-  .append("button")
-  .text("RMSprop")
-  .on("click", function() {
-    var rmspropLines = d3.selectAll(".rmsprop-line");
-    var rmspropOpacity = rmspropLines.style("opacity") === "0" ? 1 : 0;
-    rmspropLines.style("opacity", rmspropOpacity);
-  });
+function viewRMSprop() {
+  var rmspropLines = d3.selectAll(".rmsprop-line");
+  var rmspropOpacity = rmspropLines.style("opacity") === "0" ? 1 : 0;
+  rmspropLines.style("opacity", rmspropOpacity);
+}
 
-// Add SGD button
-d3.select("#buttons-section")
-  .append("button")
-  .text("SGD")
-  .on("click", function() {
-    var sgdLines = d3.selectAll(".sgd-line");
+function viewSGD() {
+  var sgdLines = d3.selectAll(".sgd-line");
     var sgdOpacity = sgdLines.style("opacity") === "0" ? 1 : 0;
     sgdLines.style("opacity", sgdOpacity);
-  });
+}
 
-  //clear the plot button
-d3.select("#buttons-section")
-  .append("button")
-  .text("Clear Plot")
-  .on("click", function() {
-    svg.selectAll(".adam-line").style("opacity", 0);
-    svg.selectAll(".sgd-line").style("opacity", 0);
-    svg.selectAll(".rmsprop-line").style("opacity", 0);
-});
-
-//see all button
-d3.select("#buttons-section")
-  .append("button")
-  .text("View All")
-  .on("click", function() {
-    svg.selectAll(".adam-line").style("opacity", 1);
+function viewAll() {
+  svg.selectAll(".adam-line").style("opacity", 1);
     svg.selectAll(".sgd-line").style("opacity", 1);
     svg.selectAll(".rmsprop-line").style("opacity", 1);
+}
+
+function clear() {
+  svg.selectAll(".adam-line").style("opacity", 0);
+  svg.selectAll(".sgd-line").style("opacity", 0);
+  svg.selectAll(".rmsprop-line").style("opacity", 0);
+}
+
+// Get all buttons with the class "button"
+const buttons = document.querySelectorAll('.button');
+
+// Add a click event listener to each button except those with class "no-shade"
+buttons.forEach(button => {
+  if (!button.classList.contains('no-shade')) {
+    button.addEventListener('click', function() {
+      this.classList.toggle('clicked'); // Toggle the "clicked" class for the clicked button only
+    });
+  }
 });
+
+// Get the "View All" and "Clear All" buttons
+const viewAllButton = document.getElementById('viewAll');
+const clearAllButton = document.getElementById('clear');
+
+// Add click event listener for "View All" button
+viewAllButton.addEventListener('click', function() {
+  buttons.forEach(button => {
+    if (!button.classList.contains('no-shade')) {
+      button.classList.add('clicked'); // Apply shade to all buttons except those with class "no-shade"
+    }
+  });
+});
+
+// Add click event listener for "Clear All" button
+clearAllButton.addEventListener('click', function() {
+  buttons.forEach(button => {
+    button.classList.remove('clicked'); // Remove shade from all buttons
+  });
+});
+
+
+// Add buttons
+d3.select("#viewAdam").on("click", viewAdam);
+d3.select("#viewRMSprop").on("click", viewRMSprop);
+d3.select("#viewSGD").on("click", viewSGD);
+d3.select("#viewAll").on("click", viewAll);
+d3.select("#clear").on("click", clear);
