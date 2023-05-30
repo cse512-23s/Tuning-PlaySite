@@ -16,7 +16,7 @@
         <h3>Motivation</h3>
         <p>Hyperparameters are configuration settings that are external to the machine learning model itself and need to be manually set before the training process begins. Setting/tuning these hyperparameters is extremely difficult for several reasons. There are a large number of hyperparameters, and each hyperparameter can take on multiple values. One hyperparameter can affect another, thus understanding the complex dependencies requires a lot of experimentation which many can’t afford as tuning them is time-consuming and expensive. Worst of all there is no universal solution, as one set of hyperparameters won’t work for a different problem/model. So we provide a comprehensive approach to this problem. To know more about hyperparameters refer to this <a href="https://www.javatpoint.com/hyperparameters-in-machine-learning">link</a>.</p>
         <h1>Tuning Strategy:</h1>
-        <h2>1. Starting with a model configuration</h2>
+        <h2>Starting with a model configuration</h2>
         <p>Model architectures typically have various hyperparameters that determine the model's size and other details (e.g. number of layers, layer width, type of activation function). Start with small models and grow eventually. Try to choose standard model configuration, so one doesn’t have to spend a lot of time tuning model hyper-parameters. Choose a starting optimizer, epoch, and performance metrics.</p>
         <p>Through out this webpage, we will be using ResNet50 model with Adam optimizer trained on CIFAR-10 dataset for 50 epochs as the base case unless specified otherwise.</p>
     </div>
