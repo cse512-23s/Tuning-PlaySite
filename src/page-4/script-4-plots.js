@@ -88,9 +88,9 @@ const pathAdam3 = ga.append("path")
 // X-axis label
 ga.append("text")
   .attr("class", "axis-label")
-  .attr("text-anchor", "middle")
+  .style("text-anchor", "middle")
   .attr("transform", `translate(${widtha / 2}, ${heighta + margina.bottom - 10})`)
-  .text("log10 (LearningRate)");
+  .text("log base10 (LearningRate)");
 
 
 
@@ -103,9 +103,9 @@ ga.append("text")
 
 // Beta 1 label
 ga.append("text")
-  .attr("class", "axis-label")
+  .attr("class", "axis-extralabel")
   .attr("text-anchor", "middle")
-  .attr("transform", `translate(${-margina.left + 10}, ${heighta / 2})rotate(-90)`)
+  .attr("transform", `translate(${-margina.left + 15}, ${heighta / 2})rotate(-90)`)
   .text("Beta1 = 0");
 
 
@@ -247,7 +247,7 @@ gb.append("text")
   .attr("class", "axis-label")
   .attr("text-anchor", "middle")
   .attr("transform", `translate(${widthb / 2}, ${heightb + marginb.bottom - 10})`)
-  .text("log10 (LearningRate)");
+  .text("log base10 (LR)");
 
 // Y-axis label 
 gb.append("text")
@@ -351,7 +351,7 @@ const legendItemsb = legendb.selectAll(".legend-item")
 
     // Set up the SVG
     const svgc = d3.select("#svgccc");
-    const marginc = { top: 20, right: 20, bottom: 40, left: 60 };
+    const marginc = { top: 20, right: 20, bottom: 50, left: 60 };
     const widthc = +svgc.attr("width") - marginc.left - marginc.right;
     const heightc = +svgc.attr("height") - marginc.top - marginc.bottom;
     const gc = svgc.append("g").attr("transform", `translate(${marginc.left}, ${marginc.top})`);
@@ -428,14 +428,14 @@ const legendItemsb = legendb.selectAll(".legend-item")
     gc.append("text")
       .attr("class", "axis-label")
       .attr("text-anchor", "middle")
-      .attr("transform", `translate(${widthc / 2}, ${heightc + marginc.bottom - 10})`)
-      .text("log10 (LearningRate)");
+      .attr("transform", `translate(${widthc / 2}, ${heightc + marginc.bottom - 25})`)
+      .text("log base10 (LR)");
 
    // Epochs label
     gc.append("text")
-    .attr("class", "axis-label")
+    .attr("class", "axis-extralabel")
     .attr("text-anchor", "middle")
-    .attr("transform", `translate(${widthc / 2}, ${heightc + marginc.bottom+2})`)
+    .attr("transform", `translate(${widthc / 2}, ${heightc + marginc.bottom-5})`)
     .text("Epochs = 10");
 
     // Y-axis label
@@ -447,9 +447,9 @@ const legendItemsb = legendb.selectAll(".legend-item")
 
       // Y-axis label : beta1
     gc.append("text")
-    .attr("class", "axis-label")
+    .attr("class", "axis-extralabel")
     .attr("text-anchor", "middle")
-    .attr("transform", `translate(${-marginc.left + 10}, ${heightc / 2})rotate(-90)`)
+    .attr("transform", `translate(${-marginc.left + 15}, ${heightc / 2})rotate(-90)`)
     .text("Beta1 = 0.9");
 
    
@@ -624,14 +624,14 @@ const legendItemsc = legendc.selectAll(".legend-item")
   gd.append("text")
     .attr("class", "axis-label")
     .attr("text-anchor", "middle")
-    .attr("transform", `translate(${widthd / 2}, ${heightd + margind.bottom - 10})`)
-    .text("log10 (LearningRate)");
+    .attr("transform", `translate(${widthd / 2}, ${heightd + margind.bottom - 25})`)
+    .text("log base10 (LR)");
 
     // Epochs label
   gd.append("text")
-  .attr("class", "axis-label")
+  .attr("class", "axis-extralabel")
   .attr("text-anchor", "middle")
-  .attr("transform", `translate(${widthd / 2}, ${heightd + margind.bottom})`)
+  .attr("transform", `translate(${widthd / 2}, ${heightd + margind.bottom-5})`)
   .text("Epochs = 100");
 
   // Y-axis label
