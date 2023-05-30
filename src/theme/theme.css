@@ -16,6 +16,10 @@ body > .main-container-lg {
     max-width: 1000px;
 }
 
+body > .main-container-xl {
+    max-width: 1500px;
+}
+
 
 h1, h2, h3 {
     font-family: 'Open Sans', sans-serif;
