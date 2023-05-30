@@ -65,10 +65,11 @@
             color: #007BFF;
         }
   </style>
+  <link rel="stylesheet" href="../theme/theme.css">
 </head>
 
 <body>
-    <div class="main-container">
+    <div class="main-container-xl">
 
     <h2>4. Need More?</h2>
 
@@ -78,9 +79,12 @@
 
     <script src='https://d3js.org/d3.v4.min.js'></script>
     <script>
-      const width = window.innerWidth,
-          height = window.innerHeight,
-          maxRadius = (Math.min(width, height) / 2) - 5;
+    //   const width = window.innerWidth,
+    //       height = window.innerHeight,
+    //       maxRadius = (Math.min(width, height) / 2) - 5;
+    const size = Math.min(window.innerWidth, window.innerHeight),
+      maxRadius = size / 2 - 5;
+
 
       const formatNumber = d3.format(',d');
 
@@ -128,7 +132,9 @@
       const svg = d3.select('#plot-1').append('svg')
         //   .style('width', '100vw')
         //   .style('height', '100vh')
-          .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
+        //   .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
+        .attr('viewBox', `${-size / 2} ${-size / 2} ${size} ${size}`)
+
           .on('click', () => focusOn()); // Reset zoom on canvas click
 
       d3.json('data.json', (error, root) => {
@@ -163,7 +169,8 @@
               .attr('d', middleArcLine);
 
           const text = newSlice.append('text')
-              .attr('display', d => textFits(d) ? null : 'none');
+              .attr('display', d => textFits(d) ? null : 'none')
+              .style("font-size", "10px");
 
           text.append('textPath')
               .attr('startOffset','50%')
