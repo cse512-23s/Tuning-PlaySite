@@ -28,10 +28,11 @@
     <div id="section-4-plots">
       <div class="row-4-plots">
         <svg id="svga" width="400" height="300"></svg>
-        <svg id="svgb" width="400" height="300"></svg>
+        <svg id="svgccc" width="400" height="300"></svg>
+        
       </div>
       <div class="row-4-plots">
-        <svg id="svgccc" width="400" height="300"></svg>
+        <svg id="svgb" width="400" height="300"></svg>
         <svg id="svgd" width="400" height="300"></svg>
       </div>
     </div>
@@ -39,7 +40,11 @@
     <p>After tuning the nuisance hyperparameters for each hyperparameter independently, we can compare the optimizers.</p>
     <p>Click on the contours to see how different optimizers converge to global minima (left) and local minima (right).</p>
     
-    <div id="plot3"></div>
+    <div id="plot3">
+      <button id="learningRate1" class="button">10e-1</button>
+      <button id="learningRate2" class="button">10e-2</button>
+      <button id="learningRate3" class="button">Best</button>
+    </div>
     
     <p>In this case, Adam works the best as it converges to global minima more often than the other optimizers.</p>
   </div>
