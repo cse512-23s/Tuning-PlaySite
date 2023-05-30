@@ -20,6 +20,7 @@
   <div class="controls">
     <button title="Zoom in on selected data" id="keep-data" disabled="disabled">Zoom</button>
     <button title="Remove selected data" id="exclude-data" disabled="disabled">Remove</button>
+    <button title="Export selected data as CSV" id="export-data">Export</button>
     Selection Count:
     <strong id="rendered-count"></strong>/<strong id="selected-count"></strong>
     <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
@@ -28,13 +29,11 @@
   <br/>
 
   <div id="wrap">
-    <div class="third" id="controls">
+    <div class="third">
       <div class="bright">
-        <br/>
-        <h2>Description</h3>
+        <h2>Description</h2>
         <p>
-          This is a <a href="https://www.analyticsvidhya.com/blog/2021/11/visualize-data-using-parallel-coordinates-plot/#:~:text=A%20Parallel%20coordinates%20plot%20is,and%20parallel%20to%20each%20other."> parallel coordinates</a> explorer of Hyper-parameters tuned for a ResNet50 model on CIFAR-10 dataset. Entire data is available at: 
-          <button title="Export data as CSV" id="export-data">Export</button>
+          There could be many other relationships between hyperparameters, such as how the number of epochs affects validation accuracy and how these two are related to the number of layers. To explore these connections, we have provided a <a href="https://www.analyticsvidhya.com/blog/2021/11/visualize-data-using-parallel-coordinates-plot/#:~:text=A%20Parallel%20coordinates%20plot%20is,and%20parallel%20to%20each%20other."> parallel coordinates</a> explorer of Hyper-parameters tuned for a ResNet model architecture on CIFAR-10 dataset. You can use this tool to find answers to your specific questions.
         </p>
       </div>
       <div class="little-box">
