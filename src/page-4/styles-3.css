@@ -38,3 +38,8 @@
 circle:hover {
   fill-opacity: .3;
 }
+
+#buttons-section1 {
+    display: flex;
+    justify-content: center;
+  }
