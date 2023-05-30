@@ -91,15 +91,6 @@
     stroke-width: 2.5px;
   }
 
-#button-container {
-    display: flex;
-    justify-content: center; /* Horizontally center the buttons */
-    position: absolute;
-    bottom: 250px; /* Adjust the distance from the bottom */
-    left: 50%; /* Move the container to the center horizontally */
-    transform: translateX(-50%);
-}
-
 .button {
     font-family: "Open Sans",Courier, monospace;
     text-align: center;
