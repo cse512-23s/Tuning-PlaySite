@@ -269,19 +269,30 @@ let learning_Rate1 = 2e-2; //default : best
 let learning_Rate2 = 1e-2;
 let learning_Rate3 = 1e-2;
 
-d3.select("#learningRate1")  //sub-optimal
-.on("click", function() {
+d3.select("#learningRate1")
+  .on("click", function() {
+    // Add or remove the 'active' class based on the button state
+    d3.select("#learningRate1").classed("active", true);
+    d3.select("#learningRate2").classed("active", false);
+
+    // Rest of your code
     learning_Rate1 = 10e-1;
     learning_Rate2 = 10e-2;
     learning_Rate3 = 10e-3;
-});
-d3.select("#learningRate2") //optimal
-.on("click", function() {
-    learning_Rate1 = 2e-2;  //sgd
-    learning_Rate2 = 1e-2;  //rms
-    learning_Rate3 = 1e-2;  //adam
-   
-});
+  });
+
+d3.select("#learningRate2")
+  .on("click", function() {
+    // Add or remove the 'active' class based on the button state
+    d3.select("#learningRate1").classed("active", false);
+    d3.select("#learningRate2").classed("active", true);
+
+    // Rest of your code
+    learning_Rate1 = 2e-2;  // sgd
+    learning_Rate2 = 1e-2;  // rms
+    learning_Rate3 = 1e-2;  // adam
+  });
+
 
 
 function minimize(x0,y0) {

@@ -7,39 +7,41 @@
     stroke: black;
 }
 
-.momentum {
+.rmsprop {
     stroke: blue;
 }
 
-.rmsprop {
-    stroke: red;
-}
-
 .adam {
-    stroke: green;
+    stroke: red;
 }
 
 .SGD {
     fill: black;
 }
 
-.Momentum {
+
+.RMSProp {
     fill: blue;
 }
 
-.RMSProp {
-    fill: red;
-}
-
 .Adam {
-    fill: green;
+    fill: red;
 }
 
 circle:hover {
   fill-opacity: .3;
 }
 
-#buttons-section1 {
+#buttons-section {
     display: flex;
     justify-content: center;
   }
+
+.button {
+    font-family: "Open Sans",Courier, monospace;
+    text-align: center;
+}
+
+.button.active {
+  background-color: #999; /* Set the shade color */
+}
