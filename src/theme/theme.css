@@ -12,6 +12,11 @@ body > .main-container {
     max-width: 680px;
 }
 
+body > .main-container-lg {
+    max-width: 1080px;
+}
+
+
 h1, h2, h3 {
     font-family: 'Open Sans', sans-serif;
     margin-top: 1.4em;
