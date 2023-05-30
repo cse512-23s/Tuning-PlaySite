@@ -1,6 +1,6 @@
-var margin = { top: 20, right: 80, bottom: 30, left: 150 },
+var margin = { top: 20, right: 80, bottom: 40, left: 120 },
     width = 750 - margin.left - margin.right,
-    height = 350 - margin.top - margin.bottom;
+    height = 450 - margin.top - margin.bottom;
 
   var x = d3.scaleLinear()
     .range([0, width-80]);
@@ -12,7 +12,7 @@ var margin = { top: 20, right: 80, bottom: 30, left: 150 },
   var y3 = d3.scaleLinear()
     .range([height, 0]);
 
-  var color = d3.scaleOrdinal(d3.schemeCategory10);
+  var color = d3.scaleOrdinal(["#e41a1c","#377eb8","#4daf4a","#984ea3","#ff7f00","#ffff33","#a65628","#f781bf","#999999"]);
 
   var xAxis = d3.axisBottom()
     .scale(x)
@@ -121,7 +121,7 @@ var margin = { top: 20, right: 80, bottom: 30, left: 150 },
         .attr("class", "line sgd-line")
         .style("opacity", 0)
         .style("stroke", function () { return d.color = color(d.key)})
-        .style("stroke-dasharray", "10,3")
+        .style("stroke-dasharray", "12,3")
         .style("stroke-width", 3)
         .attr("id", 'tag' + d.key.replace(/\s+/g, ''))
         .attr("d", femaleLine(d.values));
@@ -130,7 +130,7 @@ var margin = { top: 20, right: 80, bottom: 30, left: 150 },
         .attr("class", "line rmsprop-line")
         .style("opacity", 0)
         .style("stroke", function () { return d.color = color(d.key); })
-        .style("stroke-dasharray", "5 5 1,5")
+        .style("stroke-dasharray", "3,3")
         .style("stroke-width", 3)
         .attr("id", 'tag' + d.key.replace(/\s+/g, ''))
         .attr("d", childline(d.values));
@@ -138,8 +138,8 @@ var margin = { top: 20, right: 80, bottom: 30, left: 150 },
 
       // Add the legend
       svg.append("text")
-        .attr("x", width + margin.right - 70)
-        .attr("y", (i * 40) + margin.top+20)
+        .attr("x", width + margin.right - 100)
+        .attr("y", (i * 45) + margin.top+50)
         .attr("class", "legend")
         .style("fill", function () { return d.color = color(d.key); })
         .on("click", function () {
@@ -191,27 +191,27 @@ var margin = { top: 20, right: 80, bottom: 30, left: 150 },
 svg.append("text")
   .attr("class", "x-axis-label")
   .attr("x", width / 2) // Position in the middle of the x-axis
-  .attr("y", height + margin.bottom - 75) // Adjust the y position as needed
+  .attr("y", height - 3 +margin.bottom) // Adjust the y position as needed
   .style("text-anchor", "middle") // Center the label horizontally
   .text("Epochs");
 
   //learning rate label
   svg.append("text")
   .attr("class", "x-axis-label")
-  .attr("x", width + margin.right - 70) // Position in the middle of the x-axis
+  .attr("x", width + margin.right - 100) // Position in the middle of the x-axis
   .attr("y", margin.top-20) // Adjust the y position as needed
   .style("text-anchor", "middle") // Center the label horizontally
   .text("Learning Rates")
   .append("tspan")
-  .attr("x", width + margin.right - 70)
-  .attr("dy", "1.2em")
+  .attr("x", width + margin.right - 100)
+  .attr("dy", "1.5em")
   .text("(Hover or Click)");
 
   //y-axis label
   svg.append("text")
     .attr("class", "y-axis-label")
     .attr("x", -(height / 2)) // Position in the middle of the y-axis, but adjust x position negatively to rotate text
-    .attr("y", -margin.left + 100) // Adjust the y position as needed
+    .attr("y", -margin.left+70) // Adjust the y position as needed
     .attr("dy", "0.71em")
     .style("text-anchor", "middle")
     .attr("transform", "rotate(-90)") // Rotate the label to be vertical
@@ -268,6 +268,13 @@ function clear() {
   svg.selectAll(".sgd-line").style("opacity", 0);
   svg.selectAll(".rmsprop-line").style("opacity", 0);
 }
+
+// Get the Adam button element
+const adamButton = document.getElementById('viewAdam');
+
+// Add the "clicked" class to the Adam button by default
+adamButton.classList.add('clicked');
+
 
 // Get all buttons with the class "button"
 const buttons = document.querySelectorAll('.button');
