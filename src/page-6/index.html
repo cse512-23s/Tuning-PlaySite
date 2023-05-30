@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Tuning PlaySite</title>
+    <link id="css-link" rel="stylesheet" type="text/css" href="parallel.css" />
+  </head>
+  <body class="">
+  <body>
+  <h1>5. Everything Everywhere All at Once</h1>
+      
+  <div id="chart">
+    <canvas id="background"></canvas>
+    <canvas id="foreground"></canvas>
+    <canvas id="highlight"></canvas>
+    <svg></svg>
+  </div>
+  <br/>
+  <div class="controls">
+    <button title="Zoom in on selected data" id="keep-data" disabled="disabled">Zoom</button>
+    <button title="Remove selected data" id="exclude-data" disabled="disabled">Remove</button>
+    Selection Count:
+    <strong id="rendered-count"></strong>/<strong id="selected-count"></strong>
+    <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
+    <div style="clear:both;"></div>
+  </div>
+  <br/>
+
+  <div id="wrap">
+    <div class="third" id="controls">
+      <div class="bright">
+        <br/>
+        <h2>Description</h3>
+        <p>
+          This is a <a href="https://www.analyticsvidhya.com/blog/2021/11/visualize-data-using-parallel-coordinates-plot/#:~:text=A%20Parallel%20coordinates%20plot%20is,and%20parallel%20to%20each%20other."> parallel coordinates</a> explorer of Hyper-parameters tuned for a ResNet50 model on CIFAR-10 dataset. Entire data is available at: 
+          <button title="Export data as CSV" id="export-data">Export</button>
+        </p>
+      </div>
+      <div class="little-box">
+        <h2>Exploration Guide</h3>
+        <p>
+          Hover over the viz, buttons and labels to view controls.<br/>
+          <p>
+            <a href="https://eagereyes.org/techniques/parallel-coordinates#brushing">Brush</a> the visualization to update other charts on this page.
+          </p>
+          <strong>Brush</strong>: Drag vertically along an axis.<br/>
+          <strong>Remove Brush</strong>: Tap the axis background.<br/>
+          <strong>Reorder Axes</strong>: Drag an axis label horizontally.<br/>
+          <strong>Remove Axis</strong>: Drag an axis to left/right ends<br/>
+          <strong>Reset Visualization</strong>: Refresh webpage.<br/>
+
+        </p>
+      </div>
+      <div class="little-box">
+        <h2>References</h4>
+          <p>
+          Adapted from examples by <a href="https://gist.github.com/mbostock/1341021">Mike Bostock </a>, <a href="https://d3-graph-gallery.com/parallel.html">D3 Gallery</a> and <a href="https://gist.github.com/syntagmatic/482706e0638c67836d94b20f0cb37122">Kai Chang</a>.
+          </p>
+        </p>
+      </div>
+    </div>    
+    <div  class="third">
+      <h3>Optimizer (Select to View)</h3>
+      <p id="legend">
+      </p>
+    </div>
+    <div class="third">
+      <h3>Hyper-Parameters (Search) <input type="text" id="search" placeholder="Opt, NumLay, Epo, BS, LR"></input></h3>
+      <p id="sample-list">
+      </p>
+    </div>
+
+  </div>
+  </body>
+  <script src="https://d3js.org/d3.v2.js"></script>
+  <script src="https://underscorejs.org/underscore.js"></script>
+  <script src="script.js"></script>
+  
+  <!-- Force CSS reload -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var cssLink = document.getElementById("css-link");
+      var timestamp = new Date().getTime();
+      cssLink.href = cssLink.href + "?v=" + timestamp;
+    });
+  </script>
+  
+</html>

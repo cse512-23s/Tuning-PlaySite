@@ -1,223 +1,56 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-      .slice {
-          cursor: pointer;
-      }
-
-      .slice .main-arc {
-          stroke: #fff;
-          stroke-width: 1px;
-      }
-
-      .slice .hidden-arc {
-          fill: none;
-      }
-
-      .slice text {
-          pointer-events: none;
-          dominant-baseline: middle;
-          text-anchor: middle;
-      }
-
-      body {
-            font-family: 'Merriweather', serif;
-            color: #444;
-            padding: 2em 8em;
-            line-height: 1.58;
-            letter-spacing: 0.003em;
-        }
-        h1, h2, h3 {
-            font-family: 'Open Sans', sans-serif;
-            margin-top: 1.4em;
-            color: #333;
-        }
-        h1 {
-            font-size: 2em;
-            line-height: 1.3;
-            margin-bottom: 0.3em;
-        }
-        h2 {
-            font-size: 1.5em;
-        }
-        h3 {
-            font-size: 1.3em;
-        }
-        p {
-            margin-bottom: 1.3em;
-            color: #404040;
-            font-size: 1.1em;
-        }
-        a {
-            color: #1ca784;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        ol {
-            margin-left: 1em;
-        }
-        ol li {
-            margin-bottom: 0.5em;
-        }
-        .highlight {
-            color: #007BFF;
-        }
-  </style>
-
-<body>
-    <h1>4. Few More Tips</h1>
-
-    <p>There are a plethora of hyperparameters that can be tuned to increase performance of our model. Discussing about all of them is a hard task. So we provided a sunburst diagram of common hyperparameters in a supervised problem along with commonly preferred values/options for each.</p>
-    <p>Click a node to zoom in, click the center to zoom out one level and click the empty canvas to come back to default view. </p>
-    <div id="plot-1"></div>
-</body>
-
-  <script src='https://d3js.org/d3.v4.min.js'></script>
+  <title>Tuning PlaySite.js</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <link rel="stylesheet" href="styles-3.css">
+  <link rel="stylesheet" href="styles-4-plots.css">
+  <link rel="stylesheet" href="../theme/theme.css">
 </head>
 <body>
-  <script>
-      const width = window.innerWidth,
-          height = window.innerHeight,
-          maxRadius = (Math.min(width, height) / 2) - 5;
+  <div>
+    <h1>Title Text</h1>
+    <p>Paragraph text goes here</p>
 
-      const formatNumber = d3.format(',d');
+    <div class="slider-container">
+      <div class="slider">
+        <div class="beta2-text">Beta 2</div>
+        <input type="range" min="0" max="2" value="1" step="1" id="mySlider">
+        <div class="slider-labels">
+          <span class="label-left">0.99</span>
+          <span class="label-middle">0.999</span>
+          <span class="label-right">0.9999</span>
+        </div>
+      </div>
+    </div>
+    
+    <div id="section-4-plots">
+      <div class="row-4-plots">
+        <svg id="svga" width="400" height="300"></svg>
+        <svg id="svgb" width="400" height="300"></svg>
+      </div>
+      <div class="row-4-plots">
+        <svg id="svgccc" width="400" height="300"></svg>
+        <svg id="svgd" width="400" height="300"></svg>
+      </div>
+    </div>
+    
+    <h1>Title Text</h1>
+    <p>Paragraph text goes here</p>
+    
+    <div id="plot3"></div>
+    
+    <h1>Title Text</h1>
+    <p>Paragraph text goes here</p>
+  </div>
+  
+  <script src="https://d3js.org/d3-contour.v1.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>  
+  <script src="script-4-plots.js"></script>
+  <script src="script-3.js"></script>
 
-      const x = d3.scaleLinear()
-          .range([0, 2 * Math.PI])
-          .clamp(true);
 
-      const y = d3.scaleSqrt()
-          .range([maxRadius*.1, maxRadius]);
-
-      const color = d3.scaleOrdinal(["#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#fccde5","#d9d9d9","#bc80bd","#ccebc5","#ffed6f"]);
-
-      const partition = d3.partition();
-
-      const arc = d3.arc()
-          .startAngle(d => x(d.x0))
-          .endAngle(d => x(d.x1))
-          .innerRadius(d => Math.max(0, y(d.y0)))
-          .outerRadius(d => Math.max(0, y(d.y1)));
-
-      const middleArcLine = d => {
-          const halfPi = Math.PI/2;
-          const angles = [x(d.x0) - halfPi, x(d.x1) - halfPi];
-          const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
-
-          const middleAngle = (angles[1] + angles[0]) / 2;
-          const invertDirection = middleAngle > 0 && middleAngle < Math.PI; // On lower quadrants write text ccw
-          if (invertDirection) { angles.reverse(); }
-
-          const path = d3.path();
-          path.arc(0, 0, r, angles[0], angles[1], invertDirection);
-          return path.toString();
-      };
-
-      const textFits = d => {
-          const CHAR_SPACE = 6;
-
-          const deltaAngle = x(d.x1) - x(d.x0);
-          const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
-          const perimeter = r * deltaAngle;
-
-          return d.data.name.length * CHAR_SPACE < perimeter;
-      };
-
-      const svg = d3.select('#plot-1').append('svg')
-        //   .style('width', '100vw')
-        //   .style('height', '100vh')
-          .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
-          .on('click', () => focusOn()); // Reset zoom on canvas click
-
-      d3.json('data.json', (error, root) => {
-          if (error) throw error;
-
-          root = d3.hierarchy(root);
-          root.sum(d => d.size);
-
-          const slice = svg.selectAll('g.slice')
-              .data(partition(root).descendants());
-
-          slice.exit().remove();
-
-          const newSlice = slice.enter()
-              .append('g').attr('class', 'slice')
-              .on('click', d => {
-                  d3.event.stopPropagation();
-                  focusOn(d);
-              });
-
-          newSlice.append('title')//tooltip
-              .text(d => d.data.tooltip);
-
-          newSlice.append('path')
-              .attr('class', 'main-arc')
-              .style('fill', d => color((d.children ? d : d.parent).data.name))
-              .attr('d', arc);
-
-          newSlice.append('path')
-              .attr('class', 'hidden-arc')
-              .attr('id', (_, i) => `hiddenArc${i}`)
-              .attr('d', middleArcLine);
-
-          const text = newSlice.append('text')
-              .attr('display', d => textFits(d) ? null : 'none');
-
-          text.append('textPath')
-              .attr('startOffset','50%')
-              .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
-              .text(d => d.data.name);
-      });
-
-      function focusOn(d = { x0: 0, x1: 1, y0: 0, y1: 1 }) {
-          // Reset to top-level if no data point specified
-
-          const transition = svg.transition()
-              .duration(750)
-              .tween('scale', () => {
-                  const xd = d3.interpolate(x.domain(), [d.x0, d.x1]),
-                      yd = d3.interpolate(y.domain(), [d.y0, 1]);
-                  return t => { x.domain(xd(t)); y.domain(yd(t)); };
-              });
-
-          transition.selectAll('path.main-arc')
-              .attrTween('d', d => () => arc(d));
-
-          transition.selectAll('path.hidden-arc')
-              .attrTween('d', d => () => middleArcLine(d));
-
-          transition.selectAll('text')
-              .attrTween('display', d => () => textFits(d) ? null : 'none');
-
-          moveStackToFront(d);
-
-          //
-
-          function moveStackToFront(elD) {
-              svg.selectAll('.slice').filter(d => d === elD)
-                  .each(function(d) {
-                      this.parentNode.appendChild(this);
-                      if (d.parent) { moveStackToFront(d.parent); }
-                  })
-          }
-      }
-  </script>
-
-<body>
-    <h3>A Better Strategy</h3>
-
-    <p>When you choose a hyperparameter to tune, try to categorize that hyperparameter into scientific, nuisance or fixed hyperparameter.
-    </p>
-    <p>All hyperparameters will come under any one of the above-mentioned categories. Scientific hyperparameters are those whose effect on the model's performance we're trying to measure. These hyperparameters are often the ones that we want to tune to achieve better performance. For instance, in a deep learning model, the number of layers, the learning rate, and the batch size can all be scientific hyperparameters.</p>
-    <p>Nuisance hyperparameters are those that are not of direct interest to us but need to be optimized to fairly compare different values of the scientific hyperparameters. 
-        Nuisance hyperparameters are often chosen to make sure that the comparison of different scientific hyperparameters is as fair as possible. For example, if our goal is to "determine whether a model with more hidden layers will reduce validation error", then the number of hidden layers is a scientific hyperparameter. The learning rate is a nuisance hyperparameter because we can only fairly compare models with different numbers of hidden layers if the learning rate is tuned separately for each number of layers. So for each hidden layer, we find the best learning rate and then compare different hidden layers.
-        </p>
-    <p>Fixed hyperparameters are those whose values are set and do not change during the experiments. These hyperparameters are often chosen because they do not significantly affect the model's performance or because we want to fix their values to ensure consistency across different experiments. An example of a fixed hyperparameter is the random seed used to initialize the model's weights.</p>
-    <p>This is the biggest challenge. For example, we start with fixing epoch size. Then we experiment to find the best optimizer and find Adam is best. But SGD might have been best with a different epoch. So often we are constrained by time and computing. So fix the hyperparameters to compare others. But we should always ask the question, Is the best hyperparameter in the previous experiment sensitive to current scientific hyperparameters?</p>
-    <p>In the simplest case, we would make a separate study for each configuration of the scientific parameters, where each study tunes over the nuisance hyperparameters.
-        For example, if our goal is to select the best optimizer out of Nesterov momentum and Adam, we could create one study in which optimizer="Nesterov_momentum" and the nuisance hyperparameters are {learning_rate, momentum}, and another study in which optimizer="Adam" and the nuisance hyperparameters are {learning_rate, beta1, beta2, epsilon}. We would compare the two optimizers by selecting the best-performing trial from each study.
-        </p>
+ 
 </body>
-</body>
+</html>

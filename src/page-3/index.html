@@ -1,44 +1,47 @@
 <!DOCTYPE html>
-<html>
 <head>
-    <title>Three Iframes</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        .row {
-            display: flex;
-            flex-direction: row;
-            flex: 1;
-        }
-        iframe {
-            flex: 1;
-            border: none;
-            /* width: 100%; */
-            height: 100%;
-        }
-        #plot1 {
-            flex: 1;
-        }
-        #plot2 {
-            flex: 1;
-        }
-
-        #plot3 {
-            height: max-content;
-        }
-    </style>
+  <meta charset="utf-8">
+  <title>Tuning-PlaySite</title>
+  <link rel="stylesheet" href="animate.css">
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../theme/theme.css">
 </head>
 <body>
-    <!-- <div class="row"> -->
-        <iframe id="plot1" src="plot1.html"></iframe>
-        <iframe id="plot2" src="plot2.html"></iframe>
-    <!-- </div> -->
-    <iframe id="plot3" src="plot3.html"></iframe>
+    <div class="main-container">
+        <div>
+            <header>
+                <h1>Learning Rate Tuning for Optimizer</h1>
+                <h3>Hover to Explore / Click to Compare Learning Rates</h3>
+            </header>
+        </div>
+
+
+        <div class="box-container">
+            <div class="box" id="box">
+                <span>&#x2501&#x2501 Adam</span>
+                <span>&#x25aa&#x25aa&#x25aa&#x25aa RMSprop</span>
+                <span>&#x2505&#x2505 SGD</span>
+            </div>
+        </div>
+        <div class="area-row-container">
+            <div class="area-row">
+                
+                <div id="area1"></div>
+            </div>
+        </div>
+        <div id="buttons-section"></div>
+
+        <h1>Title Text</h1>
+        <p>Paragraph text goes here</p>
+
+        <div id="tooltip" class="hidden">
+            <p><strong>Description</strong></p>
+            <p><span id="value">description</span></p>
+        </div>
+    </div>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -10,6 +10,7 @@ var myFrame = document.getElementById('myFrame');
       "src/page-3/index.html",
       "src/page-4/index.html",
       "src/page-5/index.html",
+      "src/page-6/index.html",
     ];
     var pageIndex = 0;
 
