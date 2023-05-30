@@ -88,7 +88,17 @@ ga.append("text")
   .attr("class", "axis-label")
   .attr("text-anchor", "middle")
   .attr("transform", `translate(${widtha / 2}, ${heighta + margina.bottom - 10})`)
-  .text("Alpha Epochs10, Beta1 = 0");
+  .text("log10(" + "\u03B1" + ")");
+
+// Add the caption
+ga.append("text")
+.attr("class", "caption")
+// .attr("text-anchor", "middle")
+// .attr("transform", `translate(${widtha / 2}, ${heighta + margina.bottom - 10})`)
+.attr("x", widtha - 10) // Adjust the position as needed
+.attr("y", 10) // Adjust the position as needed
+.style("text-anchor", "middle")
+.text("Epochs 10 Beta1=0");
 
 // Y-axis label
 ga.append("text")
@@ -109,40 +119,6 @@ ga.append("g")
   .attr("class", "y-axis")
   .call(yAxisa);
 
-// Slider functionality
-// const slider = d3.select("#mySlider");
-// const sliderValue = d3.select("#sliderValue");
-// slider.on("input", function() {
-//   const value = +this.value;
-//   sliderValue.text(value === 0 ? "0.99" : value === 1 ? "0.999" : "0.9999");
-
-//   // Show/hide line plots based on slider position
-//   if (value === 0) {
-//     //alert("0");
-//     pathRMS1.style("display", "block");
-//     pathAdam1.style("display", "block");
-//     pathRMS2.style("display", "none");
-//     pathAdam2.style("display", "none");
-//     pathRMS3.style("display", "none");
-//     pathAdam3.style("display", "none");
-//   } else if (value === 1) {
-//     //alert("1");
-//     pathRMS1.style("display", "none");
-//     pathAdam1.style("display", "none");
-//     pathRMS2.style("display", "block");        
-//     pathAdam2.style("display", "block");
-//     pathRMS3.style("display", "none");
-//     pathAdam3.style("display", "none");
-//   } else {
-//     //alert("2");
-//     pathRMS1.style("display", "none");
-//     pathAdam1.style("display", "none");
-//     pathRMS2.style("display", "none");
-//     pathAdam2.style("display", "none");
-//     pathRMS3.style("display", "block");
-//     pathAdam3.style("display", "block");
-//   }
-// });
 
 // Define legend data
 const legendData = [
@@ -163,32 +139,32 @@ const legendItemsa = legenda.selectAll(".legend-item")
 .attr("class", "legend-item")
 .attr("transform", (d, i) => `translate(0, ${i * 20})`); // Adjust the vertical spacing as needed
 
-// Add legend lines
-legendItemsa.append("line")
-.attr("x1", 0)
-.attr("y1", 5)
-.attr("x2", 20)
-.attr("y2", 5)
-.style("stroke", d => d.color)
-.style("stroke-width", 2);
+// // Add legend lines
+// legendItemsa.append("line")
+// .attr("x1", 0)
+// .attr("y1", 5)
+// .attr("x2", 20)
+// .attr("y2", 5)
+// .style("stroke", d => d.color)
+// .style("stroke-width", 2);
 
 // Add legend labels
-legendItemsa.append("text")
-.attr("x", 25)
-.attr("y", 9)
-.text(d => d.label)
-.style("font-family", "sans-serif")
-.style("font-size", "12px");
+// legendItemsa.append("text")
+// .attr("x", 25)
+// .attr("y", 9)
+// .text(d => d.label)
+// .style("font-family", "sans-serif")
+// .style("font-size", "12px");
 
 //////////////script-2b////////////////
 
 const alphab = [-4.5, -4, -3.5, -3, -2.9, -2.5, -2];
-const rms1b =  [123, 105, 100,  98, 140, 140, 140];
-const adam1b = [123, 105, 100,  98, 107, 140, 140];
+const rms1b =  [123, 105, 100,  100, 140, 140, 140];
+const adam1b = [117, 109, 102,  104, 107, 140, 140];
 const rms2b =  [123, 105, 100,  140, 140, 140, 140];
-const adam2b = [123, 105, 100,  98, 107, 140, 140];
+const adam2b = [123, 105, 100,  100, 107, 140, 140];
 const rms3b =  [117, 110, 140, 140, 140, 140, 140];
-const adam3b = [123, 105, 100,  98, 107, 140, 140];
+const adam3b = [125, 103, 101,  101, 107, 140, 140];
 
 // Set up the SVG
 const svgb = d3.select("#svgb");
@@ -271,7 +247,7 @@ gb.append("text")
   .attr("transform", `translate(${widthb / 2}, ${heightb + marginb.bottom - 10})`)
   .text("Alpha Epochs100 Beta1=0");
 
-// Y-axis label
+// Y-axis label 
 gb.append("text")
   .attr("class", "axis-label")
   .attr("text-anchor", "middle")
@@ -345,31 +321,31 @@ const legendItemsb = legendb.selectAll(".legend-item")
 .attr("transform", (d, i) => `translate(0, ${i * 20})`); // Adjust the vertical spacing as needed
 
 // Add legend lines
-legendItemsb.append("line")
-.attr("x1", 0)
-.attr("y1", 5)
-.attr("x2", 20)
-.attr("y2", 5)
-.style("stroke", d => d.color)
-.style("stroke-width", 2);
+// legendItemsb.append("line")
+// .attr("x1", 0)
+// .attr("y1", 5)
+// .attr("x2", 20)
+// .attr("y2", 5)
+// .style("stroke", d => d.color)
+// .style("stroke-width", 2);
 
-// Add legend labels
-legendItemsb.append("text")
-.attr("x", 25)
-.attr("y", 9)
-.text(d => d.label)
-.style("font-family", "sans-serif")
-.style("font-size", "12px");
+// // Add legend labels
+// legendItemsb.append("text")
+// .attr("x", 25)
+// .attr("y", 9)
+// .text(d => d.label)
+// .style("font-family", "sans-serif")
+// .style("font-size", "12px");
 
 /////////////////script 2c/////////////////
 
     const alphac = [-3.8, -3.6, -3.5, -3, -2.8, -2.5, -2.3, -2, -1.9];
     const rms1c =  [140, 140, 130, 110, 140, 140, 140, 140, 140];
-    const adam1c = [140, 140, 128, 110, 108, 103, 140, 140, 140];
+    const adam1c = [140, 140, 123, 110, 106, 117, 140, 140, 140];
     const rms2c =  [140, 140, 138, 140, 140, 140, 140, 140, 140];
-    const adam2c = [140, 140, 123, 110, 113, 140, 140, 140, 140];
+    const adam2c = [140, 140, 120, 110, 105, 118, 140, 140, 140];
     const rms3c =  [140, 140, 140, 140, 140, 140, 140, 140, 140];
-    const adam3c = [140, 140, 123, 110, 111, 115, 118, 122, 140];
+    const adam3c = [140, 140, 140, 120, 110, 105, 118, 140, 140];
 
     // Set up the SVG
     const svgc = d3.select("#svgccc");
@@ -526,31 +502,31 @@ const legendItemsc = legendc.selectAll(".legend-item")
   .attr("transform", (d, i) => `translate(0, ${i * 20})`); // Adjust the vertical spacing as needed
 
 // Add legend lines
-legendItemsc.append("line")
-  .attr("x1", 0)
-  .attr("y1", 5)
-  .attr("x2", 20)
-  .attr("y2", 5)
-  .style("stroke", d => d.color)
-  .style("stroke-width", 2);
+// legendItemsc.append("line")
+//   .attr("x1", 0)
+//   .attr("y1", 5)
+//   .attr("x2", 20)
+//   .attr("y2", 5)
+//   .style("stroke", d => d.color)
+//   .style("stroke-width", 2);
 
-// Add legend labels
-legendItemsc.append("text")
-  .attr("x", 25)
-  .attr("y", 9)
-  .text(d => d.label)
-  .style("font-family", "sans-serif")
-  .style("font-size", "12px");
+// // Add legend labels
+// legendItemsc.append("text")
+//   .attr("x", 25)
+//   .attr("y", 9)
+//   .text(d => d.label)
+//   .style("font-family", "sans-serif")
+//   .style("font-size", "12px");
 
   ////////////////script 2d///////////
 
   const alphad = [-3.8, -3.6, -3.5, -3, -2.8, -2.5, -2.3, -2, -1.9];
   const rms1d =  [140, 140, 130, 110, 140, 140, 140, 140, 140];
-  const adam1d = [140, 140, 128, 110, 108, 103, 140, 140, 140];
+  const adam1d = [117, 109, 102,  104, 107, 140, 140];
   const rms2d =  [140, 140, 138, 140, 140, 140, 140, 140, 140];
-  const adam2d = [140, 140, 123, 110, 113, 140, 140, 140, 140];
+  const adam2d = [123, 105, 100,  100, 107, 140, 140];
   const rms3d =  [140, 140, 140, 140, 140, 140, 140, 140, 140];
-  const adam3d = [140, 140, 123, 110, 111, 115, 118, 122, 140];
+  const adam3d = [120, 103, 101,  100, 107, 110, 140];
 
   // Set up the SVG
   const svgd = d3.select("#svgd");
@@ -772,18 +748,18 @@ const legendItemsd = legendd.selectAll(".legend-item")
 .attr("transform", (d, i) => `translate(0, ${i * 20})`); // Adjust the vertical spacing as needed
 
 // Add legend lines
-legendItemsd.append("line")
-.attr("x1", 0)
-.attr("y1", 5)
-.attr("x2", 20)
-.attr("y2", 5)
-.style("stroke", d => d.color)
-.style("stroke-width", 2);
+// legendItemsd.append("line")
+// .attr("x1", 0)
+// .attr("y1", 5)
+// .attr("x2", 20)
+// .attr("y2", 5)
+// .style("stroke", d => d.color)
+// .style("stroke-width", 2);
 
-// Add legend labels
-legendItemsd.append("text")
-.attr("x", 25)
-.attr("y", 9)
-.text(d => d.label)
-.style("font-family", "sans-serif")
-.style("font-size", "12px");
+// // Add legend labels
+// legendItemsd.append("text")
+// .attr("x", 25)
+// .attr("y", 9)
+// .text(d => d.label)
+// .style("font-family", "sans-serif")
+// .style("font-size", "12px");
