@@ -85,9 +85,9 @@ function_g.selectAll("path")
 /*
  * Set up buttons
  */
-var draw_bool = {"SGD" : true, "Momentum" : true, "RMSProp" : true, "Adam" : true};
+var draw_bool = {"SGD" : true, "RMSProp" : true, "Adam" : true};
 
-var buttons = ["SGD", "Momentum", "RMSProp", "Adam"];
+var buttons = ["SGD", "RMSProp", "Adam"];
 
 menu_g.append("rect")
       .attr("x", 0)
@@ -262,23 +262,45 @@ function mousedown() {
     minimize(scale_x(point[0]), scale_y(point[1]));
 }
 
+let learning_Rate1 = 2e-2;
+let learning_Rate2 = 1e-2;
+let learning_Rate3 = 1e-2;
+
+d3.select("#learningRate1")
+.on("click", function() {
+    learning_Rate1 = 10e-1;
+    
+});
+d3.select("#learningRate2")
+.on("click", function() {
+    learning_Rate1 = 10e-2;
+   
+});
+d3.select("#learningRate3")
+.on("click", function() {
+    learning_Rate1 = 2e-2;  //sgd
+    learning_Rate2 = 1e-2;  //rms
+    learning_Rate3 = 1e-2;  //adam
+   
+});
+
 function minimize(x0,y0) {
     gradient_path_g.selectAll("path").remove();
 
     if (draw_bool.SGD) {
-        var sgd_data = get_sgd_path(x0, y0, 2e-2, 500);
+        var sgd_data = get_sgd_path(x0, y0, learning_Rate1, 500);
         draw_path(sgd_data, "sgd");
     }
-    if (draw_bool.Momentum) {
-        var momentum_data = get_momentum_path(x0, y0, 1e-2, 200, 0.8);
-        draw_path(momentum_data, "momentum");
-    }
+    // if (draw_bool.Momentum) {
+    //     var momentum_data = get_momentum_path(x0, y0, 1e-2, 200, 0.8);
+    //     draw_path(momentum_data, "momentum");
+    // }
     if (draw_bool.RMSProp) {
-        var rmsprop_data = get_rmsprop_path(x0, y0, 1e-2, 300, 0.99, 1e-6);
+        var rmsprop_data = get_rmsprop_path(x0, y0, learning_Rate2, 300, 0.99, 1e-6);
         draw_path(rmsprop_data, "rmsprop");
     }
     if (draw_bool.Adam) {
-        var adam_data = get_adam_path(x0, y0, 1e-2, 100, 0.7, 0.999, 1e-6);
+        var adam_data = get_adam_path(x0, y0, learning_Rate3, 100, 0.7, 0.999, 1e-6);
         draw_path(adam_data, "adam");
     }
 }
