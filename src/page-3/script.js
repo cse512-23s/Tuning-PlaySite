@@ -51,12 +51,46 @@ var margin = { top: 20, right: 80, bottom: 30, left: 150 },
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var div = d3.select("text").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
+  // var div = d3.select("text").append("div")
+  //   .attr("class", "tooltip")
+  //   .style("opacity", 0);
+
+   // create a tooltip  //////////////////////
+// var Tooltip = d3.select("#area1")
+// .append("div")
+// .style("opacity", 0)
+// .attr("class", "tooltip")
+// .style("background-color", "blue")
+// .style("border", "solid")
+// .style("border-width", "2px")
+// .style("border-radius", "5px")
+// .style("padding", "5px");
+
+// // Three function that change the tooltip when user hover / move / leave a cell
+// var mouseovers = function(d) {
+// Tooltip
+//   .style("opacity", 1)
+// d3.select(this)
+//   .style("stroke", "black")
+//   .style("opacity", 1)
+// }
+// var mousemove = function(d) {
+//   //alert("in mouce mocve");
+// Tooltip
+//   .html("The exact value of<br>this cell is: " + 13)
+//   .style("left", (d3.mouse(this)[0]+70) + "px")
+//   .style("top", (d3.mouse(this)[1]) + "px")
+// }
+// var mouseleave = function(d) {
+// Tooltip
+//   .style("opacity", 0)
+// d3.select(this)
+//   .style("stroke", "none")
+//   .style("opacity", 0.8)
+// }
 
   // Get the data
-  d3.tsv("Optimizer_Data.tsv", function (error, data) {
+  d3.tsv("page3.tsv", function (error, data) {
     data.forEach(function (d) {
       d.Epochs = +d.Epochs;
       d.Adam_loss = +d.Adam_loss;
@@ -64,7 +98,7 @@ var margin = { top: 20, right: 80, bottom: 30, left: 150 },
       d.RMSprop_loss = +d.RMSprop_loss;
     });
 
-    x.domain([0, 150])
+    x.domain([0, 50])
     y.domain([0, 5]);
 
     // Nest the entries by event
@@ -85,8 +119,7 @@ var margin = { top: 20, right: 80, bottom: 30, left: 150 },
 
       svg.append("path")
         .attr("class", "line sgd-line")
-        .style("opacity", 1)
-        .style("stroke", "dimgray") // Set initial color to dim gray
+        .style("opacity", 0)
         .style("stroke", function () { return d.color = color(d.key)})
         .style("stroke-dasharray", "10,3")
         .style("stroke-width", 3)
@@ -95,7 +128,7 @@ var margin = { top: 20, right: 80, bottom: 30, left: 150 },
 
       svg.append("path")
         .attr("class", "line rmsprop-line")
-        .style("opacity", 1)
+        .style("opacity", 0)
         .style("stroke", function () { return d.color = color(d.key); })
         .style("stroke-dasharray", "5 5 1,5")
         .style("stroke-width", 3)
@@ -150,6 +183,7 @@ var margin = { top: 20, right: 80, bottom: 30, left: 150 },
           }
         })
         .text(d.key);
+        
     });
 
    
@@ -224,7 +258,7 @@ function viewSGD() {
 }
 
 function viewAll() {
-  svg.selectAll(".adam-line").style("opacity", 1);
+  svg.selectAll(".adam-line").style("opacity", 1);  
     svg.selectAll(".sgd-line").style("opacity", 1);
     svg.selectAll(".rmsprop-line").style("opacity", 1);
 }
@@ -274,3 +308,4 @@ d3.select("#viewRMSprop").on("click", viewRMSprop);
 d3.select("#viewSGD").on("click", viewSGD);
 d3.select("#viewAll").on("click", viewAll);
 d3.select("#clear").on("click", clear);
+
