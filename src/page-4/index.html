@@ -11,7 +11,7 @@
 <body>
   <div class="main-container-lg">
     <h2>2. Choosing Optimizer</h2>
-    <p>So, we need to tune individual nuisance hyperparameters first before comparing optimizers. As an example, we will choose Adam as it is the most popular choice of hyperparameters. Below is a visual representation of tuning Adam with nuisance hyperparameters beta1 and beta2 along with fixed hyperparameter of epochs at 10 and 100.</p>
+    <p>As seen in previous page, individual nuisance hyperparameters need to be tuned before comparing optimizers. As an example, consider the most popular optimizer :  Adam. Below is a visual representation of tuning Adam with nuisance hyperparameters beta1 and beta2 along with fixed hyperparameter of Epochs at 10 and 100.</p>
 
     <div class="slider-container">
       <div class="slider">
@@ -49,7 +49,7 @@
     
     </div>
     
-    <p>In this case, Adam works the best as it converges to global minima more often than the other optimizers.</p>
+    <p>As seen above, there is more oscillation at sub-optimal choice of parameters whereas at optimal parameters, Adam works the best as it converges to global minima more often than the other optimizers.</p>
   </div>
   
   <script src="https://d3js.org/d3-contour.v1.min.js"></script>
