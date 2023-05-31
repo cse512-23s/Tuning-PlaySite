@@ -42,6 +42,12 @@ p {
     color: #404040;
     font-size: 1.1em;
 }
+.custom-line {
+    font-size: 0.8em;
+    font-style: italic;
+    color: #404040;
+}
+
 a {
     color: #1ca784;
     text-decoration: none;

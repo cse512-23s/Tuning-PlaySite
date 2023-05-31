@@ -10,8 +10,8 @@
 </head>
 <body>
   <div class="main-container-lg">
-    <h2>3. Choosing Optimizer</h2>
-    <p>So, we need to tune individual nuisance hyperparameters first before comparing optimizers. As an example, we will choose Adam as it is the most popular choice of hyperparameters. Below is a visual representation of tuning Adam.</p>
+    <h2>2. Choosing Optimizer</h2>
+    <p>As seen in previous page, individual nuisance hyperparameters need to be tuned before comparing optimizers. As an example, consider the most popular optimizer: Adam. Below is a visual representation of tuning Adam with nuisance hyperparameters beta1 and beta2 along with fixed hyperparameter of Epochs at 10 and 100.</p>
 
     <div class="slider-container">
       <div class="slider">
@@ -27,21 +27,28 @@
     
     <div id="section-4-plots">
       <div class="row-4-plots">
-        <svg id="svga" width="400" height="300"></svg>
-        <svg id="svgb" width="400" height="300"></svg>
+        <svg id="svga" width="350" height="250"></svg>
+        <svg id="svgccc" width="350" height="250"></svg>
+        
       </div>
       <div class="row-4-plots">
-        <svg id="svgccc" width="400" height="300"></svg>
-        <svg id="svgd" width="400" height="300"></svg>
+        <svg id="svgb" width="350" height="250"></svg>
+        <svg id="svgd" width="350" height="250"></svg>
       </div>
-    </div>
-    
+    </div><p><span class="custom-line">LR*=log<sub>10</sub> (Learning Rate)</span></p>
+    <br>
     <p>After tuning the nuisance hyperparameters for each hyperparameter independently, we can compare the optimizers.</p>
     <p>Click on the contours to see how different optimizers converge to global minima (left) and local minima (right).</p>
     
     <div id="plot3"></div>
+    <br>
+    <div id="buttons-section">
+      <button id="learningRate1" class="button">Sub-Optimal Parameters</button>
+      <button id="learningRate2" class="button active">Optimal Parameters</button>
     
-    <p>In this case, Adam works the best as it converges to global minima more often than the other optimizers.</p>
+    </div>
+    
+    <p>As seen above, there is more oscillation at sub-optimal choice of parameters whereas at optimal parameters, Adam works the best as it converges to global minima more often than the other optimizers.</p>
   </div>
   
   <script src="https://d3js.org/d3-contour.v1.min.js"></script>

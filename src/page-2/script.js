@@ -137,7 +137,7 @@ svg.append("text")
   .attr("class", "x label")
   .attr("text-anchor", "end")
   .attr("x", width / 2 + margin.right + 20)
-  .attr("y", height +0.5+ margin.bottom)
+  .attr("y", height + margin.bottom)
   .text("Batch size");
 
 // Add Y axis label
