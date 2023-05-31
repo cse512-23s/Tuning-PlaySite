@@ -71,7 +71,7 @@
 <body>
     <div class="main-container-lg">
 
-    <h2>4. Need More?</h2>
+    <h2>3. Need More?</h2>
 
     <p>There is a plethora of hyperparameters that can be further tuned to enhance the performance of our model based on time/computational resources available. 
         Discussing all of them is a challenging task. Therefore, we have included a sunburst diagram illustrating the common hyperparameters in a supervised problem, along with their commonly preferred values/options.  
@@ -87,7 +87,7 @@
     //       height = window.innerHeight,
     //       maxRadius = (Math.min(width, height) / 2) - 5;
     const size = Math.min(window.innerWidth, window.innerHeight),
-      maxRadius = size / 2 - 5;
+      maxRadius = size / 2.5 - 5;
 
 
       const formatNumber = d3.format(',d');
@@ -137,7 +137,7 @@
         //   .style('width', '100vw')
         //   .style('height', '100vh')
         //   .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
-        .attr('viewBox', `${-size / 2} ${-size / 2} ${size} ${size}`)
+        .attr('viewBox', `${-size / 2} ${-size / 2.5} ${size} ${size}`)
 
           .on('click', () => focusOn()); // Reset zoom on canvas click
 
@@ -174,7 +174,7 @@
 
           const text = newSlice.append('text')
               .attr('display', d => textFits(d) ? null : 'none')
-              .style("font-size", "12px");
+              .style("font-size", "10px");
 
           text.append('textPath')
               .attr('startOffset','50%')
