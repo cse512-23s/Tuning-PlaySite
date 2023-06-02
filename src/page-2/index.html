@@ -37,13 +37,13 @@
         <p>What do you think is the relation between batch size and validation accuracy? Draw how you expect the line to look.</p>
         <div id="chart" class="chart"></div>
         <p>We can see that increasing batch size increases validation accuracy. But one important note, in this case, is, all hyperparameters are the same for each of the above-plotted batch sizes. Adam is the optimizer used and model is trained for 10 epochs.</p>
-        <br/>
-        <p>What happens if we optimize hyperparameters independently for each batch size? What do you expect the graph to look like?</p>
+        
+        <p>There are situations where a batch size of 32 performs better with the stochastic gradient descent (SGD) optimizer instead of Adam. If we were to optimize all hyperparameters independently for each batch size, what can we expect the resulting graph to look like?</p>
 
         <!-- Second Chart -->
         <div id="chart2" class="chart"></div>
         <p>By using the best hyperparameters for individual batch sizes, we can see that there is no effect of increasing batch size on performance.</p>
-        <p>Any batch size works but configurations of other hyperparameters like number of epochs, optimizer, and regularizer change with batch size. So choose any batch size first before tuning other hyperparameters.</p>
+        <p>Any batch size works. However, the configurations of other hyperparameters, such as the number of epochs, the optimizer, and the regularizer, need to be adjusted based on the chosen batch size. Therefore, it is recommended to select a batch size first before tuning the other hyperparameters.</p>
         <br/>
         <p>In case you are curious to know what will be the use of tuning batch size, hover below.</p>
 
@@ -54,8 +54,8 @@
         <script src="https://d3js.org/d3.v7.js"></script>
         <script src="script.js"></script>
         <p><span class="custom-line">*Dotted blue line is only to show the trajectory</span></p>
-        <p>TL;DR: Choose the largest available batch size for faster training and experimentations.</p>
-        <p>The steps needed to achieve a particular performance keep decreasing with increasing batch size till a certain batch size. After that limit, steps needed remain the same. </p>
+        <p>TL;DR: Choose the largest available batch size for faster training and experimentation.</p>
+        <p>As the batch size increases, the number of steps required to achieve a certain performance decreases until reaching a certain batch size. Beyond that limit, the number of steps needed remains the same.</p>
     </div>
 
 </body>
