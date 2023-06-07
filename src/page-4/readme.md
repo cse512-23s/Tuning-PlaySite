@@ -24,5 +24,5 @@ The X axis is kept as linear scale of log10(learning rate) instead of log scale 
 #### Design Layout
 
 <p align="center">
-  <img src="page-4_Images/Picture12.png" width="500" />
+  <img src="page-4_Images/Picture12.jpg" width="500" />
 </p>
