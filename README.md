@@ -35,3 +35,13 @@ James (Shao-Jung) Kan was responsible for integrating and publishing the entire 
 - Video Editing (~1 Hr)
 
 Wenzheng
+
+Wenzheng was responsible for Page 2, and project dadaset prepr (total ~40 Hrs) :
+-	Project Idea Proposal (~3 Hrs)
+-	Implementation method of interation design (~4 Hrs)
+-	Page 2 (~8 Hrs)
+-	Debugging (~6 Hrs)
+-	Page 2 Modifications (~3 Hrs)
+-	Dataset Preparation (~10 Hrs)
+-	Readme for Pages 2 (~6 Hrs)
+
