@@ -14,4 +14,5 @@ https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40
 
 #### Design Layout
 <p align="center">
-
+  <img src="page-3_Images/Picture1.jpg" width="500" />
+</p>
