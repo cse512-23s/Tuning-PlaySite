@@ -36,9 +36,9 @@ James (Shao-Jung) Kan was responsible for integrating and publishing the entire 
 
 Wenzheng
 
-Wenzheng was responsible for Page 2, and project dadaset prepr (total ~40 Hrs) :
+Wenzheng was responsible for Page 2, and project dadaset Preparation (total ~40 Hrs) :
 -	Project Idea Proposal (~3 Hrs)
--	Implementation method of interation design (~4 Hrs)
+-	Implementation Method of Interation Design (~4 Hrs)
 -	Page 2 (~8 Hrs)
 -	Debugging (~6 Hrs)
 -	Page 2 Modifications (~3 Hrs)
