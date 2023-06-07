@@ -70,8 +70,11 @@ These enable user to view all learning rates for a particular optimizer. Adam wa
   <img src="page-3_Images/Picture11.png" width="500" />
 </p>
 #### References 
-https://gist.github.com/JessicaFreaner/8fb0ac6c12aa1dab5f70       
+
+https://gist.github.com/JessicaFreaner/8fb0ac6c12aa1dab5f70     
+
 https://d3-graph-gallery.com/graph/line_select.html
+
 https://gist.github.com/eesur/6992045bafc8da95b98b
 
 
