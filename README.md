@@ -2,7 +2,8 @@
 Hyper-Parameter Tuning Visualization
 
 Megha
-Megha was responsible for the overall project idea and flow of the designs (total ~40Hrs).
+
+Megha was responsible for the overall project concept and design flow (total ~40Hrs).
 - Storyline (~7 Hrs)
 - Proposal (~3 Hrs)
 - Batch Size Page Flow (~2 Hrs)
