@@ -57,7 +57,7 @@ https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40
 
 #### Design Layout
 <p align="center">
-  <img src="page-4_Images/Picture16.png" width="500" />
+  <img src="page-4_Images/Picture16.jpg" width="500" />
 </p>
 
 #### Default View
