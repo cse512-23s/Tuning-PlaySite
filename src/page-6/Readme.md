@@ -4,7 +4,7 @@ For the choice of hyperparameters,
 3. Next for the batch size, we chose 16, 32 and 64. We could have gone for 128 but limited machine capabilities. 
 4. Later one of the most important yet mostly guessed is learning rate. In general most people choose between 1e-4 to 1e-2. For this we choose 0.0001, 0.0025, 0.005, 0.075 and 0.01. 
 
-So the total rows of data came upto 765(3\*17\*3\*5). For the performance metrics, we choose Accuracy, Loss and F1-score(to compensate Precision and Recall).
+So the total rows of data came upto 765(3\*17\*3\*5). For the performance metrics, we choose Accuracy and Loss.
 
 ### Design Decisions
 #### Choice of Chart Type
