@@ -25,7 +25,13 @@ Amisha was responsible for Page 3, Page 4 and major portions of Page 6 as follow
 -	Readme for Pages 3, 4 and 6 (~4 Hrs)
 -	Video script proof-reading and editing (~2 Hrs)  
 
+James (Shao-Jung) Kan
 
-James
+James (Shao-Jung) Kan was responsible for integrating and publishing the entire project and edit final video (total ~46 Hrs)
+- Design Research (~5 Hrs)
+- Design Implementation (~25 Hrs)
+- Visualization and Integration (~10 Hrs)
+- Debugging (~5 Hrs)
+- Video Editing (~1 Hr)
 
 Wenzheng
