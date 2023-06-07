@@ -12,6 +12,7 @@ The goal of this visualization is to provide the user with 2 main interactivitie
 We chose to encode learning rates with color and optimizers with marks and not vice-versa because if we gave mark encodings to learning rates, there would be 5 different marks (instead of 3 currently) and the user would be required to refer to the legend multiple times to interpret the visualization, which would increase cognitive load for the user. Hence we chose color encodings for learning rates and mark encodings for optimizers.
 
 Choice of Color Scheme 
+
 The color scheme was chosen in consideration to be colorblindness compatible with reference to the following link :
 
 https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40
@@ -73,6 +74,7 @@ View All button :
   <img src="page-3_Images/Picture9.png" width="500" />
 </p>
 Note that all 3 optimizer buttons turned dark gray to indicate all 3 have been selected for viewing with the View All button. 
+
 
 **Adam, RMSProp, SGD buttons**
 
