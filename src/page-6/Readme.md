@@ -47,7 +47,7 @@ This interaction helps the user view single sample of interest with simple hover
   <img src="Images/single_sample.png"/>
 </p>
 
-In the above example, the curser is hovered on Adam--110--64--0.0001	sample. Thus, the corresponding sample is highlighted and every other sample turns gray to defocus other samples. 
+In the above example, the curser is hovered on Adam, 101, 90, 16, 0.0075	sample. Thus, the corresponding sample is highlighted and every other sample turns gray to defocus other samples. 
 
 -	Search bar :
 
@@ -57,7 +57,7 @@ This interaction helps the user when either multiple samples need to be searched
   <img src="Images/multiple_sample.png"  />
 </p>
 
-In the above example, Adam--130 is typed in the search bar. The samples that have Adam optimizer and 130 epochs are shown in the visualization. Also, correspondingly, the optimizer changed to Adam and number of active samples changed to 15 in the progression bar. 
+In the above example, Adam, 101, 8 is typed in the search bar. The samples that have Adam optimizer and 130 epochs are shown in the visualization. Also, correspondingly, the optimizer changed to Adam and number of active samples changed to 15 in the progression bar. 
 
 2. **Optimizer (Select to View)**
 
