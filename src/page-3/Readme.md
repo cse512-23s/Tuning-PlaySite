@@ -69,6 +69,7 @@ These enable user to view all learning rates for a particular optimizer. Adam wa
 <p align="center">
   <img src="page-3_Images/Picture11.png" width="500" />
 </p>
+
 #### References 
 
 https://gist.github.com/JessicaFreaner/8fb0ac6c12aa1dab5f70     
