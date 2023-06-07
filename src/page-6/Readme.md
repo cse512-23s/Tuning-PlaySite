@@ -113,3 +113,4 @@ By clicking on an axis label, the user can re-order the axis to view the plot di
 
 In this example, the learning rate axis is dragged to be the left-most axis. Refreshing sets back the visualization to original. 
 
+This visualization for page 6 is our A3 submission with some minor changes incorporated as per peer review feedback for A3. The description and exploration guide are moved to the left instead of the right so the viewer can view them before beginning with the interaction. The removal of axis feature and zoom and remove buttons are added for additional interactivity.
