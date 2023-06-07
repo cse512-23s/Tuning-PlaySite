@@ -288,7 +288,7 @@ Feedback from the milestone review suggested that using a sunburst visualization
 ## Page 6
 
 ## Development Process
-Megha
+Megha Chandra Nandyala 
 
 Megha was responsible for the overall project concept and design flow (total ~40Hrs).
 - Storyline (~7 Hrs)
@@ -301,15 +301,15 @@ Megha was responsible for the overall project concept and design flow (total ~40
 - Readme for Page 5 (~1 Hr)
 - Restructuring Pages and information (~10 Hrs)
 
-Amisha
+Amisha Himanshu Somaiya
 
-Amisha was responsible for Page 3, Page 4 and major portions of Page 6 as follows (total ~40 Hrs) :
+Amisha was responsible for Page 3, Page 4 and major portions of Page 6 as follows (total ~50 Hrs) :
 -	Page layout decisions (~2 Hrs)
--	Visualization design decisions (~4 Hrs)
--	Coding up visualizations in D3.js for pages 3, 4 and 6  (~22 Hrs)
--	Debugging (~2 Hrs)
+-	Visualization design decisions (~5 Hrs)
+-	Coding up visualizations in D3.js for pages 3, 4 and 6  (~28 Hrs)
+-	Debugging (~4 Hrs)
 -	Resolving conflicts between plots to fit into single page (~4 Hrs)
--	Readme for Pages 3, 4 and 6 (~4 Hrs)
+-	Readme for Pages 3, 4 and 6 (~5 Hrs)
 -	Video script proof-reading and editing (~2 Hrs)  
 
 James (Shao-Jung) Kan
@@ -321,7 +321,7 @@ James (Shao-Jung) Kan was responsible for integrating and publishing the entire 
 - Debugging (~5 Hrs)
 - Video Editing (~1 Hr)
 
-Wenzheng
+Wenzheng Zhao
 
 Wenzheng was responsible for Page 2, and project dataset preparation (total ~40 Hrs) :
 -	Project Idea Proposal (~3 Hrs)
