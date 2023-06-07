@@ -5,7 +5,7 @@ Megha
 
 Amisha
 
-Amisha was responsible for Page 3, Page 4 and major portions of Page 6 (total ~40 Hrs) as follows:
+Amisha was responsible for Page 3, Page 4 and major portions of Page 6 as follows (total ~40 Hrs) :
 -	Brainstorming (~2 Hrs)
 -	Page layout and visualization design decisions (~6 Hrs)
 -	Coding up visualizations in D3.js  (~20 Hrs)
