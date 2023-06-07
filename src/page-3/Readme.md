@@ -29,8 +29,9 @@ Default view : All learning rates for Adam
 This interactive feature enables users to view optimizer performances for each learning rate. By hovering on a learning rate, the 3 optimizer lines for previously selected learning rate disappear and the 3 optimizer lines for the hovered learning rate become visible and stay visible till that learning rate is hovered upon. Once the hover is removed, those lines disappear. For easy interpretability, the learning rates in the interactive legend match the color of line plots for that learning rate. Also, the hovered learning rate becomes bigger in font to interpret current selection. 
 <p align="center">
   <img src="page-3_Images/Picture4.png" width="500" />
+  For example :  learning rate = 1
 </p>
-For example :  learning rate = 1
+
 <p align="center">
   <img src="page-3_Images/Picture5.png" width="500" />
 </p>
