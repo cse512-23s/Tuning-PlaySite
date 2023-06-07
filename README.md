@@ -184,13 +184,13 @@ Slider interaction in 3 steps : 0.99, 0.999, 0.999
 
 For slider position, beta2 = 0.99: 
 <p align="center">
-  <img src="page-4_Images/Picture14.png" width="500" />
+  <img src="src/page-4/page-4_Images/Picture14.png" width="500" />
 </p>
 
 
 For slider position, beta2 = 0.9999:
 <p align="center">
-  <img src="page-4_Images/Picture15.png" width="500" />
+  <img src="src/page-4/page-4_Images/Picture15.png" width="500" />
 </p>
 
 
@@ -205,7 +205,7 @@ https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40
 
 ### Design Layout
 <p align="center">
-  <img src="src/page-3/page-4_Images/Picture16.jpg" width="500" />
+  <img src="src/page-4/page-4_Images/Picture16.jpg" width="500" />
 </p>
 
 ### Default View
