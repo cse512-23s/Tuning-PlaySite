@@ -1,6 +1,7 @@
 ### Page 3 Design Decisions :
 #### Choice of Chart Type
 This page aims to provide the user an informative and interactive view of the effect of different learning rates on the optimizer performance. We consider 3 optimizers : Adam, SGD and RMSprop. We visualize the effect of 5 learning rates on each of these. For the choice of chart type, we experimented with small multiples, group bar chart, density charts etc. but found a single chart with multi-line plot with user-interactions to be the most effective. 
+
 #### Choice of Encodings
 The goal of this visualization is to provide user 2 main interactivities : (1) compare different learning rates for each optimizer (2) compare different optimizers for each learning rate. Thus we choose the following encodings : 
 -	X axis : Epochs 
@@ -19,6 +20,7 @@ https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40
 
 #### Default View
 The page begins with the default view of all learning rates for Adam optimizer. This default view is chosen because (1) the first view does not remain blank (2) viewing all together would clutter the plot and distract the user (3) Adam being the most used optimizer, viewing just this optimizer with all learning rates gives a nice idea that all learning rates do not perform equally for each optimizer. The button for Adam is dark gray in the default view indicating it has been selected. 
+
 Default view : All learning rates for Adam :
 <p align="center">
   <img src="page-3_Images/Picture3.png" width="500" />
@@ -47,6 +49,7 @@ For example :  learning rate = 1e-02:
 
 **Click Learning Rates to Compare**
 When a user needs to compare several learning rates at once, they can do so by clicking on multiple learning rates. This will select the clicked learning rates to be visible on the chart till clicked again. 
+
 For example :  clicked learning rates of 1e-01 and 1e-04 :
 <p align="center">
   <img src="page-3_Images/Picture7.png" width="500" />
@@ -54,7 +57,9 @@ For example :  clicked learning rates of 1e-01 and 1e-04 :
 
 
 **View All, Clear All**
+
 At any point, if the user needs to view all lines for all learning rates or clear the entire plot, they can do so using these 2 buttons.
+
 Clear All button :
 <p align="center">
   <img src="page-3_Images/Picture8.png" width="500" />
@@ -68,6 +73,7 @@ View All button :
 Note that all 3 optimizer buttons turned dark gray to indicate all 3 have been selected for viewing with the View All button. 
 
 **Adam, RMSProp, SGD buttons**
+
 These enable user to view all learning rates for a particular optimizer. Adam was seen the default view. RMSProp and SGD are as follows, note that the corresponding selected button turns dark gray. 
 
 <p align="center">
